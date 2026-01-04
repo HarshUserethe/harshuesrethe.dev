@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'clash_display';
-  src: url('../public/fonts/ClashDisplay-Medium.ttf');
+  src: url('/fonts/ClashDisplay-Medium.ttf');
 }
 
 body {

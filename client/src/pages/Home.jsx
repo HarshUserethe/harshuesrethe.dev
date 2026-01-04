@@ -168,7 +168,6 @@ const Home = () => {
           flexDirection: 'column',
         }}
       >
-      
         <Box className="inner-wrapper">
           <Typography
             variant="h1"
@@ -374,7 +373,6 @@ const Home = () => {
       />
       <Testimonal />
       <Footer />
-      
     </>
   );
 };

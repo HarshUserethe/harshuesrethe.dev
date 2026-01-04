@@ -18,7 +18,19 @@
   font-family: 'clash_display' !important;
 }
 
-.css-u64c8x-MuiButtonBase-root-MuiButton-root {
+.light-mode {
+  border-color: #0a0a0a !important;
+  color: #0a0a0a !important;
+  text-transform: capitalize !important;
+  border-radius: 500px !important;
+  position: relative !important;
+  left: 0% !important;
+  width: fit-content !important;
+  padding: 12px 42px !important;
+  font-size: 14px !important;
+  line-height: 1.25rem !important;
+}
+.dark-mode {
   border-color: #fff !important;
   color: #fff !important;
   text-transform: capitalize !important;
@@ -29,10 +41,6 @@
   padding: 12px 42px !important;
   font-size: 14px !important;
   line-height: 1.25rem !important;
-}
-.light-mode {
-  border-color: #0a0a0a !important;
-  color: #0a0a0a !important;
 }
 
 @keyframes wave {

@@ -151,11 +151,14 @@ const Home = () => {
 
   const buttonClass =
     'knowme-button' +
+    ' ' +
     (themeValues.mode === 'light' ? 'light-mode' : 'dark-mode');
 
   const handleRedirect = (url) => {
     window.open(url, '_blank');
   };
+
+  console.log(buttonClass);
 
   return (
     <>

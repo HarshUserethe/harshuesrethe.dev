@@ -49,7 +49,11 @@ const MyProjects = () => {
   const styles = useSelector((state) => state.theme.styles); // Get styles from Redux
   const themeValues = useSelector((state) => state.theme);
 
-  const buttonClass = themeValues.mode === 'light' ? 'light-mode' : 'dark-mode';
+  const buttonClass =
+    'knowme-button' +
+    ' ' +
+    (themeValues.mode === 'light' ? 'light-mode' : 'dark-mode');
+
   return (
     <>
       {/* SECTION HEADER */}

@@ -1,0 +1,8 @@
+@media (max-width: 499px) and (min-width: 300px) {
+  .footer-main-content {
+    padding-top: 100px;
+  }
+  /* .footer-headline{
+    text-align: center !important;
+  } */
+}

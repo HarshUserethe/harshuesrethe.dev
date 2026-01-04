@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+@font-face {
+  font-family: 'default_fonts_a';
+  src: url('/client/src/assets/fonts/fonts_a.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'default_fonts_b';
+  src: url('/client/src/assets/fonts/fonts_b.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'clash_display';
+  src: url('../public/fonts/ClashDisplay-Medium.ttf');
+}
+
+body {
+  font-family: 'clash_display';
+}
+
+::selection {
+  background: greenyellow; /* highlight color */
+  color: #000; /* text color */
+}
+
+:root {
+  --bgColor: '#0a0b0c', --textColor: '#fff';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bgColor);
+}
+
+.pointer-events-none {
+  width: 25% !important;
+}

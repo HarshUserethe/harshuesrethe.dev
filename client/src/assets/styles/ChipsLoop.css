@@ -1,0 +1,12 @@
+@media (max-width: 499px) and (min-width: 300px) {
+  .css-1dybbl5-MuiChip-label {
+    font-size: 16px !important;
+  }
+
+  .css-1fvudcv-MuiChip-root {
+    padding: 20px 10px !important;
+  }
+  .list-none {
+    padding: 10px !important;
+  }
+}

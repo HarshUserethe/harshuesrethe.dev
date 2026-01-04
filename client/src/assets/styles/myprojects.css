@@ -1,0 +1,30 @@
+.view-all-projects-btn {
+  width: fit-content !important;
+  padding: 12px 32px !important;
+  font-size: 14px !important;
+  line-height: 1.25rem !important;
+  z-index: 1;
+  margin-top: 5% !important;
+}
+
+@media (max-width: 599px) and (min-width: 500px) {
+  .view-all-projects-btn {
+    width: 35% !important;
+  }
+}
+
+@media (max-width: 499px) and (min-width: 300px) {
+  .css-etjr3t {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 64px;
+    background-color: #0a0b0c;
+  }
+  .inner-card-lable {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .prj-cards {
+    padding: 14px !important;
+  }
+}

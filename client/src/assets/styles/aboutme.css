@@ -1,0 +1,23 @@
+.about-text {
+  font-size: 32px !important;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+@media (max-width: 1028px) and (min-width: 600px) {
+  .about-text {
+    font-size: 32px !important;
+  }
+}
+
+@media (max-width: 599px) and (min-width: 500px) {
+  .about-text {
+    font-size: 32px !important;
+  }
+}
+
+@media (max-width: 499px) and (min-width: 300px) {
+  .about-text {
+    font-size: 24px !important;
+  }
+}

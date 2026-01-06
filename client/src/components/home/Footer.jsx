@@ -115,11 +115,12 @@ const Footer = () => {
 
           {/* Contact Button */}
           <button
+          className='contact-me-button'
             onClick={handleContactClick}
             style={{
               backgroundColor: 'transparent',
               color: styles?.mainTheme?.color,
-              border: '2px solid #6e6e6eff',
+              border: '1px solid #6e6e6eff',
               padding: '12px 42px',
               fontSize: '16px',
               borderRadius: '30px',

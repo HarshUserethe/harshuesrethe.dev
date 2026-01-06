@@ -83,6 +83,21 @@
   border-top: 1px solid #262626;
   margin-top: 5%;
 }
+.dark-mode:hover{
+  background-color: #fff;
+  color: #000 !important;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) .8s;
+  rotate: 2deg;
+  box-shadow: 1px 1px 5px #fff;
+}
+
+.light-mode:hover{
+  background-color: #000;
+  color: #fff !important;
+  transition: cubic-bezier(0.19, 1, 0.22, 1) .8s;
+  rotate: 2deg;
+  box-shadow: 1px 1px 5px #000;
+}
 
 @media (max-width: 1028px) and (min-width: 600px) {
   .inner-wrapper {

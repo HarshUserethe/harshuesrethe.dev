@@ -158,7 +158,7 @@ const Home = () => {
     window.open(url, '_blank');
   };
 
-  console.log(buttonClass);
+
 
   return (
     <>

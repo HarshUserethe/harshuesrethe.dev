@@ -134,6 +134,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div
+          className='footer-icons-container'
           style={{
             display: 'flex',
             justifyContent: 'space-between',
@@ -163,7 +164,7 @@ const Footer = () => {
           >
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/harshuserethe"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -185,7 +186,7 @@ const Footer = () => {
 
             {/* GitHub */}
             <a
-              href="https://github.com"
+              href="https://github.com/HarshUserethe"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -207,7 +208,7 @@ const Footer = () => {
 
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/harshuserethe?igsh=YjExZ283dHBkdDFy"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -229,7 +230,7 @@ const Footer = () => {
 
             {/* Email */}
             <a
-              href="mailto:contact@example.com"
+              href="mailto:useretheharsh@gmail.com"
               style={{
                 color: '#888',
                 transition: 'color 0.3s ease',
@@ -252,7 +253,7 @@ const Footer = () => {
 
             {/* Twitter */}
             <a
-              href="https://twitter.com"
+              href="https://x.com/HarshUserethe04"
               target="_blank"
               rel="noopener noreferrer"
               style={{

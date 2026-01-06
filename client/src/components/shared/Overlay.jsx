@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Overlay = () => {
   const styles = useSelector((state) => state.theme.styles);
-  console.log(styles);
+  
   return (
     <Box
       sx={{
@@ -13,7 +13,6 @@ const Overlay = () => {
         backgroundColor: 'transparent',
         position: 'fixed',
         zIndex: 99,
-        backgroundColor: 'transparent',
         bottom: 0,
       }}
     >

@@ -1,0 +1,25 @@
+.gsap-btn {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Bubble layer */
+.bubbly {
+    position: absolute;
+    /* background-color: rgb(255, 255, 255); */
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    border-top-left-radius: 80%;
+    border-top-right-radius: 80%;
+}
+
+.btn-label {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transition: color 0.3s ease;
+}

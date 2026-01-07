@@ -19,6 +19,7 @@ import Testimonal from '../components/home/Testimonal';
 import Footer from '../components/home/Footer';
 import SplitText from '../components/shared/SplitText';
 import Overlay from '../components/shared/Overlay';
+import AnimatedButton from '../components/shared/AnimatedButton';
 
 const Home = () => {
   const styles = useSelector((state) => state.theme.styles); // Get styles from Redux
@@ -327,13 +328,21 @@ const Home = () => {
                 and accessible digital experiences that drive results and
                 achieve business goals.
               </Typography>
-              <Button
+              {/* <Button
                 variant="outlined"
                 color="primary"
                 className={buttonClass}
               >
                 Know Me Better
-              </Button>
+              </Button> */}
+              <AnimatedButton
+               color={styles?.mainTheme?.color}
+               label={'Know Me Better'}
+               hoverLabel={'More About Me'}
+               btnWidth={'fit-content'}
+               classMe={buttonClass}
+               isClassName={true}
+              />
             </Box>
           </Box>
         </Box>

@@ -5,6 +5,7 @@ import '../../assets/styles/myprojects.css';
 import { useSelector } from 'react-redux';
 import ShinyText from '../shared/ShinyText';
 import SplitText from '../shared/SplitText';
+import AnimatedButton from '../shared/AnimatedButton';
 
 const projects = [
   {
@@ -192,13 +193,14 @@ const MyProjects = () => {
           width: '100%',
         }}
       >
-        <Button
-          variant="outlined"
-          color="primary"
-          className={buttonClass + ' view-all-projects-btn'}
-        >
-          View All Projects
-        </Button>
+        <AnimatedButton
+          color={styles?.mainTheme?.color}
+          label={'View All Projects'}
+          hoverLabel={'View All Projects'}
+          btnWidth={'fit-content'}
+          classMe={buttonClass}
+          isClassName={true}
+        />
       </Box>
     </>
   );

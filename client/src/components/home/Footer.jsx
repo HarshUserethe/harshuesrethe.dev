@@ -2,10 +2,13 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import '../../assets/styles/footer.css';
 import SplitText from '../shared/SplitText';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import AnimatedButton from '../shared/AnimatedButton';
 
 const Footer = () => {
   const styles = useSelector((state) => state.theme.styles);
-
+  
   const handleContactClick = () => {
     // Add your contact action here
     console.log('Contact button clicked');
@@ -14,6 +17,19 @@ const Footer = () => {
   const handleShoppingBagClick = () => {
     // Add your shopping bag action here
     console.log('Shopping bag clicked');
+  };
+  const btnRef = useRef(null);
+
+  const onEnter = () => {
+    gsap.to(btnRef.current.querySelector('.bubbly'), {
+      duration: 0.5,
+      ease: 'power3.out',
+      top: '0%',
+    });
+  };
+
+  const onLeave = () => {
+    gsap.to(btnRef.current.querySelector('.bubble'), {});
   };
 
   return (
@@ -114,28 +130,19 @@ const Footer = () => {
           </h2>
 
           {/* Contact Button */}
-          <button
-          className='contact-me-button'
-            onClick={handleContactClick}
-            style={{
-              backgroundColor: 'transparent',
-              color: styles?.mainTheme?.color,
-              border: '1px solid #6e6e6eff',
-              padding: '12px 42px',
-              fontSize: '16px',
-              borderRadius: '30px',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-              fontWeight: '500',
-            }}
-          >
-            Contact Me
-          </button>
+
+          <AnimatedButton
+            color={styles?.mainTheme?.color}
+            label={'Contact Me'}
+            hoverLabel={'Contact Me'}
+            btnWidth={'fit-content'}
+            
+          />
         </div>
 
         {/* Bottom Section */}
         <div
-          className='footer-icons-container'
+          className="footer-icons-container"
           style={{
             display: 'flex',
             justifyContent: 'space-between',

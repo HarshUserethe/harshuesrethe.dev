@@ -1,11 +1,10 @@
   .footer-icons-container{
     padding-bottom: 30px;
   }
-  .contact-me-button:hover{
-   border: 1px solid #9ddd5d !important;
-   color: #9ddd5d !important;
-   scale: 1.02;
-  }
+ 
+ 
+
+ 
  
 
 @media (max-width: 499px) and (min-width: 300px) {

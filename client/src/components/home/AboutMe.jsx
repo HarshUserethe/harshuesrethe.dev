@@ -1,11 +1,43 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import '../../assets/styles/aboutme.css';
 import { LuSparkle } from 'react-icons/lu';
 import ShinyText from '../shared/ShinyText';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutMe = ({ styles }) => {
-  console.log(styles);
+  const textRef = useRef(null);
+
+  const text =
+    "I'm Harsh Userethe, with over 5+ years of experience in design and development, with a strong focus on producing high-quality and impactful digital experiences. I have worked with some of the most innovative industry leaders to help build their top-notch products.";
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const words = textRef.current.querySelectorAll('.word');
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: 'top 80%',
+            end: 'bottom 40%',
+            scrub: true,
+          },
+        })
+        .to(words, {
+          color: styles?.mainTheme?.color,
+          opacity: 1,
+          stagger: 0.1,
+          ease: 'none',
+        });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <Box
       className="main"
@@ -39,13 +71,27 @@ const AboutMe = ({ styles }) => {
 
       <Box sx={{ padding: '24px' }}>
         <Typography
+          ref={textRef}
           className="about-text"
-          sx={{ color: styles?.mainTheme?.color, textAlign: 'center' }}
+          sx={{
+            textAlign: 'center',
+            lineHeight: 1.6,
+          }}
         >
-          I'm Harsh Userethe, with over 5+ years of experience in design and
-          development, with a strong focus on producing high-quality and
-          impactful digital experiences. I have worked with some of the most
-          innovative industry leaders to help build their top-notch products.
+          {text.split(' ').map((word, i) => (
+            <span
+              key={i}
+              className="word"
+              style={{
+                color: styles?.mainTheme?.color,
+                opacity: 0.3,
+                marginRight: '6px',
+                display: 'inline-block',
+              }}
+            >
+              {word}
+            </span>
+          ))}
         </Typography>
       </Box>
     </Box>

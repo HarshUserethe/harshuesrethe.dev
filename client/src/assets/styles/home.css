@@ -88,7 +88,6 @@
   margin-top: 5%;
 }
 
-
 @media (max-width: 1028px) and (min-width: 600px) {
   .inner-wrapper {
     margin-top: 15%;
@@ -162,5 +161,26 @@
 @media (max-width: 1280px) and (min-width: 300px) {
   .css-u64c8x-MuiButtonBase-root-MuiButton-root {
     width: 50% !important;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 599px) {
+  .split-parent {
+    font-size: 60px !important;
+  }
+  .inner-wrapper {
+    margin-top: 25%;
+  }
+  .inner-wrapper > h1 {
+    font-size: 22px;
+  }
+  .css-1d0sf12 {
+    gap: 48px;
+  }
+  .css-filmx6 {
+    padding: 18px 0px !important;
+  }
+  .css-1av2jjk-MuiTypography-root {
+    font-size: 24px !important;
   }
 }

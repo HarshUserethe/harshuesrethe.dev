@@ -338,7 +338,7 @@ const Home = () => {
               <AnimatedButton
                color={styles?.mainTheme?.color}
                label={'Know Me Better'}
-               hoverLabel={'More About Me'}
+               hoverLabel={'Know Me Better'}
                btnWidth={'fit-content'}
                classMe={buttonClass}
                isClassName={true}

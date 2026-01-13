@@ -1,6 +1,6 @@
 import { Typography, Box, Button } from '@mui/material';
 import { LuSparkle } from 'react-icons/lu';
-import React from 'react';
+import React, { useState } from 'react';
 import '../../assets/styles/myprojects.css';
 import { useSelector } from 'react-redux';
 import ShinyText from '../shared/ShinyText';
@@ -49,11 +49,20 @@ const projects = [
 const MyProjects = () => {
   const styles = useSelector((state) => state.theme.styles); // Get styles from Redux
   const themeValues = useSelector((state) => state.theme);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const buttonClass =
     'knowme-button' +
     ' ' +
     (themeValues.mode === 'light' ? 'light-mode' : 'dark-mode');
+
+  const handleHoverState = (index) => {
+    setHoveredIndex(index);
+  };
+
+  const clearHoverState = () => {
+    setHoveredIndex(null);
+  };
 
   return (
     <>
@@ -127,8 +136,28 @@ const MyProjects = () => {
         {projects.map((p, index) => (
           <div
             key={index}
+            onMouseEnter={() => handleHoverState(index)}
+            onMouseLeave={clearHoverState}
+            style={{ position: 'relative' }}
             className="opacity-container-child group h-fit w-full cursor-pointer sm:even:mt-14"
           >
+            {/* Hovering Overlay */}
+            <Box
+              sx={{
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                inset: 0,
+                backgroundColor:
+                  hoveredIndex === null
+                    ? 'transparent'
+                    : hoveredIndex === index
+                      ? 'transparent'
+                      : '#0000007a',
+                transition: 'background-color 0.3s ease',
+                pointerEvents: 'none', // important so hover still works
+              }}
+            />
             <a href={p.link} className="h-fit w-full">
               <div
                 style={{
@@ -154,6 +183,12 @@ const MyProjects = () => {
                       height: '100%',
                       objectFit: 'cover',
                       borderRadius: '25px',
+                      scale:hoveredIndex === null
+                    ? '1.05'
+                    : hoveredIndex === index
+                      ? '1.05'
+                      : '1',
+                      transition:"all .5s"
                     }}
                   />
                 </div>

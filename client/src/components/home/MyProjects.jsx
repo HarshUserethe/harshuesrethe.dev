@@ -153,9 +153,10 @@ const MyProjects = () => {
                     ? 'transparent'
                     : hoveredIndex === index
                       ? 'transparent'
-                      : '#0000007a',
+                      : '#0000005b',
                 transition: 'background-color 0.3s ease',
-                pointerEvents: 'none', // important so hover still works
+                pointerEvents: 'none',
+                zIndex:"1"
               }}
             />
             <a href={p.link} className="h-fit w-full">

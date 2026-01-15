@@ -8,7 +8,7 @@ import AnimatedButton from '../shared/AnimatedButton';
 
 const Footer = () => {
   const styles = useSelector((state) => state.theme.styles);
-  
+
   const handleContactClick = () => {
     // Add your contact action here
     console.log('Contact button clicked');
@@ -54,6 +54,7 @@ const Footer = () => {
           style={{
             textAlign: 'center',
             marginBottom: '120px',
+            backgroundColor: styles?.mainTheme?.footerChildBackgroundColor,
           }}
         >
           {/* Available Badge */}
@@ -136,7 +137,6 @@ const Footer = () => {
             label={'Contact Me'}
             hoverLabel={'Contact Me'}
             btnWidth={'fit-content'}
-            
           />
         </div>
 

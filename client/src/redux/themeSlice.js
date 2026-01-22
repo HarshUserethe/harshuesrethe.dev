@@ -5,7 +5,7 @@ const getStyles = (mode) => ({
     backgroundColor: mode === 'dark' ? '#0a0b0c' : '#f6f9fb',
     color: mode === 'dark' ? '#fff' : '#000',
     hoverColor: mode === 'dark' ? '#222' : '#eeeeeeff',
-    epicColor: mode === 'dark' ? '#b5ff6d' : '#676767',
+    epicColor: mode === 'dark' ? '#fff' : '#676767',
     chipColor: mode === 'dark' ? '#181820' : '#fff',
     chipBorder:
       mode === 'dark'
@@ -16,6 +16,7 @@ const getStyles = (mode) => ({
         ? 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)'
         : 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 100%)',
     footerChildBackgroundColor: mode === 'dark' ? '#111116' : '#fff',
+    specialHoverColor: mode === 'dark' ? '#0000005b' : '#ffffff5b'
   },
 
   activeClass: {

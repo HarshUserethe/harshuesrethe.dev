@@ -153,7 +153,7 @@ const MyProjects = () => {
                     ? 'transparent'
                     : hoveredIndex === index
                       ? 'transparent'
-                      : '#0000005b',
+                      : styles?.mainTheme?.specialHoverColor,
                 transition: 'background-color 0.3s ease',
                 pointerEvents: 'none',
                 zIndex:"1"

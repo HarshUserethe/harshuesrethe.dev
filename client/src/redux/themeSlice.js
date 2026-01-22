@@ -16,7 +16,8 @@ const getStyles = (mode) => ({
         ? 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)'
         : 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 100%)',
     footerChildBackgroundColor: mode === 'dark' ? '#111116' : '#fff',
-    specialHoverColor: mode === 'dark' ? '#0000005b' : '#ffffff5b'
+    specialHoverColor: mode === 'dark' ? '#0000005b' : '#ffffff5b',
+    headerShadowColor: mode === 'dark' ? '#000000d1' : '#dfdfdf'
   },
 
   activeClass: {

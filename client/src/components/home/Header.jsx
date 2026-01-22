@@ -7,6 +7,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme, setStyles } from '../../redux/themeSlice'; // Import setStyles if needed
 import { ToastContainer, toast, Slide } from 'react-toastify';
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Header = () => {
   const location = useLocation();
@@ -14,6 +18,32 @@ const Header = () => {
   const styles = useSelector((state) => state.theme.styles); // Get styles from Redux
   const dispatch = useDispatch();
   const notify = () => toast('Feature is currently in testing!');
+
+   const headerRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.to(headerRef.current, {
+        width: "50%",
+        backgroundColor: styles.mainTheme.backgroundColor,
+        boxShadow:`1px 2px 8px ${styles.mainTheme.headerShadowColor}`,
+        opacity:"90%",
+        borderRadius: "500px",
+
+        ease: "none",
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "+=200", // scroll distance
+          scrub: true,
+        },
+      });
+
+    
+    });
+
+    return () => ctx.revert(); // cleanup
+  }, []);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -44,10 +74,13 @@ const Header = () => {
   };
 
   return (
-    <Box
+      <Box sx={{display:"flex", justifyContent:"center", alignItems:"center", position:"relative", top:30}}>
+      <Box
       className="nav-container"
+      
       sx={{
-        backgroundColor: styles.mainTheme.backgroundColor,
+        // backgroundColor: styles.mainTheme.backgroundColor,
+        backgroundColor: "transparent",
         color: styles.mainTheme.color,
         zIndex: '99',
       }}
@@ -68,6 +101,7 @@ const Header = () => {
       <Box
         className="nav-inner-container"
         sx={{ backgroundColor: styles.mainTheme.backgroundColor }}
+        ref={headerRef}
       >
         <Box
           sx={{
@@ -119,6 +153,7 @@ const Header = () => {
         </IconButton>
       </Box>
     </Box>
+  </Box>
   );
 };
 

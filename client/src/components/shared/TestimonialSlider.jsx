@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import '../../assets/styles/testimonal.css'
 
 const testimonials = [
   {
@@ -35,6 +36,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
   const [progress, setProgress] = useState(0);
   const intervalRef = useRef(null);
   const progressIntervalRef = useRef(null);
+  const [isSeeMore, setIsSeeMore] = useState(null);
 
   const startAutoSlide = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
@@ -76,9 +78,15 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     startAutoSlide();
   };
+  
+  
+
+ const handleSeeMore = (id) => {
+  setIsSeeMore(prev => (prev === id ? null : id));
+};
 
   const currentTestimonial = testimonials[currentIndex];
-  const circumference = 2 * Math.PI * 48;
+   
 
   return (
     <div
@@ -113,7 +121,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
           <div
             style={{
               position: 'relative',
-              width: '100px',
+              width: '85px',
               aspectRatio: '1 / 1', // keeps it responsive
             }}
           >
@@ -137,7 +145,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
                   width: '100%',
                   height: '100%',
                   borderRadius: '50%',
-                  background: '#dfdfdf',
+                  background: styles?.mainTheme?.backgroundColor,
                 }}
               />
             </div>
@@ -191,9 +199,20 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
             }}
           >
             {currentTestimonial.text.length > 260
-              ? currentTestimonial.text.slice(0, 260)
+              ? isSeeMore === currentTestimonial.id ? currentTestimonial.text : currentTestimonial.text.slice(0, 260)
               : currentTestimonial.text}{' '}
-            <span
+            {
+              isSeeMore === currentTestimonial.id ? <span
+              onClick={() => handleSeeMore(currentTestimonial.id)}
+              style={{
+                color: styles?.mainTheme?.color,
+                fontWeight: 500,
+                cursor: 'pointer',
+              }}
+            >
+              ... see less
+            </span> : <span
+              onClick={() => handleSeeMore(currentTestimonial.id)}
               style={{
                 color: styles?.mainTheme?.color,
                 fontWeight: 500,
@@ -202,6 +221,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
             >
               ... see more
             </span>
+            }
           </p>
         </div>
 
@@ -231,8 +251,9 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
               fontSize: '14px',
               transition: 'opacity 0.2s',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
+            className='testimonial-button'
+            // onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
+            // onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
           >
             Check it out on Linkedin
             <svg

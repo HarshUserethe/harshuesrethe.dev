@@ -1,3 +1,41 @@
+.css-h5h7wl {
+  width: 70% !important;
+  padding: 15px;
+  border-radius: 15px;
+  border-left: 1px solid #191920;
+  border-right: 1px solid #191920;
+}
+
+.css-124zb1q {
+  border-radius: 15px;
+ 
+  border-right: 1px solid #191920;
+}
+
+.testimonial-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The line */
+.testimonial-button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;          /* space below text */
+  width: 0;
+  height: 1px;
+  background-color: #b5ff6d; /* line color */
+  transition: width 0.3s ease-in-out;
+}
+
+/* Hover animation */
+.testimonial-button:hover::after {
+  width: 100%;
+}
+
+
 @media (max-width: 499px) and (min-width: 300px) {
   .css-45qwhz {
     padding: 0 !important;
@@ -12,9 +50,15 @@
   .css-124zb1q {
     width: 70% !important;
     padding: 16px !important;
+    border-radius: 15px;
+    border-left: 1px solid #191920;
+    border-right: 1px solid #191920;
   }
   .css-h5h7wl {
     width: 100% !important;
     padding: 16px !important;
+    border-radius: 15px;
+    border-left: 1px solid #191920;
+    border-right: 1px solid #191920;
   }
 }

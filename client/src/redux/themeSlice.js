@@ -5,7 +5,7 @@ const getStyles = (mode) => ({
     backgroundColor: mode === 'dark' ? '#0a0b0c' : '#f6f9fb',
     color: mode === 'dark' ? '#fff' : '#000',
     hoverColor: mode === 'dark' ? '#222' : '#eeeeeeff',
-    epicColor: mode === 'dark' ? '#222' : 'rgb(181, 254, 108)',
+    epicColor: mode === 'dark' ? '#b5ff6d' : '#676767',
     chipColor: mode === 'dark' ? '#181820' : '#fff',
     chipBorder:
       mode === 'dark'

@@ -1,21 +1,46 @@
-# Dependencies
-node_modules/
-venv/
+# --- Dependencies ---
+# Ignores node_modules in root, /client, and /server
+**/node_modules/
+**/jspm_packages/
+**/venv/
+**/env/
 
-# Build outputs
-dist/
-build/
+# --- Environment / Secrets ---
+# Crucial: Never push these to GitHub
+**/.env
+**/.env.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+**/.flaskenv
 
-# Environment files
-.env
+# --- Build Outputs ---
+**/dist/
+**/build/
+**/out/
+**/.next/
+**/.cache/
 
-# Logs
-*.log
+# --- Logs ---
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/*.log
+**/logs/
 
-# OS files
+# --- OS Files ---
 .DS_Store
-Thumbs.db
+.DS_Store?
+**/Thumbs.db
+**/ehthumbs.db
 
-# IDEs
+# --- IDEs / Editors ---
 .vscode/
 .idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# --- Testing ---
+**/coverage/

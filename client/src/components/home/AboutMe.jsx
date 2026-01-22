@@ -36,7 +36,7 @@ const AboutMe = ({ styles }) => {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [styles]);
 
   return (
     <Box

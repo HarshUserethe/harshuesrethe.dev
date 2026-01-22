@@ -25,8 +25,8 @@ const Header = () => {
     const ctx = gsap.context(() => {
       gsap.to(headerRef.current, {
         width: "50%",
-        backgroundColor: styles.mainTheme.backgroundColor,
-        boxShadow:`1px 2px 8px ${styles.mainTheme.headerShadowColor}`,
+        backgroundColor: styles?.mainTheme?.backgroundColor,
+        boxShadow:`1px 2px 8px ${styles?.mainTheme?.headerShadowColor}`,
         opacity:"90%",
         borderRadius: "500px",
 
@@ -43,7 +43,7 @@ const Header = () => {
     });
 
     return () => ctx.revert(); // cleanup
-  }, []);
+  }, [styles]);
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -81,7 +81,7 @@ const Header = () => {
       sx={{
         // backgroundColor: styles.mainTheme.backgroundColor,
         backgroundColor: "transparent",
-        color: styles.mainTheme.color,
+        color: styles?.mainTheme?.color,
         zIndex: '99',
       }}
     >
@@ -100,7 +100,7 @@ const Header = () => {
       />
       <Box
         className="nav-inner-container"
-        sx={{ backgroundColor: styles.mainTheme.backgroundColor }}
+        sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
         ref={headerRef}
       >
         <Box
@@ -108,7 +108,7 @@ const Header = () => {
             fontSize: '18px',
             cursor: 'pointer',
             fontWeight: '500',
-            color: styles.mainTheme.color,
+            color: styles?.mainTheme?.color,
           }}
         >
           HU
@@ -123,8 +123,8 @@ const Header = () => {
               sx={{
                 color:
                   location.pathname === nav.path
-                    ? styles.activeClass.activeColor
-                    : styles.activeClass.nonActiveColor,
+                    ? styles?.activeClass?.activeColor
+                    : styles?.activeClass?.nonActiveColor,
               }}
             >
               {location.pathname === nav.path && <Box className="active"></Box>}
@@ -132,25 +132,25 @@ const Header = () => {
             </ListItem>
           ))}
         </Box>
-        {/* <IconButton onClick={notify}>
+         <IconButton>
           {themeValues.mode === "light" ? (
             <LuMoon
               onClick={handleThemeToggle}
               className="icons"
-              style={{ color: styles.icon.color }}
+              style={{ color: styles?.icon?.color }}
             />
           ) : (
             <LuSun
               onClick={handleThemeToggle}
               className="icons"
-              style={{ color: styles.icon.color }}
+              style={{ color: styles?.icon?.color }}
             />
           )}
-        </IconButton> */}
+        </IconButton>  
 
-        <IconButton onClick={notify}>
+        {/*<IconButton onClick={notify}>
           <LuMoon className="icons" style={{ color: '#fff' }} />
-        </IconButton>
+        </IconButton>*/}
       </Box>
     </Box>
   </Box>

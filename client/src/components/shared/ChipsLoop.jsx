@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
 import { LuSparkle } from 'react-icons/lu';
 import { useSelector } from 'react-redux';
-import '../../assets/styles/ChipsLoop.css';
+import '../../assets/styles/home-styles/ChipsLoop.css';
 import { Chip, Avatar } from '@mui/material';
 
 const ANIMATION_CONFIG = {

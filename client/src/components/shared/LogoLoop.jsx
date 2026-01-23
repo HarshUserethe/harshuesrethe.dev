@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
 import { LuSparkle } from 'react-icons/lu';
 import { useSelector } from 'react-redux';
-import '../../assets/styles/LogoScroller.css';
+import '../../assets/styles/home-styles/LogoScroller.css';
 
 const ANIMATION_CONFIG = {
   SMOOTH_TAU: 0.25,

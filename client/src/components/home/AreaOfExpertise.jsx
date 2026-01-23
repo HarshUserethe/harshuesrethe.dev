@@ -1,7 +1,7 @@
 import { Typography, Box, Button } from '@mui/material';
 import { LuSparkle, LuCodepen } from 'react-icons/lu';
 import React, { useState } from 'react';
-import '../../assets/styles/AreaOfExpertise.css';
+import '../../assets/styles/home-styles/AreaOfExpertise.css';
 import { useSelector } from 'react-redux';
 import ServiceCard from './ServiceCard';
 import ShinyText from '../shared/ShinyText';

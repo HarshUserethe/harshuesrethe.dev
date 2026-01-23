@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import gsap from 'gsap';
-import '../../assets/styles/Animation.css';
+import '../../assets/styles/home-styles/Animation.css';
 
 const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, classMe }) => {
   const btnRef = useRef(null);

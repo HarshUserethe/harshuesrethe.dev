@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../assets/styles/home.css';
+import '../assets/styles/home-styles/Home.css';
 import { Box, Button, ListItem, Typography } from '@mui/material';
 import { LuArrowUpRight, LuHand } from 'react-icons/lu';
 import LogoLoop from '../components/shared/LogoLoop';

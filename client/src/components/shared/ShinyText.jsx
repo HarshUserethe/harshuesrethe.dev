@@ -1,4 +1,4 @@
-import '../../assets/styles/ShinyText.css';
+import '../../assets/styles/home-styles/ShinyText.css';
 
 const ShinyText = ({ text, disabled = false, speed = 5, className = '' }) => {
   const animationDuration = `${speed}s`;

@@ -1,6 +1,6 @@
 import { Box, IconButton, ListItem } from '@mui/material';
 import React from 'react';
-import '../../assets/styles/header.css';
+import '../../assets/styles/home-styles/Header.css';
 import { LuMoon, LuSun } from 'react-icons/lu';
 import { Link, useLocation } from 'react-router-dom';
 // import { useState } from "react"; // REMOVE useState

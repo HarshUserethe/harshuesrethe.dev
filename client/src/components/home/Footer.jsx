@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import '../../assets/styles/footer.css';
+import '../../assets/styles/home-styles/Footer.css';
 import SplitText from '../shared/SplitText';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';

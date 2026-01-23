@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import React, { useRef, useEffect } from 'react';
-import '../../assets/styles/aboutme.css';
+import '../../assets/styles/home-styles/AboutMe.css';
 import { LuSparkle } from 'react-icons/lu';
 import ShinyText from '../shared/ShinyText';
 import gsap from 'gsap';

@@ -1,7 +1,7 @@
 import { Typography, Box, Button } from '@mui/material';
 import { LuSparkle } from 'react-icons/lu';
 import React, { useState } from 'react';
-import '../../assets/styles/myprojects.css';
+import '../../assets/styles/home-styles/MyProjects.css';
 import { useSelector } from 'react-redux';
 import ShinyText from '../shared/ShinyText';
 import SplitText from '../shared/SplitText';

@@ -4,11 +4,18 @@ import './App.css';
 import Home from './pages/Home';
 import Header from './components/home/Header';
 import About from './pages/About';
+import MobileMenu from './components/shared/MobileMenu';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const App = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  console.log(isMobile)
+  
   return (
     <Router>
       <Header />
+      {isMobile ? <MobileMenu /> : <></>}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

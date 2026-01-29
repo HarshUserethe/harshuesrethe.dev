@@ -17,7 +17,10 @@ const getStyles = (mode) => ({
         : 'linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 100%)',
     footerChildBackgroundColor: mode === 'dark' ? '#111116' : '#fff',
     specialHoverColor: mode === 'dark' ? '#0000005b' : '#ffffff5b',
-    headerShadowColor: mode === 'dark' ? '#000000d1' : '#dfdfdf'
+    headerShadowColor: mode === 'dark' ? '#000000d1' : '#dfdfdf',
+    mobileMenuLableActive: mode === 'dark' ? 'rgb(181, 254, 108)' : '#111116',
+    mobileMenuLableNonActive: mode === 'dark' ? '#fff' : '#111116',
+
   },
 
   activeClass: {

@@ -53,6 +53,7 @@ const Header = () => {
   ];
 
   const handleThemeToggle = () => {
+    window.location.reload(); // auto reoload
     dispatch(toggleTheme());
 
     // Optionally update styles if the logic is in Redux
@@ -61,6 +62,7 @@ const Header = () => {
         mainTheme: {
           backgroundColor: themeValues.mode === 'dark' ? '#f6f9fb' : '#0a0b0c', // swapped for post-toggle
           color: themeValues.mode === 'dark' ? '#000' : '#fff',
+          
         },
         activeClass: {
           activeColor: themeValues.mode === 'dark' ? '#000' : '#fff',

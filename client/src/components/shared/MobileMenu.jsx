@@ -42,6 +42,7 @@ const MobileMenu = () => {
         sx={{
           backgroundColor: styles?.mainTheme?.backgroundColor,
           height: '8dvh',
+          padding: '5px'
         }}
         onChange={(event, newValue) => {
           // on switching between tabs --->
@@ -60,12 +61,12 @@ const MobileMenu = () => {
               color: styles?.mainTheme?.mobileMenuLableNonActive,
               '& .MuiBottomNavigationAction-label': {
                 color: styles?.mainTheme?.mobileMenuLableNonActive,
-                fontSize: '14px',
+                fontSize: '0.75rem',
               },
               '& .MuiSvgIcon-root, & svg': {
                 // Targets MUI icons AND raw SVGs
                 color: styles?.mainTheme?.mobileMenuLableNonActive,
-                fontSize: '22px',
+                fontSize: '1.1rem',
               },
 
               // Targeted active state
@@ -76,7 +77,7 @@ const MobileMenu = () => {
                 },
                 '& .MuiSvgIcon-root, & svg': {
                   color: styles?.mainTheme?.mobileMenuLableActive,
-                  fontSize: '26px',
+                  fontSize: '1.2rem',
                 },
               },
             }}

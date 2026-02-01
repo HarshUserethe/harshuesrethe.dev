@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { useSelector } from 'react-redux';
 import '../assets/styles/home-styles/About.css';
 import Overlay from '../components/shared/Overlay';
 import { Box, Button, ListItem, Typography } from '@mui/material';
+import AboutHero from '../components/about/AboutHero';
 
 const About = () => {
   const styles = useSelector((state) => state.theme.styles);
@@ -10,19 +11,17 @@ const About = () => {
 
   return (
     <>
-    <Overlay />
-    <Box
-     className="main-about"
+      <Overlay />
+      <Box
+        className="main-about"
         sx={{
           backgroundColor: styles?.mainTheme?.backgroundColor,
         }}
-    >
-
-
-
-    </Box>
+      >
+        <AboutHero />
+      </Box>
     </>
-  )
-}
+  );
+};
 
-export default About
+export default About;

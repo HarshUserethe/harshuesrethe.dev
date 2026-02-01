@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import '../../assets/styles/home-styles/Animation.css';
 
-const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, classMe }) => {
+const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, classMe, hyperLink }) => {
   const btnRef = useRef(null);
+  const  navigate = useNavigate();
   const [currentLabel, setCurrentLabel] = useState(label);
   const themeValues = useSelector((state) => state.theme);
  
@@ -65,6 +67,7 @@ const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, class
   return (
     <>
       <button
+        onClick={() => {navigate(hyperLink)}}
         style={{
           backgroundColor: 'transparent',
           color: color,

@@ -137,6 +137,7 @@ const Footer = () => {
             label={'Contact Me'}
             hoverLabel={'Contact Me'}
             btnWidth={'fit-content'}
+            hyperLink={'/contact'}
           />
         </div>
 

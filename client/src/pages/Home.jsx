@@ -342,6 +342,8 @@ const Home = () => {
                btnWidth={'fit-content'}
                classMe={buttonClass}
                isClassName={true}
+               hyperLink={'/about'}
+               
               />
             </Box>
           </Box>

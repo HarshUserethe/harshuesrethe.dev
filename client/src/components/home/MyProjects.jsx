@@ -236,6 +236,7 @@ const MyProjects = () => {
           btnWidth={'fit-content'}
           classMe={buttonClass}
           isClassName={true}
+          hyperLink={'/project'}
         />
       </Box>
     </>

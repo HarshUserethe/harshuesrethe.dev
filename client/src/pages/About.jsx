@@ -18,7 +18,16 @@ const About = () => {
           backgroundColor: styles?.mainTheme?.backgroundColor,
         }}
       >
-        <AboutHero />
+        <AboutHero
+         imageUrl = {'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop'}
+         title = {'A creative developer'}
+         titleHighlight = {'creative developer'}
+         subtitle = {'& digital designer'}
+         description = {'I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.'}
+         circularTagText = {'LETS TALK • LETS TALK • LETS TALK • '}
+         fontFamily = {'Inter, sans-serif'}
+         styles={styles}
+         />
       </Box>
     </>
   );

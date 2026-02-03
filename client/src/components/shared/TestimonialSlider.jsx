@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../../assets/styles/home-styles/Testimonal.css'
+import '../../assets/styles/home-styles/Testimonal.css';
 
 const testimonials = [
   {
@@ -78,15 +78,12 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     startAutoSlide();
   };
-  
-  
 
- const handleSeeMore = (id) => {
-  setIsSeeMore(prev => (prev === id ? null : id));
-};
+  const handleSeeMore = (id) => {
+    setIsSeeMore((prev) => (prev === id ? null : id));
+  };
 
   const currentTestimonial = testimonials[currentIndex];
-   
 
   return (
     <div
@@ -199,29 +196,33 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
             }}
           >
             {currentTestimonial.text.length > 260
-              ? isSeeMore === currentTestimonial.id ? currentTestimonial.text : currentTestimonial.text.slice(0, 260)
+              ? isSeeMore === currentTestimonial.id
+                ? currentTestimonial.text
+                : currentTestimonial.text.slice(0, 260)
               : currentTestimonial.text}{' '}
-            {
-              isSeeMore === currentTestimonial.id ? <span
-              onClick={() => handleSeeMore(currentTestimonial.id)}
-              style={{
-                color: styles?.mainTheme?.color,
-                fontWeight: 500,
-                cursor: 'pointer',
-              }}
-            >
-              ... see less
-            </span> : <span
-              onClick={() => handleSeeMore(currentTestimonial.id)}
-              style={{
-                color: styles?.mainTheme?.color,
-                fontWeight: 500,
-                cursor: 'pointer',
-              }}
-            >
-              ... see more
-            </span>
-            }
+            {isSeeMore === currentTestimonial.id ? (
+              <span
+                onClick={() => handleSeeMore(currentTestimonial.id)}
+                style={{
+                  color: styles?.mainTheme?.color,
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                }}
+              >
+                ... see less
+              </span>
+            ) : (
+              <span
+                onClick={() => handleSeeMore(currentTestimonial.id)}
+                style={{
+                  color: styles?.mainTheme?.color,
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                }}
+              >
+                ... see more
+              </span>
+            )}
           </p>
         </div>
 
@@ -251,7 +252,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
               fontSize: '14px',
               transition: 'opacity 0.2s',
             }}
-            className='testimonial-button'
+            className="testimonial-button"
             // onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
             // onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
           >

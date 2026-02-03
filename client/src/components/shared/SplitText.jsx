@@ -95,8 +95,7 @@ const SplitText = ({
             gsap.set(coloredChars, {
               color: '#b5fe6c',
             });
-          }
-          else if(text === 'A creative developer & digital designer'){
+          } else if (text === 'A creative developer & digital designer') {
             const startIndex = 1;
             const endIndex = 17;
 

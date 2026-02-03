@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion, useAnimation, useMotionValue } from 'motion/react';
-import { LuArrowUp } from "react-icons/lu";
+import { LuArrowUp } from 'react-icons/lu';
 
 import '../../assets/styles/shared-styles/CircularText.css';
 
@@ -96,14 +96,13 @@ const CircularText = ({
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
     >
-
-    {/* Center Arrow */}
-    <div className="circular-text-center">
-      <div className='cir-inner'>
-        <LuArrowUp color='#ffffff69'  size={18}/>
+      {/* Center Arrow */}
+      <div className="circular-text-center">
+        <div className="cir-inner">
+          <LuArrowUp color="#ffffff69" size={18} />
+        </div>
+        {/* or replace ↑ with an SVG / icon */}
       </div>
-      {/* or replace ↑ with an SVG / icon */}
-    </div>
       {letters.map((letter, i) => {
         const rotationDeg = (360 / letters.length) * i;
         const factor = Math.PI / letters.length;

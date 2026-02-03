@@ -10,8 +10,8 @@ import { useMediaQuery, useTheme } from '@mui/material';
 const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  console.log(isMobile)
-  
+  console.log(isMobile);
+
   return (
     <Router>
       <Header />

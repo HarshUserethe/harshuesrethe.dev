@@ -4,12 +4,10 @@ import '../../assets/styles/about-styles/aboutus.css';
 import AnimatedButton from '../shared/AnimatedButton';
 import CircularText from '../shared/CircularText';
 import SplitText from '../shared/SplitText';
- 
-
 
 const AboutHero = ({
   imageUrl,
-  title, 
+  title,
   description = 'I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.',
   circularTagText = 'LET’S TALK • LET’S TALK • LET’S TALK •',
   fontFamily,
@@ -41,20 +39,21 @@ const AboutHero = ({
           <img src={imageUrl} alt="Profile" className="hero-image" />
 
           {/* Circular Tag */}
-          
-            <CircularText
-              text="LET'S*TALK*LET'S*"
-              onHover="speedUp"
-              spinDuration={20}
-              className="custom-class"
-            />
-           
+
+          <CircularText
+            text="LET'S*TALK*LET'S*"
+            onHover="speedUp"
+            spinDuration={20}
+            className="custom-class"
+          />
         </Box>
 
         {/* RIGHT CONTENT */}
         <Box className="hero-content">
-          <Typography component="h1" className="hero-title"
-           sx={{
+          <Typography
+            component="h1"
+            className="hero-title"
+            sx={{
               fontSize: '72px',
               fontWeight: '500',
               color: styles?.mainTheme?.color,
@@ -63,10 +62,10 @@ const AboutHero = ({
               marginTop: '2%',
               marginBottom: '4%',
               textAlign: 'center',
-              fontFamily:"clash_display"
+              fontFamily: 'clash_display',
             }}
           >
-             <SplitText
+            <SplitText
               text={title}
               delay={30}
               duration={0.6}
@@ -76,7 +75,7 @@ const AboutHero = ({
               to={{ opacity: 1, y: 0 }}
               threshold={0.1}
               rootMargin="-100px"
-             />
+            />
           </Typography>
 
           <Typography className="hero-description" sx={{ fontFamily }}>

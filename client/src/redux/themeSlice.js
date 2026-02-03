@@ -20,7 +20,6 @@ const getStyles = (mode) => ({
     headerShadowColor: mode === 'dark' ? '#000000d1' : '#dfdfdf',
     mobileMenuLableActive: mode === 'dark' ? 'rgb(181, 254, 108)' : '#111116',
     mobileMenuLableNonActive: mode === 'dark' ? '#fff' : '#111116',
-
   },
 
   activeClass: {

@@ -159,8 +159,6 @@ const Home = () => {
     window.open(url, '_blank');
   };
 
-
-
   return (
     <>
       <Overlay />
@@ -336,14 +334,13 @@ const Home = () => {
                 Know Me Better
               </Button> */}
               <AnimatedButton
-               color={styles?.mainTheme?.color}
-               label={'Know Me Better'}
-               hoverLabel={'Know Me Better'}
-               btnWidth={'fit-content'}
-               classMe={buttonClass}
-               isClassName={true}
-               hyperLink={'/about'}
-               
+                color={styles?.mainTheme?.color}
+                label={'Know Me Better'}
+                hoverLabel={'Know Me Better'}
+                btnWidth={'fit-content'}
+                classMe={buttonClass}
+                isClassName={true}
+                hyperLink={'/about'}
               />
             </Box>
           </Box>

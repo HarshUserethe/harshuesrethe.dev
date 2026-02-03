@@ -8,7 +8,7 @@
 
 .css-124zb1q {
   border-radius: 15px;
- 
+
   border-right: 1px solid #191920;
 }
 
@@ -20,10 +20,10 @@
 
 /* The line */
 .testimonial-button::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;          /* space below text */
+  bottom: -4px; /* space below text */
   width: 0;
   height: 1px;
   background-color: #b5ff6d; /* line color */
@@ -34,7 +34,6 @@
 .testimonial-button:hover::after {
   width: 100%;
 }
-
 
 @media (max-width: 499px) and (min-width: 300px) {
   /* .css-45qwhz {
@@ -48,7 +47,7 @@
     padding: 0 !important;
     padding-top: 150px !important;
   }
-  .css-1y2p1ck{
+  .css-1y2p1ck {
     flex-direction: column !important;
     gap: 100px !important;
     padding: 0 !important;

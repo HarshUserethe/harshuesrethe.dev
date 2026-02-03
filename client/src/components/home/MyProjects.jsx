@@ -156,7 +156,7 @@ const MyProjects = () => {
                       : styles?.mainTheme?.specialHoverColor,
                 transition: 'background-color 0.3s ease',
                 pointerEvents: 'none',
-                zIndex:"1"
+                zIndex: '1',
               }}
             />
             <a href={p.link} className="h-fit w-full">
@@ -184,12 +184,13 @@ const MyProjects = () => {
                       height: '100%',
                       objectFit: 'cover',
                       borderRadius: '25px',
-                      scale:hoveredIndex === null
-                    ? '1.05'
-                    : hoveredIndex === index
-                      ? '1.05'
-                      : '1',
-                      transition:"all .5s"
+                      scale:
+                        hoveredIndex === null
+                          ? '1.05'
+                          : hoveredIndex === index
+                            ? '1.05'
+                            : '1',
+                      transition: 'all .5s',
                     }}
                   />
                 </div>

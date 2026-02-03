@@ -6,8 +6,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-   
-   
 }
 .nav-inner-container {
   width: 85%;
@@ -17,7 +15,6 @@
   align-items: center;
   padding: 25px;
   opacity: 100% !important;
-
 }
 
 .navigation-container {

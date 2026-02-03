@@ -4,12 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import '../../assets/styles/home-styles/Animation.css';
 
-const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, classMe, hyperLink }) => {
+const AnimatedButton = ({
+  color,
+  label,
+  hoverLabel,
+  btnWidth,
+  isClassName,
+  classMe,
+  hyperLink,
+}) => {
   const btnRef = useRef(null);
-  const  navigate = useNavigate();
+  const navigate = useNavigate();
   const [currentLabel, setCurrentLabel] = useState(label);
   const themeValues = useSelector((state) => state.theme);
- 
+
   const onEnter = () => {
     const labelEl = btnRef.current.querySelector('.btn-label');
 
@@ -17,9 +25,8 @@ const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, class
       duration: 0.3,
       ease: 'power3.out',
       top: '0%',
-     backgroundColor: themeValues.mode==="dark" ? "#fff" : "#000",
-     borderRadius:"10%"
-    
+      backgroundColor: themeValues.mode === 'dark' ? '#fff' : '#000',
+      borderRadius: '10%',
     });
 
     gsap.to(labelEl, {
@@ -67,7 +74,9 @@ const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, class
   return (
     <>
       <button
-        onClick={() => {navigate(hyperLink)}}
+        onClick={() => {
+          navigate(hyperLink);
+        }}
         style={{
           backgroundColor: 'transparent',
           color: color,
@@ -79,9 +88,9 @@ const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, class
           transition: 'all 0.3s ease',
           fontWeight: '600',
           width: btnWidth,
-          fontFamily:"'Poppins', sans-serif"
+          fontFamily: "'Poppins', sans-serif",
         }}
-        className={isClassName ? classMe : "gsap-btn"}
+        className={isClassName ? classMe : 'gsap-btn'}
         ref={btnRef}
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}

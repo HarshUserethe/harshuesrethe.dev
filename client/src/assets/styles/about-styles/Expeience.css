@@ -1,0 +1,243 @@
+.experience-container {
+  display: flex;
+  gap: 80px;
+  padding: 80px;
+  background-color: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  align-items: flex-start;
+}
+
+/* Left Section Styles */
+.experience-left {
+  flex: 1;
+  max-width: 480px;
+  position: sticky;
+  top: 80px;
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.sparkle-icon {
+  color: #7fff00;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #7fff00;
+}
+
+.experience-title {
+  font-size: 48px !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+  margin-bottom: 20px !important;
+  margin-top: 20px !important;
+  font-family: 'clash_display' !important;
+  letter-spacing: -2px;
+}
+
+.experience-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+/* Right Section Styles */
+.experience-right {
+  flex: 1;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: 400px;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+
+.experience-list.expanded {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 8px;
+}
+
+/* Hide scrollbar but keep functionality */
+.experience-list.expanded::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.experience-list.expanded {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.experience-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid #222222;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.experience-item:first-child {
+  padding-top: 0;
+}
+
+.experience-item:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  border-radius: 8px;
+}
+
+.experience-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.experience-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.experience-role {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.experience-company {
+  font-size: 15px;
+  font-weight: 400;
+  color: #888888;
+  line-height: 1.4;
+}
+
+.experience-duration {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666666;
+  white-space: nowrap;
+}
+
+.show-more-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 32px;
+}
+
+.show-more-btn {
+  background-color: transparent !important;
+  border: 1px solid #333333 !important;
+  border-radius: 24px !important;
+  padding: 12px 32px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* .show-more-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: #7FFF00 !important;
+  color: #7FFF00 !important;
+} */
+
+.experience-description-box {
+  padding: 20px;
+  background-color: rgb(26, 26, 26);
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.experience-company:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .experience-container {
+    padding: 60px 60px;
+    gap: 60px;
+  }
+
+  .experience-title {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 768px) {
+  .experience-container {
+    flex-direction: column;
+    padding: 40px 24px;
+    gap: 40px;
+  }
+
+  .experience-left {
+    position: static;
+    max-width: 100%;
+  }
+
+  .experience-title {
+    font-size: 48px;
+  }
+
+  .experience-right {
+    max-width: 100%;
+  }
+
+  .experience-item {
+    flex-wrap: wrap;
+  }
+
+  .experience-duration {
+    width: 100%;
+    margin-top: 8px;
+    margin-left: 68px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-title {
+    font-size: 36px;
+  }
+
+  .experience-description {
+    font-size: 16px;
+  }
+
+  .experience-role {
+    font-size: 16px;
+  }
+
+  .experience-company {
+    font-size: 14px;
+  }
+}

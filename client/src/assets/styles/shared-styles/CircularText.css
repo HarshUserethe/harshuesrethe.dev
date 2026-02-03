@@ -35,8 +35,17 @@
   color: #fff;
   pointer-events: none; /* hover still works on circle */
 }
-.cir-inner{
+.cir-inner {
   padding: 20px;
   border-radius: 50%;
   border: 1px solid #ffffff2b;
+}
+
+@media (max-width: 900px) {
+  .circular-text {
+    bottom: 8px;
+    right: 15px;
+    width: 150px;
+    height: 150px;
+  }
 }

@@ -3,14 +3,13 @@ import { Box, Typography, Button, Container } from '@mui/material';
 import '../../assets/styles/about-styles/aboutus.css';
 import AnimatedButton from '../shared/AnimatedButton';
 import CircularText from '../shared/CircularText';
+import SplitText from '../shared/SplitText';
  
 
 
 const AboutHero = ({
   imageUrl,
-  title = 'A creative developer',
-  titleHighlight = 'creative developer',
-  subtitle = '& digital designer',
+  title, 
   description = 'I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.',
   circularTagText = 'LET’S TALK • LET’S TALK • LET’S TALK •',
   fontFamily,
@@ -54,8 +53,30 @@ const AboutHero = ({
 
         {/* RIGHT CONTENT */}
         <Box className="hero-content">
-          <Typography component="h1" className="hero-title">
-            {renderTitle()}
+          <Typography component="h1" className="hero-title"
+           sx={{
+              fontSize: '72px',
+              fontWeight: '500',
+              color: styles?.mainTheme?.color,
+              width: '100%',
+              lineHeight: '72px',
+              marginTop: '2%',
+              marginBottom: '4%',
+              textAlign: 'center',
+              fontFamily:"clash_display"
+            }}
+          >
+             <SplitText
+              text={title}
+              delay={30}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+             />
           </Typography>
 
           <Typography className="hero-description" sx={{ fontFamily }}>

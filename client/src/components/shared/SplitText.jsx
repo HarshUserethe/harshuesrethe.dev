@@ -96,6 +96,16 @@ const SplitText = ({
               color: '#b5fe6c',
             });
           }
+          else if(text === 'A creative developer & digital designer'){
+            const startIndex = 1;
+            const endIndex = 17;
+
+            const coloredChars = self.chars.slice(startIndex, endIndex + 1);
+
+            gsap.set(coloredChars, {
+              color: '#b5fe6c',
+            });
+          }
 
           const tween = gsap.fromTo(
             targets,

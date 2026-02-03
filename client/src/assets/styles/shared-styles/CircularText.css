@@ -1,0 +1,42 @@
+.circular-text {
+  position: absolute;
+  bottom: 50px;
+  right: 25px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+}
+
+.circular-text span {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 14px;
+  padding: 8px;
+  transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+  font-weight: 200;
+}
+.circular-text-center {
+  position: absolute;
+  inset: 0; /* full size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  pointer-events: none; /* hover still works on circle */
+}
+.cir-inner{
+  padding: 20px;
+  border-radius: 50%;
+  border: 1px solid #ffffff2b;
+}

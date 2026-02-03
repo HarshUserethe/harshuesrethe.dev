@@ -25,7 +25,7 @@ const About = () => {
          subtitle = {'& digital designer'}
          description = {'I collaborate with brands globally to design impactful, mission-focused websites that drive results and achieve business goals.'}
          circularTagText = {'LETS TALK • LETS TALK • LETS TALK • '}
-         fontFamily = {'Inter, sans-serif'}
+         fontFamily = {"'Poppins', sans-serif"}
          styles={styles}
          />
       </Box>

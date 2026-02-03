@@ -79,6 +79,7 @@ const AnimatedButton = ({ color, label, hoverLabel, btnWidth, isClassName, class
           transition: 'all 0.3s ease',
           fontWeight: '600',
           width: btnWidth,
+          fontFamily:"'Poppins', sans-serif"
         }}
         className={isClassName ? classMe : "gsap-btn"}
         ref={btnRef}

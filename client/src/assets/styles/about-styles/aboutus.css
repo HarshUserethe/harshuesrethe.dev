@@ -6,6 +6,7 @@
   justify-content: center;
   color: #ffffff;
   padding: 0vw 0vw 0vw 4vw;
+  overflow: hidden;
 }
 
 /* Grid Layout */
@@ -13,26 +14,26 @@
   display: grid;
   grid-template-columns: 1fr 1.9fr;
   align-items: start;
-  gap: 4rem;
   height: 85dvh;
+  gap: 20px;
 }
 
 /* IMAGE SECTION */
 .hero-image-wrapper {
   position: relative;
-   display: inline-block;
+  display: inline-block;
   justify-content: center;
-  height: 95%;
+  display: flex;
+  height: 88%;
   margin-top: 5%;
+  
 }
 
 .hero-image {
-  width: 90%;
+  width: 92%;
   height: 90%;
   object-fit: cover;
-  max-width: 380px;
   border-radius:  0px 0px 220px 220px;
-  object-fit: cover;
 }
 
 /* CIRCULAR TAG */
@@ -62,36 +63,20 @@
   justify-content: center;
   align-items: start;
   flex-direction: column;
-
-
 }
 
 .hero-title {
-  font-size: 4rem; 
+  margin-top: -10% !important;
 }
 
-.title-highlight {
-   color: #9cff57;
-   font-size: 4rem;
-    
-}
-.title-non-highlight{
-   font-size: 4rem; 
-   font-family: "clash_display";
-}
-.title-wrapper{
-    font-family: "clash_display";
-}
-.css-2t6ken-MuiTypography-root{
-    line-height: .9 !important;
-}
 
 /* DESCRIPTION */
 .hero-description {
-  margin-top: 1.5rem !important;
+   
   font-size: 16px !important;
   color: #bcbcbc;
-  max-width: 480px;
+  max-width: 550px;
+  margin-top: -2% !important;
 }
 
 /* BUTTON */
@@ -111,6 +96,12 @@
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+ .about-hero {
+   
+  padding: 0vw 0vw 0vw 0vw;
+   
+}
+
   .hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
@@ -118,7 +109,13 @@
 
   .hero-image-wrapper {
     margin-bottom: 3rem;
+    height: 55dvh;
   }
+  .hero-image{
+    width: 100%;
+    height: 100%;
+  }
+ 
 
   .circular-text {
     right: 50%;
@@ -128,5 +125,6 @@
   .hero-description {
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
   }
 }

@@ -6,6 +6,9 @@ import { Box, Button, ListItem, Typography } from '@mui/material';
 import AboutHero from '../components/about/AboutHero';
 import ChipsLoop from '../components/shared/ChipsLoop.jsx';
 import Experience from '../components/about/Experience.jsx';
+import MyProccess from '../components/about/MyProccess.jsx';
+import MyAwards from '../components/about/MyAwards.jsx';
+import Footer from '../components/home/Footer.jsx';
 const About = () => {
   const styles = useSelector((state) => state.theme.styles);
   const themeValues = useSelector((state) => state.theme);
@@ -147,6 +150,9 @@ const About = () => {
           />
         </Box>
         <Experience />
+        <MyProccess />
+        <MyAwards />
+        <Footer />
       </Box>
     </>
   );

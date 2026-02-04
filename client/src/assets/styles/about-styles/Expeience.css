@@ -4,7 +4,7 @@
   padding: 80px;
   background-color: #000000;
   color: #ffffff;
-  min-height: 100vh;
+  min-height: 85vh;
   align-items: flex-start;
 }
 
@@ -12,7 +12,7 @@
 .experience-left {
   flex: 1;
   max-width: 480px;
-  position: sticky;
+  /* position: sticky; */
   top: 80px;
 }
 

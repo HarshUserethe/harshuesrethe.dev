@@ -4,11 +4,12 @@ import { LuPencilLine, LuLayoutTemplate, LuCode, LuShield, LuChevronLeft, LuChev
 import '../../assets/styles/about-styles/MyProccess.css';
 import ShinyText from '../shared/ShinyText';
 import { LuSparkle } from 'react-icons/lu';
-
+import { useSelector } from 'react-redux';
 const MyProcess = ({ autoScrollInterval = 5000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const scrollContainerRef = useRef(null);
+ const styles = useSelector((state) => state.theme.styles);
 
   const steps = [
     {
@@ -78,7 +79,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
   };
 
   return (
-    <Box className="my-process-section">
+    <Box className="my-process-section" sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}>
       <Container maxWidth="xl">
         <Box className="process-header">
             <Box sx={{ display: 'flex', gap: '10px' }}>
@@ -100,7 +101,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
             />
           </Typography>
         </Box>
-          <Typography variant="h2" className="main-title">
+          <Typography variant="h2" className="main-title" sx={{color: styles?.mainTheme?.color}}>
             My Design Process
           </Typography>
           <Typography variant="body1" className="subtitle">
@@ -114,7 +115,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
             onClick={handlePrev}
             aria-label="Previous step"
           >
-          <LuChevronLeft color='#fff' />
+          <LuChevronLeft color={styles?.mainTheme?.color} />
           </IconButton>
 
           <Box
@@ -127,14 +128,15 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
               const IconComponent = step.icon;
               return (
                 <Box
+                  sx={{backgroundColor: styles?.mainTheme?.mdpCardBackground}}
                   key={step.id}
                   className={`process-card ${index === currentIndex ? 'active' : ''}`}
                 >
                   <Box className="card-content">
-                    <Box className="icon-wrapper">
+                    <Box className="icon-wrapper" sx={{background: styles?.mainTheme?.mdpIconWrapper}}>
                       <IconComponent className="step-icon" />
                     </Box>
-                    <Typography variant="h5" className="step-title">
+                    <Typography variant="h5" className="step-title" sx={{color: styles?.mainTheme?.color}}>
                       {step.id}. {step.title}
                     </Typography>
                     <Typography variant="body2" className="step-description">
@@ -151,7 +153,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
             onClick={handleNext}
             aria-label="Next step"
           >
-            <LuChevronRight color='#fff'  />
+            <LuChevronRight color={styles?.mainTheme?.color}  />
           </IconButton>
         </Box>
 

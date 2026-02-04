@@ -141,6 +141,7 @@
   );
   opacity: 0;
   transition: opacity 0.4s ease;
+  width: 300px !important;
 }
 
 .process-card:hover::before,
@@ -151,7 +152,7 @@
 .process-card:hover {
   border-color: rgba(127, 255, 110, 0.3);
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+   
 }
 
 .process-card.active {
@@ -170,13 +171,15 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+ 
+   
 }
 
 /* Icon Wrapper */
 .icon-wrapper {
   width:  35px;
   height: 35px;
-  background: rgba(255, 255, 255, 0.05);
+  /* background: rgba(255, 255, 255, 0.05); */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   display: flex;
@@ -202,7 +205,6 @@
   font-size: 20px !important;
   font-weight: 400;
   margin-bottom: 12px;
-  color: #ffffff;
   line-height: 1.3;
 }
 

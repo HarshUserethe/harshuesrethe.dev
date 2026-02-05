@@ -1,0 +1,106 @@
+.project-page {
+  min-height: 100vh;
+  background-color: #000;
+  padding: 120px 80px;
+}
+
+.project-header {
+  margin-bottom: 60px;
+}
+
+ 
+
+/* Filter Buttons Styling */
+.filter-buttons {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+}
+
+.filter-btn {
+  /* 🔒 lock size */
+  min-width: 110px !important;
+  height: 36px !important;
+  font-size: 16px !important;
+  padding: 6px 18px !important;
+  border-radius: 20px !important;
+
+  text-transform: none !important;
+  font-weight: 500 !important;
+  background-color: #1e1e1eb0 !important;
+  color: #ffffff !important;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease !important;
+}
+
+.filter-btn:hover {
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background-color: #4141419d !important;
+  color: #fff !important;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  max-width: 1400px;
+}
+
+ 
+
+.projects-grid > .dimmed {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.projects-grid > .dimmed .project-card {
+  opacity: 0.5;
+  transform: scale(0.95);
+  filter: grayscale(0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .project-page {
+    padding: 80px;
+  }
+
+  .project-main-title {
+    font-size: 40px !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-page {
+    padding: 100px 20px;
+  }
+
+  .project-main-title {
+    font-size: 32px !important;
+  }
+
+  .filter-buttons {
+    justify-content: start;
+    margin-top: 50px;
+  }
+
+  .filter-btn {
+    padding: 10px 20px !important;
+    font-size: 14px !important;
+  }
+  .projects-grid{
+  margin-top: -15% !important;
+  grid-template-columns: repeat(1, 2fr);
+  gap: 10px;
+  
+  }
+}

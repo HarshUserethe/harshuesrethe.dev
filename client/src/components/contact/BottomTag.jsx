@@ -1,45 +1,19 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import '../../assets/styles/home-styles/Footer.css';
-import SplitText from '../shared/SplitText';
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import AnimatedButton from '../shared/AnimatedButton';
+import '../styles/contact-styles/ContactSection.css';
 
-const Footer = () => {
+const BottomTag = () => {
   const styles = useSelector((state) => state.theme.styles);
-
-  const handleContactClick = () => {
-    // Add your contact action here
-    console.log('Contact button clicked');
-  };
-
-  const handleShoppingBagClick = () => {
-    // Add your shopping bag action here
-    console.log('Shopping bag clicked');
-  };
-  const btnRef = useRef(null);
-
-  const onEnter = () => {
-    gsap.to(btnRef.current.querySelector('.bubbly'), {
-      duration: 0.5,
-      ease: 'power3.out',
-      top: '0%',
-    });
-  };
-
-  const onLeave = () => {
-    gsap.to(btnRef.current.querySelector('.bubble'), {});
-  };
 
   return (
     <footer
+      className="footer-contact-content"
       style={{
         backgroundColor: styles?.mainTheme?.backgroundColor,
         color: styles?.mainTheme?.color,
         padding: '80px 40px 40px',
         position: 'relative',
-        //   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        
       }}
     >
       <div
@@ -48,99 +22,6 @@ const Footer = () => {
           margin: '0 auto',
         }}
       >
-        {/* Main Content Section */}
-        <div
-          className="footer-main-content"
-          style={{
-            textAlign: 'center',
-            marginBottom: '120px',
-            backgroundColor: styles?.mainTheme?.footerChildBackgroundColor,
-          }}
-        >
-          {/* Available Badge */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-              padding: '8px 16px',
-              borderRadius: '20px',
-              marginBottom: '32px',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid #6e6e6eff',
-            }}
-          >
-            <div
-              style={{
-                width: '8px',
-                height: '8px',
-                backgroundColor: '#4ade80',
-                borderRadius: '50%',
-                boxShadow: '0 0 8px #4ade80',
-              }}
-            ></div>
-            <span
-              style={{
-                fontSize: '14px',
-                color: styles?.mainTheme?.color,
-              }}
-            >
-              Available for work
-            </span>
-          </div>
-
-          {/* Heading */}
-          <h2
-            style={{
-              fontSize: '72px',
-              fontWeight: '500',
-              lineHeight: '1.2',
-              margin: '0 0 40px 0',
-              letterSpacing: '-1px',
-              fontFamily: 'clash_display',
-            }}
-          >
-            <SplitText
-              key="Lets-create-your"
-              text="Let's create your"
-              delay={30}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              textAlign="center"
-            />
-            <br />
-
-            <SplitText
-              key="Lets-create-your"
-              text="next big idea."
-              delay={30}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-50px"
-            />
-          </h2>
-
-          {/* Contact Button */}
-
-          <AnimatedButton
-            color={styles?.mainTheme?.color}
-            label={'Contact Me'}
-            hoverLabel={'Contact Me'}
-            btnWidth={'fit-content'}
-            hyperLink={'/contact'}
-          />
-        </div>
-
         {/* Bottom Section */}
         <div
           className="footer-icons-container"
@@ -150,14 +31,17 @@ const Footer = () => {
             alignItems: 'center',
             flexWrap: 'wrap',
             gap: '20px',
+            paddingBottom: '80px',
           }}
         >
           {/* Copyright */}
           <p
+           className='footer-contact-text'
             style={{
               fontSize: '14px',
               color: '#888',
               margin: 0,
+
             }}
           >
             © 2025 Harsh Userethe. All rights reserved.
@@ -165,10 +49,12 @@ const Footer = () => {
 
           {/* Social Icons */}
           <div
+          className='footer-contact-icons-wrapper'
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '24px',
+
             }}
           >
             {/* LinkedIn */}
@@ -286,47 +172,8 @@ const Footer = () => {
       </div>
 
       {/* Responsive Styles */}
-      <style>{`
-        @media (max-width: 768px) {
-          footer {
-            padding: 60px 20px 30px !important;
-          }
-          
-          footer h2 {
-            font-size: 40px !important;
-          }
-          
-          footer > div > div:first-child {
-            margin-bottom: 80px !important;
-          }
-          
-          footer > div > div:last-child {
-            flex-direction: column;
-            align-items: center !important;
-            gap: 16px !important;
-          }
-          
-          footer button[style*="fixed"] {
-            width: 50px !important;
-            height: 50px !important;
-            bottom: 20px !important;
-            right: 20px !important;
-          }
-        }
-        
-        @media (max-width: 480px) {
-          footer h2 {
-            font-size: 32px !important;
-          }
-          
-          footer button {
-            padding: 12px 32px !important;
-            font-size: 14px !important;
-          }
-        }
-      `}</style>
     </footer>
   );
 };
 
-export default Footer;
+export default BottomTag;

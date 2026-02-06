@@ -1,5 +1,5 @@
 import { Typography, Box, Button } from '@mui/material';
-import { LuSparkle, LuCodepen } from 'react-icons/lu';
+import { LuSparkle, LuCodepen, LuCodeXml, LuLayoutDashboard, LuApple, LuPencilRuler } from 'react-icons/lu';
 import React, { useState } from 'react';
 import '../../assets/styles/home-styles/AreaOfExpertise.css';
 import { useSelector } from 'react-redux';
@@ -16,15 +16,15 @@ const AreaOfExpertise = () => {
   const services = [
     {
       id: '01',
-      icon: LuCodepen,
+      icon: LuCodeXml,
       title: 'Development',
       description:
         'Building responsive websites. Providing the users an enriching experience that responds to any device and screen size.',
-      pic: 'https://plus.unsplash.com/premium_photo-1696824306557-bf54fc73e2fb?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      pic: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
       id: '02',
-      icon: LuCodepen,
+      icon: LuLayoutDashboard,
       title: 'UI/UX Design',
       description:
         'Designing user-centric, modern interfaces that shapes how the audience interacts with the product.',
@@ -32,7 +32,7 @@ const AreaOfExpertise = () => {
     },
     {
       id: '03',
-      icon: LuCodepen,
+      icon: LuApple,
       title: 'Branding',
       description:
         'Building brand identities including working on logo, typography, iconography, colour palette, visual language, and brand personality.',
@@ -40,7 +40,7 @@ const AreaOfExpertise = () => {
     },
     {
       id: '04',
-      icon: LuCodepen,
+      icon: LuPencilRuler,
       title: 'Graphic Design',
       description:
         'Building brand identities including working on logo, typography, iconography, colour palette, visual language, and brand personality.',

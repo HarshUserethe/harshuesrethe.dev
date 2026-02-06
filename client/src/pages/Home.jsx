@@ -189,24 +189,7 @@ const Home = () => {
             />{' '}
             Hey! It's me Harsh,
           </Typography>
-          {/* <Typography
-            className="headline"
-            variant="h1"
-            sx={{
-              fontSize: '72px',
-              fontWeight: '500 !important',
-              color: styles?.mainTheme?.color,
-              width: '80%',
-              lineHeight: '72px',
-              marginTop: '2%',
-              marginBottom: '4%',
-            }}
-          >
-            Crafting{' '}
-            <span style={{ color: '#b5fe6c' }}>purpose driven experiences</span>{' '}
-            that inspire & engage.
-            
-          </Typography> */}
+          
           <Typography
             className="headline"
             variant="h1"
@@ -322,9 +305,7 @@ const Home = () => {
                 variant="h1"
                 sx={{ fontSize: '16px', color: '#8c8c9d' }}
               >
-                I work with brands globally to build pixel-perfect, engaging,
-                and accessible digital experiences that drive results and
-                achieve business goals.
+                I collaborate with clients and teams to design and build clean, accessible digital experiences that solve real problems and support business goals.
               </Typography>
               {/* <Button
                 variant="outlined"

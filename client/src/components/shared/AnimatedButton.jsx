@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import '../../assets/styles/home-styles/Animation.css';
 
 const AnimatedButton = ({
+  type,
   color,
   label,
   hoverLabel,
@@ -75,7 +76,7 @@ const AnimatedButton = ({
     <>
       <button
         onClick={() => {
-          navigate(hyperLink);
+          hyperLink ? navigate(hyperLink) : ""
         }}
         style={{
           backgroundColor: 'transparent',
@@ -94,6 +95,7 @@ const AnimatedButton = ({
         ref={btnRef}
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
+        type={type ? type : ''}
       >
         <span className="btn-label">{currentLabel}</span>
         <span className="bubbly" />

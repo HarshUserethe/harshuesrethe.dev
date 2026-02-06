@@ -24,6 +24,10 @@ const getStyles = (mode) => ({
     ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)'
     : '#fafef7',
     mdpIconWrapper: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(136, 255, 17, 0.12)',
+    socialIconsHoverIn: mode === 'dark' ? '#ffffff' : '#000',
+    socialIconsHoverOut: mode === 'dark' ? '#888' : '#888',
+    textFieldBorderColor: mode === 'dark' ? '#ffffff2e' : 'rgba(0, 0, 0, 0.36)',
+    profileCardBackground: mode === 'dark' ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)' : '#fafef7',
   },
 
   activeClass: {

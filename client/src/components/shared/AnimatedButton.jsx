@@ -75,16 +75,16 @@ const AnimatedButton = ({
   return (
     <>
       <button
-       onClick={() => {
-    if (!hyperLink) return;
+        onClick={() => {
+          if (!hyperLink) return;
 
-    // if link is a PDF → open in new tab
-    if (hyperLink.endsWith('.pdf')) {
-      window.open(hyperLink, '_blank');
-    } else {
-      navigate(hyperLink);
-    }
-  }}
+          // if link is a PDF → open in new tab
+          if (hyperLink.endsWith('.pdf')) {
+            window.open(hyperLink, '_blank');
+          } else {
+            navigate(hyperLink);
+          }
+        }}
         style={{
           backgroundColor: 'transparent',
           color: color,

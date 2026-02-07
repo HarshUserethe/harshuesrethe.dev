@@ -13,7 +13,7 @@ import '../styles/contact-styles/ContactSection.css';
 import { useSelector } from 'react-redux';
 import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';
-import HarshUseretheImage from '../../assets/images/picofme.png'
+import HarshUseretheImage from '../../assets/images/picofme.png';
 
 const ContactSection = () => {
   const styles = useSelector((state) => state.theme.styles);
@@ -62,7 +62,7 @@ const ContactSection = () => {
             marginBottom: '20px',
           }}
         >
-          <LuSparkle color={ styles?.mainTheme?.highlightedColor} size={20} />
+          <LuSparkle color={styles?.mainTheme?.highlightedColor} size={20} />
           <Typography
             sx={{
               color: 'greenyellow',
@@ -77,7 +77,7 @@ const ContactSection = () => {
               disabled={false}
               speed={1.2}
               className="shinny-txt"
-               highlightedColor={styles?.mainTheme?.highlightedColor}
+              highlightedColor={styles?.mainTheme?.highlightedColor}
             />
           </Typography>
         </Box>
@@ -185,7 +185,7 @@ const ContactSection = () => {
                       borderColor: styles?.mainTheme?.textFieldBorderColor,
                     },
                     '& textarea': {
-                      color: styles?.mainTheme?.color,  
+                      color: styles?.mainTheme?.color,
                     },
                   },
                 }}

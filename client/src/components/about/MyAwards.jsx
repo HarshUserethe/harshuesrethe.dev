@@ -10,23 +10,23 @@ const MyAwards = () => {
   const awards = [
     {
       id: 1,
-      title: 'Star Performer of the Year',
-      date: 'MAY 2021',
+      title: 'Achieved Milestones in the Google Facilitator Program',
+      date: 'MAY 2023',
     },
     {
       id: 2,
-      title: 'Best Beginner Hack',
-      date: 'APR 2021',
+      title: 'Codebite Runner Up – State Level Web Dev Hackathon',
+      date: 'JAN 2023',
     },
     {
       id: 3,
-      title: 'Sketch Webpage Contest Winner',
-      date: 'NOV 2020',
+      title: 'Contributed to 5+ open-source projects for Hacktoberfest',
+      date: 'OCT 2022',
     },
     {
       id: 4,
-      title: 'Best Space App Winner',
-      date: 'SEP 2021',
+      title: 'Earned 15+ Badges in Google Cloud Arcade Games',
+      date: 'DEC 2021',
     },
   ];
 
@@ -37,13 +37,14 @@ const MyAwards = () => {
           {/* Left Side - Header */}
           <Box className="awards-header">
             <Box className="awards-label">
-              <LuSparkle className="sparkle-icon" />
+              <LuSparkle color={ styles?.mainTheme?.highlightedColor} className="sparkle-icon" />
               <Typography variant="overline" className="label-text">
                 <ShinyText
                   text="AWARDS"
                   disabled={false}
                   speed={1.2}
                   className="shinny-txt"
+                   highlightedColor={styles?.mainTheme?.highlightedColor}
                 />
               </Typography>
             </Box>

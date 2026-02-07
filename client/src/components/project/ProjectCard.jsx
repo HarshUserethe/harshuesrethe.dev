@@ -2,6 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import '../../assets/styles/project-styles/ProjectCard.css';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -21,17 +22,23 @@ function useIsMobile() {
 const ProjectCard = ({ id, project, isHovered, onHover, onLeave, styles }) => {
   const { image, title } = project;
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
+
   const handleMarginTop = () => {
     if (id % 2 === 0 || isMobile) {
       return '80px';
     }
   };
 
-  
+  const handleNavigate = (link) => {
+    window.open(link, '_blank');
+  };
 
   return (
     <>
       <Box
+        key={project.id}
+        onClick={() => handleNavigate(project.link)}
         sx={{ marginTop: handleMarginTop() }}
         className={`prj-inner project-card ${isHovered ? 'hovered' : ''}`}
         onMouseEnter={onHover}

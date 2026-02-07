@@ -185,7 +185,7 @@ const Home = () => {
             <LuHand
               className="hand-wave"
               size={20}
-              style={{ color: '#b5fe6c' }}
+              style={{ color: styles?.mainTheme?.highlightedColor }}
             />{' '}
             Hey! It's me Harsh,
           </Typography>
@@ -214,6 +214,7 @@ const Home = () => {
               to={{ opacity: 1, y: 0 }}
               threshold={0.1}
               rootMargin="-100px"
+              highlightedColor={styles?.mainTheme?.highlightedColor}
             />
           </Typography>
         </Box>

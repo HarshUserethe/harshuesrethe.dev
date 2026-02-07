@@ -25,7 +25,7 @@ const faqData = [
   {
     id: 4,
     question: 'Are you available to join as full time?',
-    answer: 'Currently, I am focusing on freelance projects and contract work. However, I am open to discussing full-time opportunities for the right position.'
+    answer: 'I’m currently focused on freelance and contract work, but I’m open to full-time opportunities for the right role. I’m happy to discuss what you’re looking for and see if it’s a good fit.'
   }
 ];
 
@@ -43,7 +43,7 @@ const FAQSection = () => {
         {/* Left Side - Title */}
         <Box className="faq-left">
           <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '20px' }}>
-            <LuSparkle color="greenyellow" size={20} />
+            <LuSparkle color={ styles?.mainTheme?.highlightedColor} size={20} />
             <Typography
               sx={{
                 color: 'greenyellow',
@@ -58,6 +58,7 @@ const FAQSection = () => {
                 disabled={false}
                 speed={1.2}
                 className="shinny-txt"
+                 highlightedColor={styles?.mainTheme?.highlightedColor}
               />
             </Typography>
           </Box>

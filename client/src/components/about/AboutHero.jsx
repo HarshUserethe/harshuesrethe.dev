@@ -89,7 +89,7 @@ const AboutHero = ({
               label={'My Resume'}
               hoverLabel={'My Resume'}
               btnWidth={'fit-content'}
-              hyperLink={'/about'}
+              hyperLink={'/resume/Harsh_Userethe_Resume_Fullstack.pdf'}
             />
           </Box>
         </Box>

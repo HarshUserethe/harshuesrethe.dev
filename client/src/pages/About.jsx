@@ -9,6 +9,7 @@ import Experience from '../components/about/Experience.jsx';
 import MyProccess from '../components/about/MyProccess.jsx';
 import MyAwards from '../components/about/MyAwards.jsx';
 import Footer from '../components/home/Footer.jsx';
+import HarshUseretheImage from '../assets/images/harshuseretheimage.png'
 const About = () => {
   const styles = useSelector((state) => state.theme.styles);
   const themeValues = useSelector((state) => state.theme);
@@ -122,7 +123,7 @@ const About = () => {
       >
         <AboutHero
           imageUrl={
-            'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            HarshUseretheImage
           }
           title={'A creative developer & digital designer'}
           titleHighlight={'creative developer'}

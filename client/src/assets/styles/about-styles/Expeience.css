@@ -128,24 +128,25 @@
 }
 
 .experience-role {
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px !important;
+  font-weight: 500 !important;
   color: #ffffff;
   line-height: 1.4;
 }
 
 .experience-company {
-  font-size: 15px;
+  font-size: 14px !important;
   font-weight: 400;
   color: #888888;
   line-height: 1.4;
 }
 
 .experience-duration {
-  font-size: 14px;
+  font-size: 12px !important;
   font-weight: 400;
   color: #666666;
   white-space: nowrap;
+  text-transform: capitalize !important;
 }
 
 .show-more-container {

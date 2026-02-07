@@ -12,7 +12,7 @@ const AboutMe = ({ styles }) => {
   const textRef = useRef(null);
 
   const text =
-    "Hi, I’m Harsh Userethe, a Software Engineer with 2 years of experience building reliable, user-centric digital products. I focus on quality, clarity, and real-world impact, working both independently and with teams to deliver solutions businesses can trust.";
+    "Hi, I’m Harsh Userethe, A Software Engineer with 2 years of experience building reliable, user-centric digital products. I focus on quality, clarity, and real-world impact, working both independently and with teams to deliver solutions businesses can trust.";
 
   useEffect(() => {
     const ctx = gsap.context(() => {

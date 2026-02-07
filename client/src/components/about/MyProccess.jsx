@@ -83,7 +83,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
       <Container maxWidth="xl">
         <Box className="process-header">
             <Box sx={{ display: 'flex', gap: '10px' }}>
-          <LuSparkle color="greenyellow" />
+          <LuSparkle color={styles?.mainTheme?.highlightedColor} />
           <Typography
             sx={{
               color: 'greenyellow',
@@ -98,6 +98,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
               disabled={false}
               speed={1.2}
               className="shinny-txt"
+               highlightedColor={styles?.mainTheme?.highlightedColor}
             />
           </Typography>
         </Box>
@@ -134,7 +135,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
                 >
                   <Box className="card-content">
                     <Box className="icon-wrapper" sx={{background: styles?.mainTheme?.mdpIconWrapper}}>
-                      <IconComponent className="step-icon" />
+                      <IconComponent color={ styles?.mainTheme?.highlightedColor} className="step-icon" />
                     </Box>
                     <Typography variant="h5" className="step-title" sx={{color: styles?.mainTheme?.color}}>
                       {step.id}. {step.title}
@@ -163,6 +164,7 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
               key={index}
               className={`indicator ${index === currentIndex ? 'active' : ''}`}
               onClick={() => setCurrentIndex(index)}
+              
             />
           ))}
         </Box>

@@ -33,11 +33,11 @@ const experienceData = [
   },
   {
     id: 3,
-    role: 'Design Engineer',
-    company: '@BlackboxAI',
-    companylink: 'https://google.com',
-    startDate: 'Feb 2025',
-    endDate: 'Mar 2025',
+    role: 'Product Design Virtual Experience Program',
+    company: '@Forage',
+    companylink: 'https://www.theforage.com/',
+    startDate: 'Sep 2022',
+    endDate: 'Oct 2022',
     logo: 'https://via.placeholder.com/48/888888/FFFFFF?text=BB',
     color: '#888888',
     description:
@@ -45,40 +45,17 @@ const experienceData = [
   },
   {
     id: 4,
-    role: 'UI/UX Designer',
-    company: '@Social3',
-    companylink: 'https://google.com',
+    role: 'Google Cloud Fundamentals',
+    company: '@Coursera',
+    companylink: 'https://www.coursera.org/learn/gcp-fundamentals',
     startDate: 'Aug 2022',
-    endDate: 'Sep 2023',
+    endDate: 'Sep 2022',
     logo: 'https://via.placeholder.com/48/5B6EFF/FFFFFF?text=S3',
     color: '#5B6EFF',
     description:
       'Designed user experiences for Web3 social platform, focusing on simplifying blockchain interactions. Conducted user research and created design systems that increased user engagement by 60%.',
   },
-  {
-    id: 5,
-    role: 'Frontend Developer',
-    company: '@TechCorp',
-    companylink: 'https://google.com',
-    startDate: 'Jan 2021',
-    endDate: 'Jul 2022',
-    logo: 'https://via.placeholder.com/48/FF6B6B/FFFFFF?text=TC',
-    color: '#FF6B6B',
-    description:
-      'Developed responsive web applications using React and TypeScript. Optimized application performance and implemented modern UI patterns, reducing load times by 50%.',
-  },
-  {
-    id: 6,
-    role: 'Web Developer',
-    company: '@StartupLabs',
-    companylink: 'https://google.com',
-    startDate: 'Jun 2020',
-    endDate: 'Dec 2020',
-    logo: 'https://via.placeholder.com/48/4ECDC4/FFFFFF?text=SL',
-    color: '#4ECDC4',
-    description:
-      'Built MVPs for early-stage startups, working with various technologies including React, Node.js, and MongoDB. Helped launch 5 successful products from concept to production.',
-  },
+ 
 ];
 
 const Experience = () => {
@@ -107,7 +84,7 @@ const Experience = () => {
       {/* Left Section */}
       <Box className="experience-left">
         <Box sx={{ display: 'flex', gap: '10px' }}>
-          <LuSparkle color="greenyellow" />
+          <LuSparkle color={styles?.mainTheme?.highlightedColor} />
           <Typography
             sx={{
               color: 'greenyellow',
@@ -122,6 +99,7 @@ const Experience = () => {
               disabled={false}
               speed={1.2}
               className="shinny-txt"
+               highlightedColor={styles?.mainTheme?.highlightedColor}
             />
           </Typography>
         </Box>

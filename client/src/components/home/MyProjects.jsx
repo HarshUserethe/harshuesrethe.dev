@@ -75,7 +75,7 @@ const MyProjects = () => {
         }}
       >
         <Box sx={{ display: 'flex', gap: '10px' }}>
-          <LuSparkle color="greenyellow" />
+          <LuSparkle color={styles?.mainTheme?.highlightedColor} />
           <Typography
             sx={{
               color: 'greenyellow',
@@ -90,6 +90,7 @@ const MyProjects = () => {
               disabled={false}
               speed={1.2}
               className="shinny-txt"
+              highlightedColor={styles?.mainTheme?.highlightedColor}
             />
           </Typography>
         </Box>

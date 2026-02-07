@@ -28,6 +28,7 @@ const getStyles = (mode) => ({
     socialIconsHoverOut: mode === 'dark' ? '#888' : '#888',
     textFieldBorderColor: mode === 'dark' ? '#ffffff2e' : 'rgba(0, 0, 0, 0.36)',
     profileCardBackground: mode === 'dark' ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)' : '#fafef7',
+    highlightedColor: mode === 'dark' ? '#b5fe6c' : '#30AF5B'
   },
 
   activeClass: {

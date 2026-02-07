@@ -20,6 +20,7 @@ const SplitText = ({
   textAlign = 'left',
   tag = 'p',
   onLetterAnimationComplete,
+  highlightedColor
 }) => {
   const ref = useRef(null);
   const animationCompletedRef = useRef(false);
@@ -93,7 +94,7 @@ const SplitText = ({
             const coloredChars = self.chars.slice(startIndex, endIndex + 1);
 
             gsap.set(coloredChars, {
-              color: '#b5fe6c',
+              color: highlightedColor,
             });
           } else if (text === 'A creative developer & digital designer') {
             const startIndex = 1;
@@ -102,7 +103,7 @@ const SplitText = ({
             const coloredChars = self.chars.slice(startIndex, endIndex + 1);
 
             gsap.set(coloredChars, {
-              color: '#b5fe6c',
+              color: highlightedColor,
             });
           }
 

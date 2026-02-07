@@ -62,7 +62,7 @@ const ContactSection = () => {
             marginBottom: '20px',
           }}
         >
-          <LuSparkle color="greenyellow" size={20} />
+          <LuSparkle color={ styles?.mainTheme?.highlightedColor} size={20} />
           <Typography
             sx={{
               color: 'greenyellow',
@@ -77,6 +77,7 @@ const ContactSection = () => {
               disabled={false}
               speed={1.2}
               className="shinny-txt"
+               highlightedColor={styles?.mainTheme?.highlightedColor}
             />
           </Typography>
         </Box>

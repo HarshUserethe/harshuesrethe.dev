@@ -52,7 +52,7 @@ const ProjectCard = ({ id, project, isHovered, onHover, onLeave, styles }) => {
             sx={{
               color: styles?.mainTheme?.color,
               fontSize: '20px',
-              fontWeight: 'bold',
+              fontWeight: '400',
               textTransform: 'capitalize',
             }}
             variant="h5"

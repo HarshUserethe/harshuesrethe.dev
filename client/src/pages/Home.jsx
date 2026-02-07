@@ -189,7 +189,7 @@ const Home = () => {
             />{' '}
             Hey! It's me Harsh,
           </Typography>
-          
+
           <Typography
             className="headline"
             variant="h1"
@@ -306,7 +306,9 @@ const Home = () => {
                 variant="h1"
                 sx={{ fontSize: '16px', color: '#8c8c9d' }}
               >
-                I collaborate with clients and teams to design and build clean, accessible digital experiences that solve real problems and support business goals.
+                I collaborate with clients and teams to design and build clean,
+                accessible digital experiences that solve real problems and
+                support business goals.
               </Typography>
               {/* <Button
                 variant="outlined"

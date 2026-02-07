@@ -20,7 +20,7 @@ const SplitText = ({
   textAlign = 'left',
   tag = 'p',
   onLetterAnimationComplete,
-  highlightedColor
+  highlightedColor,
 }) => {
   const ref = useRef(null);
   const animationCompletedRef = useRef(false);

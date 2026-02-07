@@ -1,5 +1,12 @@
 import { Typography, Box, Button } from '@mui/material';
-import { LuSparkle, LuCodepen, LuCodeXml, LuLayoutDashboard, LuApple, LuPencilRuler } from 'react-icons/lu';
+import {
+  LuSparkle,
+  LuCodepen,
+  LuCodeXml,
+  LuLayoutDashboard,
+  LuApple,
+  LuPencilRuler,
+} from 'react-icons/lu';
 import React, { useState } from 'react';
 import '../../assets/styles/home-styles/AreaOfExpertise.css';
 import { useSelector } from 'react-redux';

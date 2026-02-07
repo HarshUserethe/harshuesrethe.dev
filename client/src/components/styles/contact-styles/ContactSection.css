@@ -87,7 +87,6 @@
 }
 
 .form-input .MuiOutlinedInput-input {
- 
   padding: 16px 18px !important;
   font-size: 15px !important;
 }
@@ -250,7 +249,7 @@
     justify-content: center;
     width: 100%;
   }
-  svg{
+  svg {
     color: #888;
   }
   .contact-first {

@@ -20,15 +20,22 @@ const getStyles = (mode) => ({
     headerShadowColor: mode === 'dark' ? '#000000d1' : '#dfdfdf',
     mobileMenuLableActive: mode === 'dark' ? 'rgb(181, 254, 108)' : '#111116',
     mobileMenuLableNonActive: mode === 'dark' ? '#fff' : '#111116',
-   mdpCardBackground: mode === 'dark'
-    ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)'
-    : '#fafef7',
-    mdpIconWrapper: mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(136, 255, 17, 0.12)',
+    mdpCardBackground:
+      mode === 'dark'
+        ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)'
+        : '#fafef7',
+    mdpIconWrapper:
+      mode === 'dark'
+        ? 'rgba(255, 255, 255, 0.05)'
+        : 'rgba(136, 255, 17, 0.12)',
     socialIconsHoverIn: mode === 'dark' ? '#ffffff' : '#000',
     socialIconsHoverOut: mode === 'dark' ? '#888' : '#888',
     textFieldBorderColor: mode === 'dark' ? '#ffffff2e' : 'rgba(0, 0, 0, 0.36)',
-    profileCardBackground: mode === 'dark' ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)' : '#fafef7',
-    highlightedColor: mode === 'dark' ? '#b5fe6c' : '#30AF5B'
+    profileCardBackground:
+      mode === 'dark'
+        ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)'
+        : '#fafef7',
+    highlightedColor: mode === 'dark' ? '#b5fe6c' : '#30AF5B',
   },
 
   activeClass: {

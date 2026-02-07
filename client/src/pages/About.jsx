@@ -9,7 +9,7 @@ import Experience from '../components/about/Experience.jsx';
 import MyProccess from '../components/about/MyProccess.jsx';
 import MyAwards from '../components/about/MyAwards.jsx';
 import Footer from '../components/home/Footer.jsx';
-import HarshUseretheImage from '../assets/images/harshuseretheimage.png'
+import HarshUseretheImage from '../assets/images/harshuseretheimage.png';
 const About = () => {
   const styles = useSelector((state) => state.theme.styles);
   const themeValues = useSelector((state) => state.theme);
@@ -122,9 +122,7 @@ const About = () => {
         }}
       >
         <AboutHero
-          imageUrl={
-            HarshUseretheImage
-          }
+          imageUrl={HarshUseretheImage}
           title={'A creative developer & digital designer'}
           titleHighlight={'creative developer'}
           subtitle={'& digital designer'}

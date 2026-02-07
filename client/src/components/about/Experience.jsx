@@ -55,7 +55,6 @@ const experienceData = [
     description:
       'Designed user experiences for Web3 social platform, focusing on simplifying blockchain interactions. Conducted user research and created design systems that increased user engagement by 60%.',
   },
- 
 ];
 
 const Experience = () => {
@@ -99,7 +98,7 @@ const Experience = () => {
               disabled={false}
               speed={1.2}
               className="shinny-txt"
-               highlightedColor={styles?.mainTheme?.highlightedColor}
+              highlightedColor={styles?.mainTheme?.highlightedColor}
             />
           </Typography>
         </Box>

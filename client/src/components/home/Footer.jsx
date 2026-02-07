@@ -180,8 +180,14 @@ const Footer = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -202,8 +208,14 @@ const Footer = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -224,8 +236,14 @@ const Footer = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -244,8 +262,14 @@ const Footer = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -269,8 +293,14 @@ const Footer = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"

@@ -13,7 +13,6 @@ const BottomTag = () => {
         color: styles?.mainTheme?.color,
         padding: '80px 40px 40px',
         position: 'relative',
-        
       }}
     >
       <div
@@ -36,12 +35,11 @@ const BottomTag = () => {
         >
           {/* Copyright */}
           <p
-           className='footer-contact-text'
+            className="footer-contact-text"
             style={{
               fontSize: '14px',
               color: '#888',
               margin: 0,
-
             }}
           >
             © 2025 Harsh Userethe. All rights reserved.
@@ -49,12 +47,11 @@ const BottomTag = () => {
 
           {/* Social Icons */}
           <div
-          className='footer-contact-icons-wrapper'
+            className="footer-contact-icons-wrapper"
             style={{
               display: 'flex',
               alignItems: 'center',
               gap: '24px',
-
             }}
           >
             {/* LinkedIn */}
@@ -66,8 +63,14 @@ const BottomTag = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -88,8 +91,14 @@ const BottomTag = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -110,8 +119,14 @@ const BottomTag = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -130,8 +145,14 @@ const BottomTag = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"
@@ -155,8 +176,14 @@ const BottomTag = () => {
                 color: '#888',
                 transition: 'color 0.3s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverIn)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = styles?.mainTheme?.socialIconsHoverOut)}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverIn)
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  styles?.mainTheme?.socialIconsHoverOut)
+              }
             >
               <svg
                 width="22"

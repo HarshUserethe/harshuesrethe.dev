@@ -8,8 +8,6 @@
   margin-bottom: 60px;
 }
 
- 
-
 /* Filter Buttons Styling */
 .filter-buttons {
   display: flex;
@@ -51,8 +49,6 @@
   gap: 50px;
   max-width: 1400px;
 }
-
- 
 
 .projects-grid > .dimmed {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -97,10 +93,9 @@
     padding: 10px 20px !important;
     font-size: 14px !important;
   }
-  .projects-grid{
-  margin-top: -15% !important;
-  grid-template-columns: repeat(1, 2fr);
-  gap: 10px;
-  
+  .projects-grid {
+    margin-top: -15% !important;
+    grid-template-columns: repeat(1, 2fr);
+    gap: 10px;
   }
 }

@@ -13,7 +13,6 @@ import { HelmetProvider } from 'react-helmet-async';
 const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  
 
   return (
     <HelmetProvider>

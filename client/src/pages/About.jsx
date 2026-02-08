@@ -10,6 +10,8 @@ import MyProccess from '../components/about/MyProccess.jsx';
 import MyAwards from '../components/about/MyAwards.jsx';
 import Footer from '../components/home/Footer.jsx';
 import HarshUseretheImage from '../assets/images/harshuseretheimg.webp';
+import { Helmet } from 'react-helmet-async';
+
 const About = () => {
   const styles = useSelector((state) => state.theme.styles);
   const themeValues = useSelector((state) => state.theme);
@@ -114,6 +116,18 @@ const About = () => {
 
   return (
     <>
+      <Helmet>
+        <Helmet>
+          <title>About | Harsh Userethe</title>
+
+          <meta
+            name="description"
+            content="Learn more about Harsh Userethe, a Full Stack MERN Developer with hands-on experience in React, Node.js, MongoDB, and scalable web applications."
+          />
+
+          <link rel="canonical" href="https://harshuserethe.in/about" />
+        </Helmet>
+      </Helmet>
       <Overlay />
       <Box
         className="main-about"

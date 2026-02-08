@@ -20,6 +20,7 @@ import Footer from '../components/home/Footer';
 import SplitText from '../components/shared/SplitText';
 import Overlay from '../components/shared/Overlay';
 import AnimatedButton from '../components/shared/AnimatedButton';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   const styles = useSelector((state) => state.theme.styles); // Get styles from Redux
@@ -161,6 +162,67 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Title */}
+        <title>
+          Harsh Userethe - Software Enginner | Full Stack MERN Developer
+        </title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="Harsh Userethe is a Full Stack MERN Developer specializing in React.js, Next.js, Node.js, MongoDB, and scalable web applications. View projects and experience."
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://harshuserethe.in/" />
+
+        {/* Robots */}
+        <meta name="robots" content="index, follow" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Harsh Userethe - Software Enginner | Full Stack MERN Developer"
+        />
+        <meta
+          property="og:description"
+          content="Portfolio of Harsh Userethe – Full Stack MERN Developer with real-world MERN projects."
+        />
+        <meta property="og:url" content="https://harshuserethe.in/" />
+        <meta
+          property="og:image"
+          content="https://www.harshuserethe.in/assets/harshuseretheimg-Bq1SxbC5.webp"
+        />
+
+        {/* Schema – Person */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Harsh Userethe',
+            jobTitle: 'Full Stack MERN Developer',
+            url: 'https://harshuserethe.in',
+            sameAs: [
+              'https://www.linkedin.com/in/harshuserethe/',
+              'https://github.com/HarshUserethe',
+            ],
+            knowsAbout: [
+              'React',
+              'Next.js',
+              'Node.js',
+              'MongoDB',
+              'Express',
+              'JavaScript',
+              'AWS',
+              'Docker',
+              'Database',
+              'Full Stack Development',
+            ],
+          })}
+        </script>
+      </Helmet>
       <Overlay />
       <Box
         className="main"

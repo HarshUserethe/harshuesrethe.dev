@@ -9,7 +9,7 @@ import Experience from '../components/about/Experience.jsx';
 import MyProccess from '../components/about/MyProccess.jsx';
 import MyAwards from '../components/about/MyAwards.jsx';
 import Footer from '../components/home/Footer.jsx';
-import HarshUseretheImage from '../assets/images/harshuseretheimage.png';
+import HarshUseretheImage from '../assets/images/harshuseretheimg.webp';
 const About = () => {
   const styles = useSelector((state) => state.theme.styles);
   const themeValues = useSelector((state) => state.theme);

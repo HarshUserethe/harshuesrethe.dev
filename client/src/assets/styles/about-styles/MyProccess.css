@@ -258,6 +258,9 @@
 }
 
 @media (max-width: 900px) {
+  .carousel-container {
+    display: none;
+  }
   .my-process-section {
     padding: 60px 0 80px;
   }

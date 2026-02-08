@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 import SplitText from '../components/shared/SplitText';
 import Overlay from '../components/shared/Overlay';
 import Footer from '../components/home/Footer';
-import { Helmet } from 'react-helmet-async';
 
 // Demo project data - simplified structure
 const projectsData = [
@@ -124,17 +123,6 @@ const ProjectPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Project | Harsh Userethe</title>
-
-        <meta
-          name="description"
-          content="Explore full stack MERN projects built by Harsh Userethe using React, Node.js, MongoDB, authentication, and REST APIs."
-        />
-
-        <link rel="canonical" href="https://harshuserethe.in/project" />
-      </Helmet>
-
       <Overlay />
       <Box
         className="project-page"

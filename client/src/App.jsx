@@ -8,14 +8,14 @@ import MobileMenu from './components/shared/MobileMenu';
 import { useMediaQuery, useTheme } from '@mui/material';
 import Project from './pages/Project';
 import Contact from './pages/Contact';
-import { HelmetProvider } from 'react-helmet-async';
+
 
 const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <HelmetProvider>
+    
       <Router>
         <Header />
         {isMobile ? <MobileMenu /> : <></>}
@@ -27,7 +27,7 @@ const App = () => {
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </Router>
-    </HelmetProvider>
+    
   );
 };
 

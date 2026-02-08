@@ -13,7 +13,7 @@ import '../styles/contact-styles/ContactSection.css';
 import { useSelector } from 'react-redux';
 import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';
-import HarshUseretheImage from '../../assets/images/picofme.png';
+import HarshUseretheImage from '../../assets/images/picofmine.webp';
 
 const ContactSection = () => {
   const styles = useSelector((state) => state.theme.styles);

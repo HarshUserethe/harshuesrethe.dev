@@ -12,7 +12,9 @@ import '../../assets/styles/about-styles/MyProccess.css';
 import ShinyText from '../shared/ShinyText';
 import { LuSparkle } from 'react-icons/lu';
 import { useSelector } from 'react-redux';
-const MyProcess = ({ autoScrollInterval = 5000 }) => {
+import MobileCarousel from './MobileCarousel';
+
+const MyProcess = ({ autoScrollInterval = 8000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const scrollContainerRef = useRef(null);
@@ -187,6 +189,10 @@ const MyProcess = ({ autoScrollInterval = 5000 }) => {
           >
             <LuChevronRight color={styles?.mainTheme?.color} />
           </IconButton>
+        </Box>
+
+        <Box>
+          <MobileCarousel steps={steps} styles={styles} />
         </Box>
 
         <Box className="progress-indicators">

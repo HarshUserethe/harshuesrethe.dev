@@ -1,0 +1,78 @@
+.process-accordion {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .process-accordion {
+    background: linear-gradient(180deg, #141414, #0e0e0e) !important;
+    border-radius: 16px !important;
+    margin-bottom: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    display: block;
+  }
+
+  .process-accordion::before {
+    display: none;
+  }
+
+  /* Summary */
+  .process-summary {
+    padding: 0px !important;
+    min-height: 64px !important;
+  }
+
+  .process-summary .MuiAccordionSummary-content {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .process-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* Icon circle */
+  .process-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(108, 255, 108, 0.15);
+    border: 1px solid #6cff6c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6cff6c;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* Title */
+  .process-title {
+    color: #ffffff;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+  }
+
+  /* Expand icon */
+  .process-summary .MuiAccordionSummary-expandIconWrapper {
+    color: #6cff6c;
+    transition: transform 0.25s ease;
+  }
+
+  .process-summary .MuiAccordionSummary-expandIconWrapper.Mui-expanded {
+    transform: rotate(180deg);
+  }
+
+  /* Details */
+  .process-details {
+    padding: 0 22px 20px !important;
+    color: #bfbfbf;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}

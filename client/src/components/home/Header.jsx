@@ -1,5 +1,5 @@
 import { Box, IconButton, ListItem } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../assets/styles/home-styles/Header.css';
 import { LuMoon, LuSun } from 'react-icons/lu';
 import { Link, useLocation } from 'react-router-dom';
@@ -18,8 +18,16 @@ const Header = () => {
   const styles = useSelector((state) => state.theme.styles); // Get styles from Redux
   const dispatch = useDispatch();
   const notify = () => toast('Feature is currently in testing!');
-
+  const { pathname } = useLocation();
   const headerRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {

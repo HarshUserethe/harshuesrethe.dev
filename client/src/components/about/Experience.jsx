@@ -4,7 +4,6 @@ import { LuSparkle } from 'react-icons/lu';
 import ShinyText from '../shared/ShinyText';
 import { useSelector } from 'react-redux';
 import '../../assets/styles/about-styles/Expeience.css';
- 
 
 // Demo data - this will be configurable when connected to database
 const experienceData = [
@@ -124,7 +123,7 @@ const Experience = () => {
                 <Avatar
                   src={exp.logo}
                   className="experience-avatar"
-                  sx={{ bgcolor: exp.color, padding:0.5 }}
+                  sx={{ bgcolor: exp.color, padding: 0.5 }}
                 >
                   {exp.company.charAt(1)}
                 </Avatar>

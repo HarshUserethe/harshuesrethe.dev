@@ -37,14 +37,32 @@ const ContactSection = () => {
   };
 
   const socialLinks = [
-    { icon: <FaLinkedinIn />, url: 'https://www.linkedin.com/in/harshuserethe', label: 'LinkedIn' },
-    { icon: <FaGithub />, url: 'https://github.com/HarshUserethe', label: 'GitHub' },
-    { icon: <FaInstagram />, url: 'https://instagram.com/harshuserethe', label: 'Instagram' },
-    { icon: <FaEnvelope />, url: 'mailto:useretheharsh@gmail.com', label: 'Email' },
-    { icon: <FaXTwitter />, url: 'https://x.com/HarshUserethe04', label: 'Twitter' },
+    {
+      icon: <FaLinkedinIn />,
+      url: 'https://www.linkedin.com/in/harshuserethe',
+      label: 'LinkedIn',
+    },
+    {
+      icon: <FaGithub />,
+      url: 'https://github.com/HarshUserethe',
+      label: 'GitHub',
+    },
+    {
+      icon: <FaInstagram />,
+      url: 'https://instagram.com/harshuserethe',
+      label: 'Instagram',
+    },
+    {
+      icon: <FaEnvelope />,
+      url: 'mailto:useretheharsh@gmail.com',
+      label: 'Email',
+    },
+    {
+      icon: <FaXTwitter />,
+      url: 'https://x.com/HarshUserethe04',
+      label: 'Twitter',
+    },
   ];
-
-   
 
   return (
     <Box

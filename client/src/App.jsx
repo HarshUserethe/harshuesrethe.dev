@@ -9,25 +9,22 @@ import { useMediaQuery, useTheme } from '@mui/material';
 import Project from './pages/Project';
 import Contact from './pages/Contact';
 
-
 const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    
-      <Router>
-        <Header />
-        {isMobile ? <MobileMenu /> : <></>}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<div>404</div>} />
-        </Routes>
-      </Router>
-    
+    <Router>
+      <Header />
+      {isMobile ? <MobileMenu /> : <></>}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/project" element={<Project />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<div>404</div>} />
+      </Routes>
+    </Router>
   );
 };
 

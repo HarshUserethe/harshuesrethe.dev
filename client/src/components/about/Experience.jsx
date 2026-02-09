@@ -4,6 +4,7 @@ import { LuSparkle } from 'react-icons/lu';
 import ShinyText from '../shared/ShinyText';
 import { useSelector } from 'react-redux';
 import '../../assets/styles/about-styles/Expeience.css';
+ 
 
 // Demo data - this will be configurable when connected to database
 const experienceData = [
@@ -14,8 +15,8 @@ const experienceData = [
     companylink: 'https://www.javarndcorp.com/',
     startDate: 'Oct 2025',
     endDate: 'Present',
-    logo: 'https://via.placeholder.com/48/4A90E2/FFFFFF?text=OS',
-    color: '#4A90E2',
+    logo: '../../../public/images/companylogo/java-rnd.png',
+    color: '#ffffff',
     description:
       'Worked as a Software Engineer building full-stack features using the MERN stack, including migrating legacy frontends to React/Next.js for better SEO and performance. Implemented JWT-based authentication and RBAC with Node.js middleware, managed state using Zustand, and optimized APIs through efficient database queries. Handled MySQL to MongoDB migrations with Sequelize and Mongoose, Dockerized local environments, and deployed applications to AWS EC2.',
   },
@@ -26,8 +27,8 @@ const experienceData = [
     companylink: 'https://www.netlegends.in/',
     startDate: 'Apr 2024',
     endDate: 'Oct 2025',
-    logo: 'https://via.placeholder.com/48/00D4FF/FFFFFF?text=DC',
-    color: '#00D4FF',
+    logo: '../../../public/images/companylogo/nl-logo.png',
+    color: '#ffffff',
     description:
       'Worked as a Software Developer at Net Legends from Jun 2024 to Oct 2025, building full-stack web applications using React.js and Next.js with server-side rendering to improve performance and SEO. Translated Figma designs into responsive, cross-browser interfaces using Tailwind CSS and Bootstrap, and developed Node.js backend services integrated with MongoDB and MySQL, optimizing queries and aggregations for efficient data flow.',
   },
@@ -38,8 +39,8 @@ const experienceData = [
     companylink: 'https://www.theforage.com/',
     startDate: 'Sep 2022',
     endDate: 'Oct 2022',
-    logo: 'https://via.placeholder.com/48/888888/FFFFFF?text=BB',
-    color: '#888888',
+    logo: '../../../public/images/companylogo/forage.png',
+    color: '#ffffff',
     description:
       'Worked on AI-powered design tools, creating intuitive interfaces for machine learning applications. Collaborated with AI researchers to translate complex algorithms into user-friendly experiences.',
   },
@@ -50,8 +51,8 @@ const experienceData = [
     companylink: 'https://www.coursera.org/learn/gcp-fundamentals',
     startDate: 'Aug 2022',
     endDate: 'Sep 2022',
-    logo: 'https://via.placeholder.com/48/5B6EFF/FFFFFF?text=S3',
-    color: '#5B6EFF',
+    logo: '../../../public/images/companylogo/google-logo.png',
+    color: '#ffffff',
     description:
       'Designed user experiences for Web3 social platform, focusing on simplifying blockchain interactions. Conducted user research and created design systems that increased user engagement by 60%.',
   },
@@ -123,7 +124,7 @@ const Experience = () => {
                 <Avatar
                   src={exp.logo}
                   className="experience-avatar"
-                  sx={{ bgcolor: exp.color }}
+                  sx={{ bgcolor: exp.color, padding:0.5 }}
                 >
                   {exp.company.charAt(1)}
                 </Avatar>

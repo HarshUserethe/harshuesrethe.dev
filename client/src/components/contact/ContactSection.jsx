@@ -44,7 +44,7 @@ const ContactSection = () => {
     { icon: <FaXTwitter />, url: 'https://x.com/HarshUserethe04', label: 'Twitter' },
   ];
 
-  console.log(styles?.mainTheme?.color);
+   
 
   return (
     <Box

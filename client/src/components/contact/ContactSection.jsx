@@ -37,11 +37,11 @@ const ContactSection = () => {
   };
 
   const socialLinks = [
-    { icon: <FaLinkedinIn />, url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <FaGithub />, url: 'https://github.com', label: 'GitHub' },
-    { icon: <FaInstagram />, url: 'https://instagram.com', label: 'Instagram' },
-    { icon: <FaEnvelope />, url: 'mailto:your@email.com', label: 'Email' },
-    { icon: <FaXTwitter />, url: 'https://twitter.com', label: 'Twitter' },
+    { icon: <FaLinkedinIn />, url: 'https://www.linkedin.com/in/harshuserethe', label: 'LinkedIn' },
+    { icon: <FaGithub />, url: 'https://github.com/HarshUserethe', label: 'GitHub' },
+    { icon: <FaInstagram />, url: 'https://instagram.com/harshuserethe', label: 'Instagram' },
+    { icon: <FaEnvelope />, url: 'mailto:useretheharsh@gmail.com', label: 'Email' },
+    { icon: <FaXTwitter />, url: 'https://x.com/HarshUserethe04', label: 'Twitter' },
   ];
 
   console.log(styles?.mainTheme?.color);
@@ -139,6 +139,7 @@ const ContactSection = () => {
                 className="form-input"
                 placeholder=""
                 variant="outlined"
+                required
               />
             </Box>
 
@@ -168,6 +169,7 @@ const ContactSection = () => {
                 className="form-input"
                 placeholder=""
                 variant="outlined"
+                required
               />
             </Box>
 
@@ -198,6 +200,7 @@ const ContactSection = () => {
                 className="form-input form-textarea"
                 placeholder=""
                 variant="outlined"
+                required
               />
             </Box>
 

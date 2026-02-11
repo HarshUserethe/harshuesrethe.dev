@@ -73,11 +73,11 @@ const SmartContact = () => {
 
   // Step configuration
   const steps = [
-    'Request Type',
+    'Type',
     'Category',
     'Timeline',
     'Budget',
-    'Details',
+    'Info',
     'Attachments',
   ];
 

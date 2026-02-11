@@ -316,6 +316,9 @@
     width: 100px !important;
     height: 100px !important;
   }
+  .css-1czao7m-MuiLinearProgress-root{
+    height: 3px !important;
+  }
 }
 
 @media (max-width: 480px) {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Typography, TextField, Button, Avatar } from '@mui/material';
-import { LuSparkle } from 'react-icons/lu';
+import { LuArrowRight, LuSparkle } from 'react-icons/lu';
 import {
   FaLinkedinIn,
   FaGithub,
@@ -15,7 +15,7 @@ import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';
 import HarshUseretheImage from '../../assets/images/picofmine.webp';
 
-const ContactSection = () => {
+const ContactSection = ({handleDiscussProjectButton}) => {
   const styles = useSelector((state) => state.theme.styles);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -290,6 +290,21 @@ const ContactSection = () => {
               to say Hi. I would love to hear from you. Feel free to contact me
               and I'll get back to you.
             </Typography>
+
+             {/* Let's Discuss Your Project */}
+            <Box
+              onClick={() => {
+                document
+                  .querySelector('.contact-section')
+                  ?.scrollIntoView({ behavior: 'smooth' });
+                  handleDiscussProjectButton();
+              }}
+              className="cta-button-glow"
+            >
+              <span>Let's Discuss Your Project</span>
+              {/* <LuArrowRight className="arrow-icon" /> */}
+              <div className="shimmer-effect" />
+            </Box>
 
             <Box className="social-links">
               {socialLinks.map((social, index) => (

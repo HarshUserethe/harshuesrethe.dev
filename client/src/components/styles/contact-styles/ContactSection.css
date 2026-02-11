@@ -22,6 +22,7 @@
 
 .form-wrapper {
   width: 40%;
+ 
 }
 .contact-first-box {
   background-color: yellow;
@@ -354,5 +355,427 @@
     width: 40px;
     height: 40px;
     font-size: 18px;
+  }
+}
+
+
+/* ========================================
+   CTA Button Styles - Multiple Variations
+   ======================================== */
+
+/* ==========================================
+   VARIATION 1: Glowing Gradient Button
+   ========================================== */
+.cta-button-glow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 26px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000cc;
+  background: linear-gradient(135deg, #adff2f 0%, #7fff00 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 
+    0 4px 15px rgba(173, 255, 47, 0.4),
+    0 0 0 0 rgba(173, 255, 47, 0.5);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: glow-pulse 2s ease-in-out infinite;
+  margin-bottom: 25px;
+}
+
+.cta-button-glow:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 8px 30px rgba(173, 255, 47, 0.6),
+    0 0 40px rgba(173, 255, 47, 0.4);
+}
+
+.cta-button-glow:active {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.cta-button-glow .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.cta-button-glow:hover .arrow-icon {
+  transform: translateX(8px);
+}
+
+/* Glow animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 4px 15px rgba(173, 255, 47, 0.4),
+      0 0 20px rgba(173, 255, 47, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 4px 15px rgba(173, 255, 47, 0.4),
+      0 0 40px rgba(173, 255, 47, 0.5);
+  }
+}
+
+/* ==========================================
+   VARIATION 2: Neon Border Button
+   ========================================== */
+.cta-button-neon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #adff2f;
+  background: transparent;
+  border: 3px solid #adff2f;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 0 10px rgba(173, 255, 47, 0.3),
+    inset 0 0 10px rgba(173, 255, 47, 0.1);
+}
+
+.cta-button-neon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(173, 255, 47, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-button-neon:hover {
+  background: #adff2f;
+  color: #000;
+  box-shadow: 
+    0 0 30px rgba(173, 255, 47, 0.8),
+    0 0 60px rgba(173, 255, 47, 0.4),
+    inset 0 0 20px rgba(173, 255, 47, 0.2);
+  transform: translateY(-2px);
+}
+
+.cta-button-neon:hover::before {
+  left: 100%;
+}
+
+.cta-button-neon:hover .arrow-icon {
+  transform: translateX(6px) rotate(-45deg);
+}
+
+.cta-button-neon .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+/* ==========================================
+   VARIATION 3: 3D Raised Button
+   ========================================== */
+.cta-button-3d {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  background: linear-gradient(180deg, #c4ff61 0%, #adff2f 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 
+    0 6px 0 #7fb800,
+    0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease;
+}
+
+.cta-button-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 0 #7fb800,
+    0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button-3d:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 2px 0 #7fb800,
+    0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================
+   VARIATION 4: Glassmorphism Button
+   ========================================== */
+.cta-button-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(173, 255, 47, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(173, 255, 47, 0.3);
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.cta-button-glass::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(173, 255, 47, 0.3), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.cta-button-glass:hover {
+  background: rgba(173, 255, 47, 0.25);
+  border-color: rgba(173, 255, 47, 0.6);
+  box-shadow: 
+    0 12px 40px rgba(173, 255, 47, 0.3),
+    inset 0 0 20px rgba(173, 255, 47, 0.1);
+  transform: translateY(-4px);
+}
+
+.cta-button-glass:hover::before {
+  left: 50%;
+}
+
+/* ==========================================
+   VARIATION 5: Animated Border Button
+   ========================================== */
+.cta-button-border-animate {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #adff2f;
+  background: transparent;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cta-button-border-animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50px;
+  padding: 3px;
+  background: linear-gradient(45deg, #adff2f, #7fff00, #adff2f);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background-size: 200% 200%;
+  animation: border-rotate 3s linear infinite;
+  z-index: -1;
+}
+
+.cta-button-border-animate::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 48px;
+  z-index: -1;
+  transition: all 0.4s ease;
+}
+
+.cta-button-border-animate:hover::after {
+  background: #adff2f;
+}
+
+.cta-button-border-animate:hover {
+  color: #000;
+  transform: scale(1.05);
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ==========================================
+   VARIATION 6: Ripple Effect Button
+   ========================================== */
+.cta-button-ripple {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 36px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  background: #adff2f;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cta-button-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.cta-button-ripple:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.cta-button-ripple:hover {
+  box-shadow: 0 8px 25px rgba(173, 255, 47, 0.5);
+  transform: translateY(-3px);
+}
+
+/* ==========================================
+   Pulsing Ring Animation (Reusable)
+   ========================================== */
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border: 2px solid #adff2f;
+  border-radius: 50px;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* ==========================================
+   Shimmer Effect (Reusable)
+   ========================================== */
+.shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-button-glow:hover .shimmer-effect,
+.cta-button-3d:hover .shimmer-effect,
+.cta-button-ripple:hover .shimmer-effect {
+  left: 100%;
+}
+
+/* ==========================================
+   Responsive Adjustments
+   ========================================== */
+@media (max-width: 600px) {
+  .cta-button-glow,
+  .cta-button-neon,
+  .cta-button-3d,
+  .cta-button-glass,
+  .cta-button-border-animate,
+  .cta-button-ripple {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cta-button-glow,
+  .cta-button-neon,
+  .cta-button-3d,
+  .cta-button-glass,
+  .cta-button-border-animate,
+  .cta-button-ripple {
+    padding: 12px 24px;
+    font-size: 14px;
+    gap: 8px;
+  }
+}
+
+/* ==========================================
+   Accessibility
+   ========================================== */
+.cta-button-glow:focus,
+.cta-button-neon:focus,
+.cta-button-3d:focus,
+.cta-button-glass:focus,
+.cta-button-border-animate:focus,
+.cta-button-ripple:focus {
+  outline: 3px solid #adff2f;
+  outline-offset: 4px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .cta-button-glow,
+  .cta-button-neon,
+  .cta-button-3d,
+  .cta-button-glass,
+  .cta-button-border-animate,
+  .cta-button-ripple,
+  .pulse-ring {
+    animation: none;
+    transition: none;
   }
 }

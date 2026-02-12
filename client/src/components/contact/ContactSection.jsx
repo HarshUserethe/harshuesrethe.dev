@@ -15,7 +15,7 @@ import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';
 import HarshUseretheImage from '../../assets/images/picofmine.webp';
 
-const ContactSection = ({handleDiscussProjectButton}) => {
+const ContactSection = ({ handleDiscussProjectButton }) => {
   const styles = useSelector((state) => state.theme.styles);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -143,7 +143,8 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     '& fieldset': {
-                      borderColor: styles?.mainTheme?.textFieldBorderColor + ' !important',
+                      borderColor:
+                        styles?.mainTheme?.textFieldBorderColor + ' !important',
                     },
                     '& input': {
                       color: styles?.mainTheme?.color,
@@ -172,7 +173,8 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     '& fieldset': {
-                      borderColor: styles?.mainTheme?.textFieldBorderColor  + ' !important',
+                      borderColor:
+                        styles?.mainTheme?.textFieldBorderColor + ' !important',
                     },
                     '& input': {
                       color: styles?.mainTheme?.color,
@@ -202,7 +204,8 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     '& fieldset': {
-                      borderColor: styles?.mainTheme?.textFieldBorderColor  + ' !important',
+                      borderColor:
+                        styles?.mainTheme?.textFieldBorderColor + ' !important',
                     },
                     '& textarea': {
                       color: styles?.mainTheme?.color,
@@ -291,13 +294,13 @@ const ContactSection = ({handleDiscussProjectButton}) => {
               and I'll get back to you.
             </Typography>
 
-             {/* Let's Discuss Your Project */}
+            {/* Let's Discuss Your Project */}
             <Box
               onClick={() => {
                 document
                   .querySelector('.contact-section')
                   ?.scrollIntoView({ behavior: 'smooth' });
-                  handleDiscussProjectButton();
+                handleDiscussProjectButton();
               }}
               className="cta-button-glow"
             >

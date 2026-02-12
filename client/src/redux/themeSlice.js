@@ -36,6 +36,7 @@ const getStyles = (mode) => ({
         ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)'
         : '#fafef7',
     highlightedColor: mode === 'dark' ? '#b5fe6c' : '#30AF5B',
+    fileUploadCardBackground: mode === 'dark' ? '#111116' : '#f9f9f9',
   },
 
   activeClass: {

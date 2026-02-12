@@ -237,6 +237,9 @@
 }
 
 @media (max-width: 992px) {
+  .css-15fvg8u-MuiInputBase-root-MuiOutlinedInput-root {
+    padding: 0px !important;
+  }
   .footer-contact-content {
     padding: 40px !important;
     padding-bottom: 40px !important;
@@ -295,15 +298,15 @@
 }
 
 @media (max-width: 768px) {
-  .sm-icons{
+  .sm-icons {
     font-size: 20px !important;
   }
- .paper-container{
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 20px;
- }
+  .paper-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+  }
   .contact-section {
     padding: 40px 20px;
   }
@@ -325,7 +328,7 @@
     width: 100px !important;
     height: 100px !important;
   }
-  .css-1czao7m-MuiLinearProgress-root{
+  .css-1czao7m-MuiLinearProgress-root {
     height: 3px !important;
   }
 }

@@ -9,12 +9,18 @@ const Contact = () => {
   const [activeStep, setActiveStep] = useState(false);
   const handleDiscussProjectButton = () => {
     setActiveStep(true);
-  }
+  };
 
   return (
     <>
       <Overlay />
-      {activeStep ? <SmartContact /> : <ContactSection handleDiscussProjectButton={handleDiscussProjectButton} />}
+      {activeStep ? (
+        <SmartContact />
+      ) : (
+        <ContactSection
+          handleDiscussProjectButton={handleDiscussProjectButton}
+        />
+      )}
       <FAQSection />
       <BottomTag />
     </>

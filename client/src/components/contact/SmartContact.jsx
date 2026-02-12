@@ -925,8 +925,10 @@ const SmartContact = () => {
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         backgroundColor:
-                          styles?.mainTheme?.profileCardBackground,
-                        border: `1px solid ${styles?.mainTheme?.textFieldBorderColor}`,
+                          styles?.mainTheme?.fileUploadCardBackground,
+                        border: `1px solid ${styles?.mainTheme?.color}`,
+                        borderRadius: '15px',
+                        boxShadow: 'none',
                       }}
                     >
                       <Box>
@@ -1289,7 +1291,7 @@ const SmartContact = () => {
               </Button>
 
               {activeStep === steps.length - 1 ? (
-                <Box>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <AnimatedButton
                     type="submit"
                     color={styles?.mainTheme?.color}

@@ -258,7 +258,7 @@
 }
 
 @media (max-width: 900px) {
-  .progress-indicators{
+  .progress-indicators {
     display: none;
   }
   .carousel-container {

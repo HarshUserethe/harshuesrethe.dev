@@ -45,7 +45,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(() => ({
 
 /* ================= Component ================= */
 
-const MobileCarousel = ({ steps = [] }) => {
+const MobileCarousel = ({ steps = [], styles }) => {
   const [expandedId, setExpandedId] = useState(null);
 
   const handleToggle = useCallback((id) => {
@@ -69,16 +69,31 @@ const MobileCarousel = ({ steps = [] }) => {
             <AccordionSummary
               expandIcon={<LuChevronDown size={20} />}
               className="process-summary"
+              sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
             >
               <div className="process-left">
-                <span className="process-icon">
+                <span
+                  className="process-icon"
+                  style={{ color: styles?.mainTheme?.highlightedColor }}
+                >
                   {String(index + 1).padStart(2, '0')}
                 </span>
-                <Typography className="process-title">{step.title}</Typography>
+                <Typography
+                  sx={{ color: styles?.mainTheme?.color }}
+                  className="process-title"
+                >
+                  {step.title}
+                </Typography>
               </div>
             </AccordionSummary>
 
-            <AccordionDetails className="process-details">
+            <AccordionDetails
+              sx={{
+                backgroundColor: styles?.mainTheme?.backgroundColor,
+                color: styles?.mainTheme?.epicColor,
+              }}
+              className="process-details"
+            >
               <Typography>{step.description}</Typography>
             </AccordionDetails>
           </Accordion>

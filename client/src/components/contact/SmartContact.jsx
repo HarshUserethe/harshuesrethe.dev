@@ -224,20 +224,20 @@ const SmartContact = () => {
   const handleNext = () => {
     if (validateStep(activeStep)) {
       setActiveStep((prevStep) => prevStep + 1);
-      // window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 200, behavior: 'smooth' });
     }
   };
 
   // Navigate to previous step
   const handleBack = () => {
     setActiveStep((prevStep) => prevStep - 1);
-    // window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 200, behavior: 'smooth' });
   };
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // Validate all steps before submission
     let allValid = true;
     for (let i = 0; i < steps.length - 1; i++) {
@@ -258,6 +258,7 @@ const SmartContact = () => {
       console.log('Form submitted:', formData);
       setIsSubmitting(false);
       setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 2000);
   };
 
@@ -309,6 +310,7 @@ const SmartContact = () => {
               >
                 {requestTypes.map((option) => (
                   <Paper
+                    className="paper-container"
                     key={option.value}
                     onClick={() => {
                       setFormData({ ...formData, requestType: option.value });
@@ -334,7 +336,10 @@ const SmartContact = () => {
                       },
                     }}
                   >
-                    <Typography sx={{ fontSize: '32px', marginBottom: '8px' }}>
+                    <Typography
+                      className="sm-icons"
+                      sx={{ fontSize: '32px', marginBottom: '8px' }}
+                    >
                       {option.icon}
                     </Typography>
                     <Typography
@@ -389,6 +394,7 @@ const SmartContact = () => {
               >
                 {projectCategories.map((option) => (
                   <Paper
+                    className="paper-container"
                     key={option.value}
                     onClick={() => {
                       setFormData({
@@ -417,7 +423,10 @@ const SmartContact = () => {
                       },
                     }}
                   >
-                    <Typography sx={{ fontSize: '32px', marginBottom: '8px' }}>
+                    <Typography
+                      className="sm-icons"
+                      sx={{ fontSize: '32px', marginBottom: '8px' }}
+                    >
                       {option.icon}
                     </Typography>
                     <Typography
@@ -1127,7 +1136,11 @@ const SmartContact = () => {
     >
       {/* Header Section */}
       <Box className="contact-first">
-      <Warning message={'This feature is currently under development and will be available shortly. Stay tuned!'} />
+        <Warning
+          message={
+            'This feature is currently under development and will be available shortly. Stay tuned!'
+          }
+        />
         <Box
           sx={{
             display: 'flex',
@@ -1256,6 +1269,7 @@ const SmartContact = () => {
                 onClick={handleBack}
                 sx={{
                   fontSize: '14px',
+                  borderRadius: '500px',
                   color: styles?.mainTheme?.color,
                   borderColor: styles?.mainTheme?.textFieldBorderColor,
                   padding: '12px 28px',
@@ -1301,9 +1315,10 @@ const SmartContact = () => {
                   onClick={handleNext}
                   sx={{
                     fontSize: '14px',
+                    borderRadius: '500px',
                     backgroundColor: styles?.mainTheme?.highlightedColor,
                     color: '#000',
-                    padding: '12px 28px',
+                    padding: '10px 30px',
                     fontWeight: 500,
                     '&:hover': {
                       backgroundColor: styles?.mainTheme?.highlightedColor,

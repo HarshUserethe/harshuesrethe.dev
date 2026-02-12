@@ -177,7 +177,9 @@
   background-color: rgb(26, 26, 26);
   border-radius: 15px;
   margin-bottom: 20px;
+  margin-top: 12px;
 }
+
 .experience-company:hover {
   text-decoration: underline;
 }
@@ -214,14 +216,35 @@
     max-width: 100%;
   }
 
+  /* Remove fixed height for mobile */
   .experience-item {
     flex-wrap: wrap;
+    height: auto; /* Changed from 10dvh to auto */
+    min-height: auto; /* Ensure no minimum height constraint */
   }
 
   .experience-duration {
     width: 100%;
     margin-top: 8px;
     margin-left: 68px;
+  }
+
+  /* Allow experience list to expand naturally on mobile */
+  .experience-list {
+    max-height: none; /* Remove height restriction on mobile */
+    overflow: visible;
+  }
+
+  .experience-list.expanded {
+    max-height: none; /* Remove height restriction when expanded */
+    overflow: visible;
+  }
+
+  /* Ensure description box is fully visible */
+  .experience-description-box {
+    width: 100%;
+    margin-left: 0;
+    box-sizing: border-box;
   }
 }
 

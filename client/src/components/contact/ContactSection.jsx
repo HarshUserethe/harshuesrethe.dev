@@ -143,7 +143,7 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     '& fieldset': {
-                      borderColor: styles?.mainTheme?.textFieldBorderColor,
+                      borderColor: styles?.mainTheme?.textFieldBorderColor + ' !important',
                     },
                     '& input': {
                       color: styles?.mainTheme?.color,
@@ -155,7 +155,7 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 onChange={handleChange}
                 fullWidth
                 className="form-input"
-                placeholder=""
+                placeholder="Vicky Kaushal"
                 variant="outlined"
                 required
               />
@@ -172,7 +172,7 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     '& fieldset': {
-                      borderColor: styles?.mainTheme?.textFieldBorderColor,
+                      borderColor: styles?.mainTheme?.textFieldBorderColor  + ' !important',
                     },
                     '& input': {
                       color: styles?.mainTheme?.color,
@@ -185,7 +185,7 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 onChange={handleChange}
                 fullWidth
                 className="form-input"
-                placeholder=""
+                placeholder="example@domain.com"
                 variant="outlined"
                 required
               />
@@ -202,7 +202,7 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 sx={{
                   '& .MuiOutlinedInput-root': {
                     '& fieldset': {
-                      borderColor: styles?.mainTheme?.textFieldBorderColor,
+                      borderColor: styles?.mainTheme?.textFieldBorderColor  + ' !important',
                     },
                     '& textarea': {
                       color: styles?.mainTheme?.color,
@@ -216,7 +216,7 @@ const ContactSection = ({handleDiscussProjectButton}) => {
                 multiline
                 rows={4}
                 className="form-input form-textarea"
-                placeholder=""
+                placeholder="Enter your message here..."
                 variant="outlined"
                 required
               />

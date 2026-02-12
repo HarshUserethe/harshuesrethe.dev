@@ -61,23 +61,21 @@
 }
 
 .form-input {
-  background-color: transparent !important;
-  /* border: 1px solid #ffffff2e !important; */
   border-radius: 25px !important;
 }
 
 .form-input .MuiOutlinedInput-root {
   border-radius: 12px !important;
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
 }
 
 .form-input .MuiOutlinedInput-notchedOutline {
-  border-color: rgba(255, 255, 255, 0.15) !important;
+  /* border-color: rgba(255, 255, 255, 0.15) !important; */
   border-width: 1px !important;
 }
 
 .form-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-  border-color: rgba(255, 255, 255, 0.25) !important;
+  /* border-color: rgba(255, 255, 255, 0.25) !important; */
 }
 
 .form-input
@@ -735,8 +733,8 @@
   .cta-button-glass,
   .cta-button-border-animate,
   .cta-button-ripple {
-    padding: 14px 28px;
-    font-size: 16px;
+    padding: 10px 20px;
+    font-size: 14px;
   }
 }
 

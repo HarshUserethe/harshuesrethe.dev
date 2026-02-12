@@ -30,7 +30,7 @@ const getStyles = (mode) => ({
         : 'rgba(136, 255, 17, 0.12)',
     socialIconsHoverIn: mode === 'dark' ? '#ffffff' : '#000',
     socialIconsHoverOut: mode === 'dark' ? '#888' : '#888',
-    textFieldBorderColor: mode === 'dark' ? '#ffffff74' : 'rgba(0, 0, 0, 0.36)',
+    textFieldBorderColor: mode === 'dark' ? '#ffffff74' : 'rgba(0, 0, 0, 0.34)',
     profileCardBackground:
       mode === 'dark'
         ? 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%)'

@@ -13,6 +13,7 @@ const AnimatedButton = ({
   isClassName,
   classMe,
   hyperLink,
+  isDisabled
 }) => {
   const btnRef = useRef(null);
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ const AnimatedButton = ({
   return (
     <>
       <button
+        disabled={isDisabled}
         onClick={() => {
           if (!hyperLink) return;
 

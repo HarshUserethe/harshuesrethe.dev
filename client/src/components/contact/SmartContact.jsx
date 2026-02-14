@@ -1140,7 +1140,10 @@ const SmartContact = () => {
       <Box className="contact-first">
         <Warning
           message={
-            'This feature is currently under development and will be available shortly. Stay tuned!'
+            {
+              data:  'This feature is currently under development and will be available shortly. Stay tuned!',
+              type:"error"
+            }
           }
         />
         <Box

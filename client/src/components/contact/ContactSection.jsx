@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button, Avatar } from '@mui/material';
 import { LuArrowRight, LuSparkle } from 'react-icons/lu';
 import {
@@ -14,9 +14,18 @@ import { useSelector } from 'react-redux';
 import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';
 import HarshUseretheImage from '../../assets/images/picofmine.webp';
+import { useMutation } from 'convex/react';
+import { api } from '../../../convex/_generated/api';
+import Warning from '../shared/Warning';
 
 const ContactSection = ({ handleDiscussProjectButton }) => {
+  const createContact = useMutation(
+    api.apis.post.insertCasualContact.createCasualContact
+  );
+
   const styles = useSelector((state) => state.theme.styles);
+  const [msg, setMsg] = useState({ data: '', type: '' });
+  const [isSubmiting, setIsSubmiting] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -30,11 +39,39 @@ const ContactSection = ({ handleDiscussProjectButton }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsSubmiting(true);
+    try {
+      const result = await createContact({
+        fullname: formData.fullName,
+        email: formData.email,
+        message: formData.message,
+      });
+      setMsg({
+        data: 'Your message has been sent successfully. I’ll review it and get back to you within 24 hours. Thank you for your patience',
+        type: 'success',
+      });
+      setFormData({ fullName: '', email: '', message: '' });
+    } catch (error) {
+      setMsg({
+        data: error.message,
+        type: 'error',
+      });
+    } finally {
+      setIsSubmiting(false);
+    }
   };
+
+  useEffect(() => {
+    if (!msg) return;
+
+    const timer = setTimeout(() => {
+      setMsg(null);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [msg]);
 
   const socialLinks = [
     {
@@ -229,13 +266,27 @@ const ContactSection = ({ handleDiscussProjectButton }) => {
               Submit
             </Button> */}
             <Box sx={{ marginTop: '10px' }}>
-              <AnimatedButton
-                type="submit"
-                color={styles?.mainTheme?.color}
-                label={'Submit'}
-                hoverLabel={'Submit'}
-                btnWidth={'fit-content'}
-              />
+              {msg && <Warning message={msg} />}
+              {isSubmiting ? (
+                <Typography
+                  sx={{
+                    color: styles?.mainTheme?.color,
+                    fontSize: '14px',
+                    padding: '10px',
+                  }}
+                >
+                  Please wait..
+                </Typography>
+              ) : (
+                <AnimatedButton
+                  isDisabled={isSubmiting ? true : false}
+                  type="submit"
+                  color={styles?.mainTheme?.color}
+                  label={'Submit'}
+                  hoverLabel={'Submit'}
+                  btnWidth={'fit-content'}
+                />
+              )}
             </Box>
           </form>
         </Box>

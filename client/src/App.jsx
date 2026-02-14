@@ -8,10 +8,17 @@ import MobileMenu from './components/shared/MobileMenu';
 import { useMediaQuery, useTheme } from '@mui/material';
 import Project from './pages/Project';
 import Contact from './pages/Contact';
+// import { useQuery } from "convex/react";
+// import { api } from "../convex/_generated/api";
 
 const App = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  // const smartContactData = useQuery(api.apis.get.getSmartContact.get);
+  // const casualContactData = useQuery(api.apis.get.getCasualContact.get);
+  // console.log(smartContactData)
+  // console.log(casualContactData + "casual_contac")
 
   return (
     <Router>

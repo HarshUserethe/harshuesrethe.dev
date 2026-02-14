@@ -10,7 +10,9 @@
 
 import type * as apis_get_getCasualContact from "../apis/get/getCasualContact.js";
 import type * as apis_get_getSmartContact from "../apis/get/getSmartContact.js";
+import type * as apis_post_generateUploadUrl from "../apis/post/generateUploadUrl.js";
 import type * as apis_post_insertCasualContact from "../apis/post/insertCasualContact.js";
+import type * as apis_post_insertSmartContact from "../apis/post/insertSmartContact.js";
 import type * as schemas_casual_contact_schema from "../schemas/casual_contact_schema.js";
 import type * as schemas_smart_contact_schema from "../schemas/smart_contact_schema.js";
 
@@ -23,7 +25,9 @@ import type {
 declare const fullApi: ApiFromModules<{
   "apis/get/getCasualContact": typeof apis_get_getCasualContact;
   "apis/get/getSmartContact": typeof apis_get_getSmartContact;
+  "apis/post/generateUploadUrl": typeof apis_post_generateUploadUrl;
   "apis/post/insertCasualContact": typeof apis_post_insertCasualContact;
+  "apis/post/insertSmartContact": typeof apis_post_insertSmartContact;
   "schemas/casual_contact_schema": typeof schemas_casual_contact_schema;
   "schemas/smart_contact_schema": typeof schemas_smart_contact_schema;
 }>;

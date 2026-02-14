@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   Typography,
@@ -42,8 +42,17 @@ import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';
 import HarshUseretheImage from '../../assets/images/picofmine.webp';
 import Warning from '../shared/Warning';
+import { useMutation } from 'convex/react';
+import { api } from '../../../convex/_generated/api';
 
 const SmartContact = () => {
+  const createContact = useMutation(
+    api.apis.post.insertSmartContact.createSmartContact
+  );
+  const generateUploadUrl = useMutation(
+    api.apis.post.generateUploadUrl.generateUploadUrl
+  );
+
   const styles = useSelector((state) => state.theme.styles);
 
   // Multi-step form state
@@ -51,23 +60,28 @@ const SmartContact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [errMessage, setErrMessage] = useState(null);
+
+  useEffect(() => {
+    if (!errMessage) return;
+
+    const timer = setTimeout(() => {
+      setErrMessage(null);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [errMessage]);
 
   // Form data - consolidated state object
   const [formData, setFormData] = useState({
-    // Step 1: Type of request
     requestType: '',
-    // Step 2: Project category
     projectCategory: '',
-    // Step 3: Timeline
     timeline: '',
-    // Step 4: Budget
     budget: '',
-    // Step 5: Project details
     projectTitle: '',
     projectDescription: '',
     fullName: '',
     email: '',
-    // Step 6: File upload
     uploadedFiles: [],
   });
 
@@ -148,16 +162,35 @@ const SmartContact = () => {
 
   // Handle file upload (UI only)
   const handleFileUpload = (e) => {
-    const files = Array.from(e.target.files);
-    const fileData = files.map((file) => ({
+    const MAX_SIZE = 10 * 1024 * 1024;
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    // validate size
+    if (file.size > MAX_SIZE) {
+      setErrMessage('File must be less than 10MB');
+      e.target.value = '';
+      return;
+    }
+
+    // clear error if valid
+    setErrMessage('');
+
+    const fileData = {
       name: file.name,
       size: (file.size / 1024).toFixed(2) + ' KB',
       type: file.type,
+    };
+
+    // replace previous file (only one allowed)
+    setFormData((prev) => ({
+      ...prev,
+      uploadedFiles: [fileData],
     }));
-    setFormData({
-      ...formData,
-      uploadedFiles: [...formData.uploadedFiles, ...fileData],
-    });
+
+    // allow selecting same file again
+    e.target.value = '';
   };
 
   // Remove uploaded file
@@ -238,6 +271,26 @@ const SmartContact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    let storageId = null;
+
+    // if user attached file
+    if (formData.uploadedFiles?.[0]) {
+      const file = formData.uploadedFiles[0];
+
+      // 1. get upload url
+      const uploadUrl = await generateUploadUrl();
+
+      // 2. upload file
+      const result = await fetch(uploadUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': file.type },
+        body: file,
+      });
+
+      const json = await result.json();
+      storageId = json.storageId;
+    }
+
     // Validate all steps before submission
     let allValid = true;
     for (let i = 0; i < steps.length - 1; i++) {
@@ -249,17 +302,45 @@ const SmartContact = () => {
     }
 
     if (!allValid) return;
-
-    // Simulate API call
     setIsSubmitting(true);
 
-    // Simulate network delay
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitting(false);
+    try {
+      await createContact({
+        attachments:
+          formData.uploadedFiles?.length > 0
+            ? [
+                {
+                  file_name: formData.uploadedFiles[0].name,
+                  file_type: formData.uploadedFiles[0].type,
+                  file_url: storageId,
+                },
+              ]
+            : [],
+
+        budget: formData.budget,
+
+        client_info: {
+          email: formData.email,
+          fullname: formData.fullName,
+          prj_description: formData.projectDescription,
+          prj_title: formData.projectTitle,
+        },
+
+        prj_category: formData.projectCategory,
+        prj_type: formData.requestType,
+        status: 'new',
+        timeline: formData.timeline,
+      });
       setIsSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 2000);
+    } catch (error) {
+      setErrMessage({
+        type: 'error',
+        data: error.message || 'Something went wrong',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Reset form
@@ -818,6 +899,7 @@ const SmartContact = () => {
                       },
                       '& textarea': {
                         color: styles?.mainTheme?.color,
+                        padding: '14px',
                       },
                     },
                     '& .MuiFormHelperText-root': {
@@ -867,7 +949,6 @@ const SmartContact = () => {
               <input
                 id="file-upload"
                 type="file"
-                multiple
                 onChange={handleFileUpload}
                 style={{ display: 'none' }}
                 accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg"
@@ -938,7 +1019,9 @@ const SmartContact = () => {
                             fontSize: '14px',
                           }}
                         >
-                          {file.name}
+                          {file.name.length > 25
+                            ? file.name.slice(0, 25) + '...'
+                            : file.name}
                         </Typography>
                         <Typography
                           sx={{
@@ -1091,13 +1174,13 @@ const SmartContact = () => {
             </Box>
           </Paper>
 
-          {/* <AnimatedButton
+          <AnimatedButton
             color={styles?.mainTheme?.color}
-            label="Back to Contact"
-            hoverLabel="Back to Contact"
-            hyperLink={'/contact'}
+            label="Explore Projects"
+            hoverLabel="Explore Projects"
+            hyperLink={'/project'}
             btnWidth="fit-content"
-          /> */}
+          />
         </Box>
       </Box>
     );
@@ -1138,14 +1221,6 @@ const SmartContact = () => {
     >
       {/* Header Section */}
       <Box className="contact-first">
-        <Warning
-          message={
-            {
-              data:  'This feature is currently under development and will be available shortly. Stay tuned!',
-              type:"error"
-            }
-          }
-        />
         <Box
           sx={{
             display: 'flex',
@@ -1165,7 +1240,7 @@ const SmartContact = () => {
             }}
           >
             <ShinyText
-              text="SMART PROJECT INQUIRY"
+              text="CONNECT WITH ME"
               disabled={false}
               speed={1.2}
               className="shinny-txt"
@@ -1259,7 +1334,14 @@ const SmartContact = () => {
             <Box sx={{ minHeight: '200px', marginBottom: '40px' }}>
               {renderStepContent(activeStep)}
             </Box>
-
+            {errMessage && (
+              <Warning
+                message={{
+                  data: errMessage,
+                  type: 'error',
+                }}
+              />
+            )}
             {/* Navigation Buttons */}
             <Box
               sx={{
@@ -1295,23 +1377,33 @@ const SmartContact = () => {
 
               {activeStep === steps.length - 1 ? (
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <AnimatedButton
-                    type="submit"
-                    color={styles?.mainTheme?.color}
-                    label={isSubmitting ? 'Submitting...' : 'Submit Inquiry'}
-                    hoverLabel={
-                      isSubmitting ? 'Submitting...' : 'Submit Inquiry'
-                    }
-                    btnWidth="fit-content"
-                    disabled={isSubmitting}
-                  />
-                  {isSubmitting && (
-                    <CircularProgress
-                      size={20}
-                      sx={{
-                        color: styles?.mainTheme?.highlightedColor,
-                        marginLeft: '12px',
-                      }}
+                  {isSubmitting ? (
+                    <>
+                      <Typography
+                        sx={{
+                          color: styles?.mainTheme?.color,
+                          fontSize: '14px',
+                          padding: '10px',
+                        }}
+                      >
+                        Please wait
+                      </Typography>
+                      <CircularProgress
+                        size={20}
+                        sx={{
+                          color: styles?.mainTheme?.highlightedColor,
+                          marginLeft: '12px',
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <AnimatedButton
+                      type="submit"
+                      color={styles?.mainTheme?.color}
+                      label={'Submit Inquiry'}
+                      hoverLabel={'Submit Inquiry'}
+                      btnWidth="fit-content"
+                      disabled={isSubmitting}
                     />
                   )}
                 </Box>

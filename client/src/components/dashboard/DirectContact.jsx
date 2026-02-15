@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
-import { 
-  Card, 
-  CardContent, 
-  Typography, 
-  Button, 
-  Grid, 
+import {
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Grid,
   Box,
   Chip,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
-  IconButton
+  IconButton,
 } from '@mui/material';
-import { LuTrash2, LuMail, LuCalendar, LuMessageSquare, LuUser, LuX } from 'react-icons/lu';
+import {
+  LuTrash2,
+  LuMail,
+  LuCalendar,
+  LuMessageSquare,
+  LuUser,
+  LuX,
+} from 'react-icons/lu';
 import '../../assets/styles/dashboard-styles/DirectContact.css';
 
-const DirectContact = ({ contacts, onDelete }) => {
+const DirectContact = ({ contacts = [], onDelete }) => {
   const [selectedContact, setSelectedContact] = useState(null);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const options = { 
-      year: 'numeric', 
-      month: 'short', 
+    const options = {
+      year: 'numeric',
+      month: 'short',
       day: 'numeric',
       hour: '2-digit',
-      minute: '2-digit'
+      minute: '2-digit',
     };
     return date.toLocaleDateString('en-US', options);
   };
@@ -53,8 +60,8 @@ const DirectContact = ({ contacts, onDelete }) => {
   };
 
   // Sort by latest first
-  const sortedContacts = [...contacts].sort((a, b) => 
-    new Date(b.creation_date) - new Date(a.creation_date)
+  const sortedContacts = [...contacts].sort(
+    (a, b) => b._creationTime - a._creationTime
   );
 
   return (
@@ -66,11 +73,13 @@ const DirectContact = ({ contacts, onDelete }) => {
           </div>
           <div>
             <h1 className="page-title">Direct Contact</h1>
-            <p className="page-subtitle">Manage your casual contact form submissions</p>
+            <p className="page-subtitle">
+              Manage your casual contact form submissions
+            </p>
           </div>
         </div>
-        <Chip 
-          label={`${sortedContacts.length} Total`} 
+        <Chip
+          label={`${sortedContacts.length} Total`}
           className="contact-count-chip"
         />
       </div>
@@ -83,12 +92,14 @@ const DirectContact = ({ contacts, onDelete }) => {
                 <LuMail size={48} className="empty-state-icon" />
               </div>
               <h3 className="empty-state-title">No messages yet</h3>
-              <p className="empty-state-text">Direct contact submissions will appear here</p>
+              <p className="empty-state-text">
+                Direct contact submissions will appear here
+              </p>
             </div>
           </Grid>
         ) : (
           sortedContacts.map((contact) => (
-            <Grid item xs={12} sm={6} lg={4} md={6} key={contact.id}>
+            <Grid item xs={12} sm={6} lg={4} md={6} key={contact._id}>
               <Card className="contact-card">
                 <CardContent className="contact-card-content">
                   {/* Header Section */}
@@ -98,8 +109,11 @@ const DirectContact = ({ contacts, onDelete }) => {
                         <LuUser size={20} />
                       </div>
                       <div className="contact-basic-info">
-                        <Typography className="contact-name" title={contact.name}>
-                          {truncateText(contact.name, 20)}
+                        <Typography
+                          className="contact-name"
+                          title={contact.fullname}
+                        >
+                          {truncateText(contact.fullname, 20)}
                         </Typography>
                         <div className="contact-email" title={contact.email}>
                           <LuMail size={12} />
@@ -110,7 +124,7 @@ const DirectContact = ({ contacts, onDelete }) => {
                     <IconButton
                       size="small"
                       className="card-delete-btn"
-                      onClick={() => onDelete(contact.id)}
+                      onClick={() => onDelete(contact._id)}
                       title="Delete"
                     >
                       <LuTrash2 size={16} />
@@ -141,7 +155,7 @@ const DirectContact = ({ contacts, onDelete }) => {
                   <div className="contact-card-footer">
                     <div className="contact-date-badge">
                       <LuCalendar size={12} />
-                      <span>{formatDate(contact.creation_date)}</span>
+                      <span>{formatDate(contact._creationTime)}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -168,7 +182,7 @@ const DirectContact = ({ contacts, onDelete }) => {
                 </div>
                 <div className="dialog-header-info">
                   <Typography variant="h6" className="dialog-contact-name">
-                    {selectedContact.name}
+                    {selectedContact.fullname}
                   </Typography>
                   <div className="dialog-contact-email">
                     <LuMail size={14} />
@@ -189,7 +203,10 @@ const DirectContact = ({ contacts, onDelete }) => {
               <div className="dialog-section">
                 <div className="dialog-section-header">
                   <LuMessageSquare size={18} />
-                  <Typography variant="subtitle2" className="dialog-section-title">
+                  <Typography
+                    variant="subtitle2"
+                    className="dialog-section-title"
+                  >
                     Full Message
                   </Typography>
                 </div>
@@ -202,7 +219,9 @@ const DirectContact = ({ contacts, onDelete }) => {
                 <div className="dialog-meta-item">
                   <LuCalendar size={14} />
                   <span className="meta-label">Received:</span>
-                  <span className="meta-value">{formatDate(selectedContact.creation_date)}</span>
+                  <span className="meta-value">
+                    {formatDate(selectedContact._creationTime)}
+                  </span>
                 </div>
               </div>
             </DialogContent>
@@ -212,7 +231,7 @@ const DirectContact = ({ contacts, onDelete }) => {
                 variant="outlined"
                 className="dialog-delete-btn"
                 startIcon={<LuTrash2 size={16} />}
-                onClick={() => handleDeleteFromDialog(selectedContact.id)}
+                onClick={() => handleDeleteFromDialog(selectedContact._id)}
               >
                 Delete
               </Button>

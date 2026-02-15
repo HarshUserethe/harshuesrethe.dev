@@ -26,7 +26,11 @@
 .page-header-content {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
+}
+.sm-header-content {
+  flex: 1;
 }
 
 .page-header-icon-wrapper {
@@ -82,7 +86,7 @@
 }
 
 .project-card-content {
-  padding: 20px !important;
+  padding: 30px !important;
 }
 
 /* Card Header */
@@ -95,7 +99,10 @@
 }
 
 .card-header-left {
-  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   min-width: 0;
 }
 
@@ -213,6 +220,9 @@
   background: #f8fafc;
   border-radius: 6px;
   border: 1px solid #f1f5f9;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .description-text {
@@ -317,7 +327,9 @@
 .modal-content {
   background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -522,9 +534,20 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-        .css-1dybbl5-MuiChip-label {
-        font-size: 14px !important;
-    }
+  .page-header-icon-wrapper {
+    display: none;
+  }
+  .dashboard-content {
+    margin-top: 8dvh;
+  }
+  .page-header-content {
+    flex: 1;
+    padding: 0px 10px;
+  }
+
+  .css-1dybbl5-MuiChip-label {
+    font-size: 14px !important;
+  }
   .queries-grid {
     grid-template-columns: 1fr;
   }

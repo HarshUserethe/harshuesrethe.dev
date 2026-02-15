@@ -4,8 +4,13 @@ import Sidebar from '../components/dashboard/Sidebar.jsx';
 import DirectContact from '../components/dashboard/DirectContact';
 import ProjectQuery from '../components/dashboard/ProjectQuery';
 import '../assets/styles/dashboard-styles/Dashboard.css';
+import { useQuery } from "convex/react";
+import { api } from '../../convex/_generated/api.js';
 
 const Dashboard = () => {
+  const directContactsData = useQuery(api.apis.get.getCasualContact.get);
+  const smartContactsData = useQuery(api.apis.get.getSmartContact.get);
+  
   const [activeTab, setActiveTab] = useState('direct-contact');
   const [directContacts, setDirectContacts] = useState([]);
   const [projectQueries, setProjectQueries] = useState([]);
@@ -113,20 +118,22 @@ const Dashboard = () => {
     setProjectQueries(updatedQueries);
     localStorage.setItem('projectQueries', JSON.stringify(updatedQueries));
   };
-
+  
+ 
+ 
   return (
     <div className="dashboard-container">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <Box className="dashboard-content">
         {activeTab === 'direct-contact' && (
           <DirectContact
-            contacts={directContacts}
+            contacts={directContactsData}
             onDelete={handleDeleteDirectContact}
           />
         )}
         {activeTab === 'project-query' && (
           <ProjectQuery
-            queries={projectQueries}
+            queries={smartContactsData}
             onDelete={handleDeleteProjectQuery}
             onUpdateStatus={handleUpdateStatus}
           />

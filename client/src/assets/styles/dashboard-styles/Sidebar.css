@@ -134,6 +134,12 @@
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .mobile-menu-toggle {
+      width: 92dvw;
+    border-radius: 0px !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+  }
   .sidebar {
     transform: translateX(-100%);
   }

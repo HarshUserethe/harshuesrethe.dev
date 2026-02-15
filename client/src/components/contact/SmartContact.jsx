@@ -98,25 +98,25 @@ const SmartContact = () => {
   // Form options
   const requestTypes = [
     {
-      value: 'feature',
+      value: 'New Feature',
       label: 'New Feature',
       icon: <LuSparkle color={styles.mainTheme.epicColor} />,
       gradient: 'linear-gradient(135deg, #00b09b, #96c93d)',
     },
     {
-      value: 'bug',
+      value: 'Bug Fix',
       label: 'Bug Fix',
       icon: <LuWrench color={styles.mainTheme.epicColor} />,
       gradient: 'linear-gradient(135deg, #FF512F, #DD2476)',
     },
     {
-      value: 'project',
+      value: 'Full Project',
       label: 'Full Project',
       icon: <LuRocket color={styles.mainTheme.epicColor} />,
       gradient: 'linear-gradient(135deg, #6a11cb, #2575fc)',
     },
     {
-      value: 'consultation',
+      value: 'Consultation',
       label: 'Consultation',
       icon: <LuMessagesSquare color={styles.mainTheme.epicColor} />,
       gradient: 'linear-gradient(135deg, #f093fb, #f5576c)',
@@ -124,28 +124,28 @@ const SmartContact = () => {
   ];
 
   const projectCategories = [
-    { value: 'web', label: 'Web Dev.', icon: '🌐' },
-    { value: 'mobile', label: 'Mobile App', icon: '📱' },
-    { value: 'backend', label: 'Backend/API', icon: '⚙️' },
-    { value: 'fullstack', label: 'Full Stack', icon: '💻' },
-    { value: 'uiux', label: 'UI/UX Design', icon: '🎨' },
-    { value: 'other', label: 'Other', icon: '📦' },
+    { value: 'Web Development', label: 'Web Dev.', icon: '🌐' },
+    { value: 'Mobile App', label: 'Mobile App', icon: '📱' },
+    { value: 'Backend/API', label: 'Backend/API', icon: '⚙️' },
+    { value: 'Full Stack', label: 'Full Stack', icon: '💻' },
+    { value: 'UI/UX Design', label: 'UI/UX Design', icon: '🎨' },
+    { value: 'Other', label: 'Other', icon: '📦' },
   ];
 
   const timelines = [
-    { value: 'urgent', label: 'Urgent (1-2 weeks)', icon: '⚡' },
-    { value: 'short', label: 'Short (2-4 weeks)', icon: '🏃' },
-    { value: 'medium', label: 'Medium (1-3 months)', icon: '📅' },
-    { value: 'long', label: 'Long (3+ months)', icon: '🗓️' },
-    { value: 'flexible', label: 'Flexible', icon: '🤝' },
+    { value: 'Urgent (1-2 weeks)', label: 'Urgent (1-2 weeks)', icon: '⚡' },
+    { value: 'Short (2-4 weeks)', label: 'Short (2-4 weeks)', icon: '🏃' },
+    { value: 'Medium (1-3 months)', label: 'Medium (1-3 months)', icon: '📅' },
+    { value: 'Long (3+ months)', label: 'Long (3+ months)', icon: '🗓️' },
+    { value: 'Flexible', label: 'Flexible', icon: '🤝' },
   ];
 
   const budgetRanges = [
-    { value: 'small', label: '$500 - $2,000', icon: '💵' },
-    { value: 'medium', label: '$2,000 - $5,000', icon: '💰' },
-    { value: 'large', label: '$5,000 - $10,000', icon: '💎' },
-    { value: 'enterprise', label: '$10,000+', icon: '🏆' },
-    { value: 'discuss', label: "Let's Discuss", icon: '💬' },
+    { value: '$500 - $2,000', label: '$500 - $2,000', icon: '💵' },
+    { value: '$2,000 - $5,000', label: '$2,000 - $5,000', icon: '💰' },
+    { value: '$5,000 - $10,000', label: '$5,000 - $10,000', icon: '💎' },
+    { value: '$10,000+', label: '$10,000+', icon: '🏆' },
+    { value: 'Discussion Needed', label: "Let's Discuss", icon: '💬' },
   ];
 
   // Handle form field changes

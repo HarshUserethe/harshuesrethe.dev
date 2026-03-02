@@ -1,3 +1,4 @@
+import '../styles/contact-styles/ContactSection.css';
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button, Avatar } from '@mui/material';
 import { LuArrowRight, LuSparkle } from 'react-icons/lu';
@@ -9,7 +10,6 @@ import {
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import ShinyText from '../shared/ShinyText';
-import '../styles/contact-styles/ContactSection.css';
 import { useSelector } from 'react-redux';
 import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';

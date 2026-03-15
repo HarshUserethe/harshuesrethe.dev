@@ -1,78 +1,172 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   Box,
   Typography,
   TextField,
   Button,
-  Avatar,
   Stepper,
   Step,
   StepLabel,
   FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  Chip,
+  InputLabel,
+  Select,
+  MenuItem,
   LinearProgress,
-  Alert,
   CircularProgress,
   Paper,
   IconButton,
+  Avatar
 } from '@mui/material';
 import {
-  LuMessagesSquare,
-  LuRocket,
   LuSparkle,
-  LuWrench,
+  LuArrowLeft,
+  LuArrowRight,
+  LuCloudUpload,
+  LuX,
+  LuFileText,
+  LuCircleCheckBig,
+  LuSend,
+  LuUser,
+  LuMail,
+  LuPenLine,
 } from 'react-icons/lu';
 import {
   FaLinkedinIn,
   FaGithub,
   FaInstagram,
   FaEnvelope,
-  FaCheckCircle,
-  FaCloudUploadAlt,
-  FaTimesCircle,
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import ShinyText from '../shared/ShinyText';
 import '../styles/contact-styles/SmartContact.css';
 import { useSelector } from 'react-redux';
-import SplitText from '../shared/SplitText';
 import AnimatedButton from '../shared/AnimatedButton';
-import HarshUseretheImage from '../../assets/images/picofmine.webp';
 import Warning from '../shared/Warning';
 import { useMutation } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
+import HarshUseretheImage from '../../assets/images/picofmine.webp';
+
+/* ──────────────── OPTION DATA ──────────────── */
+
+const REQUEST_TYPES = [
+  { value: 'New Feature', label: 'New Feature' },
+  { value: 'Bug Fix', label: 'Bug Fix' },
+  { value: 'Full Project', label: 'Full Project' },
+  { value: 'Consultation', label: 'Consultation' },
+];
+
+const PROJECT_CATEGORIES = [
+  { value: 'Web Development', label: 'Web Development' },
+  { value: 'Mobile App', label: 'Mobile App' },
+  { value: 'Backend/API', label: 'Backend / API' },
+  { value: 'Full Stack', label: 'Full Stack' },
+  { value: 'UI/UX Design', label: 'UI / UX Design' },
+  { value: 'Other', label: 'Other' },
+];
+
+const TIMELINES = [
+  { value: 'Urgent (1-2 weeks)', label: 'Urgent — 1-2 weeks' },
+  { value: 'Short (2-4 weeks)', label: 'Short — 2-4 weeks' },
+  { value: 'Medium (1-3 months)', label: 'Medium — 1-3 months' },
+  { value: 'Long (3+ months)', label: 'Long — 3+ months' },
+  { value: 'Flexible', label: 'Flexible' },
+];
+
+const BUDGET_RANGES = [
+  { value: '$500 - $2,000', label: '$500 – $2,000' },
+  { value: '$2,000 - $5,000', label: '$2,000 – $5,000' },
+  { value: '$5,000 - $10,000', label: '$5,000 – $10,000' },
+  { value: '$10,000+', label: '$10,000+' },
+  { value: 'Discussion Needed', label: "Let's Discuss" },
+];
+
+const STEPS = ['Service', 'Schedule', 'Details', 'Attachments'];
+
+const socialLinks = [
+  {
+    icon: <FaLinkedinIn />,
+    url: 'https://www.linkedin.com/in/harshuserethe',
+    label: 'LinkedIn',
+  },
+  {
+    icon: <FaGithub />,
+    url: 'https://github.com/HarshUserethe',
+    label: 'GitHub',
+  },
+  {
+    icon: <FaInstagram />,
+    url: 'https://instagram.com/harshuserethe',
+    label: 'Instagram',
+  },
+  {
+    icon: <FaEnvelope />,
+    url: 'mailto:useretheharsh@gmail.com',
+    label: 'Email',
+  },
+  {
+    icon: <FaXTwitter />,
+    url: 'https://x.com/HarshUserethe04',
+    label: 'Twitter',
+  },
+];
+
+/* ──────────────── MUI THEME HELPERS ──────────────── */
+
+const selectMenuProps = (bg) => ({
+  PaperProps: {
+    sx: {
+      bgcolor: bg || '#1e1e1e',
+      '& .MuiMenuItem-root': {
+        fontSize: '14px',
+        '&:hover': { bgcolor: 'rgba(255,255,255,0.06)' },
+        '&.Mui-selected': {
+          bgcolor: 'rgba(173,255,47,0.1)',
+          '&:hover': { bgcolor: 'rgba(173,255,47,0.15)' },
+        },
+      },
+    },
+  },
+});
+
+const textFieldSx = (styles) => ({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': { borderColor: styles?.mainTheme?.textFieldBorderColor },
+    '&:hover fieldset': { borderColor: styles?.mainTheme?.highlightedColor },
+    '&.Mui-focused fieldset': { borderColor: styles?.mainTheme?.highlightedColor },
+    '& input, & textarea': { color: styles?.mainTheme?.color, fontSize: '14px' },
+  },
+  '& .MuiInputLabel-root': { color: styles?.mainTheme?.textFieldBorderColor },
+  '& .MuiInputLabel-root.Mui-focused': { color: styles?.mainTheme?.highlightedColor },
+  '& .MuiFormHelperText-root': { color: '#f44336' },
+});
+
+const selectSx = (styles) => ({
+  '& .MuiOutlinedInput-notchedOutline': {
+    borderColor: styles?.mainTheme?.textFieldBorderColor,
+  },
+  '&:hover .MuiOutlinedInput-notchedOutline': {
+    borderColor: styles?.mainTheme?.highlightedColor,
+  },
+  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+    borderColor: styles?.mainTheme?.highlightedColor,
+  },
+  '& .MuiSelect-select': { color: styles?.mainTheme?.color, fontSize: '14px' },
+  '& .MuiSvgIcon-root': { color: styles?.mainTheme?.textFieldBorderColor },
+});
+
+/* ──────────────── COMPONENT ──────────────── */
 
 const SmartContact = () => {
-  const createContact = useMutation(
-    api.apis.post.insertSmartContact.createSmartContact
-  );
-  const generateUploadUrl = useMutation(
-    api.apis.post.generateUploadUrl.generateUploadUrl
-  );
-
+  const createContact = useMutation(api.apis.post.insertSmartContact.createSmartContact);
+  const generateUploadUrl = useMutation(api.apis.post.generateUploadUrl.generateUploadUrl);
   const styles = useSelector((state) => state.theme.styles);
 
-  // Multi-step form state
   const [activeStep, setActiveStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
   const [errMessage, setErrMessage] = useState(null);
 
-  useEffect(() => {
-    if (!errMessage) return;
-
-    const timer = setTimeout(() => {
-      setErrMessage(null);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [errMessage]);
-
-  // Form data - consolidated state object
   const [formData, setFormData] = useState({
     requestType: '',
     projectCategory: '',
@@ -85,265 +179,153 @@ const SmartContact = () => {
     uploadedFiles: [],
   });
 
-  // Step configuration
-  const steps = [
-    'Type',
-    'Category',
-    'Timeline',
-    'Budget',
-    'Info',
-    'Attachments',
-  ];
+  useEffect(() => {
+    if (!errMessage) return;
+    const t = setTimeout(() => setErrMessage(null), 5000);
+    return () => clearTimeout(t);
+  }, [errMessage]);
 
-  // Form options
-  const requestTypes = [
-    {
-      value: 'New Feature',
-      label: 'New Feature',
-      icon: <LuSparkle color={styles.mainTheme.epicColor} />,
-      gradient: 'linear-gradient(135deg, #00b09b, #96c93d)',
+  /* ── Handlers ── */
+
+  const handleChange = useCallback(
+    (field) => (e) => {
+      setFormData((prev) => ({ ...prev, [field]: e.target.value }));
+      setErrors((prev) => ({ ...prev, [field]: '' }));
     },
-    {
-      value: 'Bug Fix',
-      label: 'Bug Fix',
-      icon: <LuWrench color={styles.mainTheme.epicColor} />,
-      gradient: 'linear-gradient(135deg, #FF512F, #DD2476)',
-    },
-    {
-      value: 'Full Project',
-      label: 'Full Project',
-      icon: <LuRocket color={styles.mainTheme.epicColor} />,
-      gradient: 'linear-gradient(135deg, #6a11cb, #2575fc)',
-    },
-    {
-      value: 'Consultation',
-      label: 'Consultation',
-      icon: <LuMessagesSquare color={styles.mainTheme.epicColor} />,
-      gradient: 'linear-gradient(135deg, #f093fb, #f5576c)',
-    },
-  ];
+    []
+  );
 
-  const projectCategories = [
-    { value: 'Web Development', label: 'Web Dev.', icon: '🌐' },
-    { value: 'Mobile App', label: 'Mobile App', icon: '📱' },
-    { value: 'Backend/API', label: 'Backend/API', icon: '⚙️' },
-    { value: 'Full Stack', label: 'Full Stack', icon: '💻' },
-    { value: 'UI/UX Design', label: 'UI/UX Design', icon: '🎨' },
-    { value: 'Other', label: 'Other', icon: '📦' },
-  ];
-
-  const timelines = [
-    { value: 'Urgent (1-2 weeks)', label: 'Urgent (1-2 weeks)', icon: '⚡' },
-    { value: 'Short (2-4 weeks)', label: 'Short (2-4 weeks)', icon: '🏃' },
-    { value: 'Medium (1-3 months)', label: 'Medium (1-3 months)', icon: '📅' },
-    { value: 'Long (3+ months)', label: 'Long (3+ months)', icon: '🗓️' },
-    { value: 'Flexible', label: 'Flexible', icon: '🤝' },
-  ];
-
-  const budgetRanges = [
-    { value: '$500 - $2,000', label: '$500 - $2,000', icon: '💵' },
-    { value: '$2,000 - $5,000', label: '$2,000 - $5,000', icon: '💰' },
-    { value: '$5,000 - $10,000', label: '$5,000 - $10,000', icon: '💎' },
-    { value: '$10,000+', label: '$10,000+', icon: '🏆' },
-    { value: 'Discussion Needed', label: "Let's Discuss", icon: '💬' },
-  ];
-
-  // Handle form field changes
-  const handleChange = (field) => (e) => {
-    setFormData({
-      ...formData,
-      [field]: e.target.value,
-    });
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors({ ...errors, [field]: '' });
-    }
-  };
-
-  // Handle file upload (UI only)
-  const handleFileUpload = (e) => {
+  const handleFileUpload = useCallback((e) => {
     const MAX_SIZE = 10 * 1024 * 1024;
     const file = e.target.files[0];
-
     if (!file) return;
-
-    // validate size
     if (file.size > MAX_SIZE) {
-      setErrMessage('File must be less than 10MB');
+      setErrMessage('File must be less than 10 MB');
       e.target.value = '';
       return;
     }
-
-    // clear error if valid
     setErrMessage('');
-
-    const fileData = {
-      name: file.name,
-      size: (file.size / 1024).toFixed(2) + ' KB',
-      type: file.type,
-    };
-
-    // replace previous file (only one allowed)
     setFormData((prev) => ({
       ...prev,
-      uploadedFiles: [fileData],
+      uploadedFiles: [{ name: file.name, size: `${(file.size / 1024).toFixed(2)} KB`, type: file.type }],
     }));
-
-    // allow selecting same file again
     e.target.value = '';
-  };
+  }, []);
 
-  // Remove uploaded file
-  const removeFile = (index) => {
-    const updatedFiles = formData.uploadedFiles.filter((_, i) => i !== index);
-    setFormData({ ...formData, uploadedFiles: updatedFiles });
-  };
+  const removeFile = useCallback((index) => {
+    setFormData((prev) => ({
+      ...prev,
+      uploadedFiles: prev.uploadedFiles.filter((_, i) => i !== index),
+    }));
+  }, []);
 
-  // Validation logic for each step
-  const validateStep = (step) => {
-    const newErrors = {};
+  /* ── Validation ── */
 
-    switch (step) {
-      case 0: // Request Type
-        if (!formData.requestType) {
-          newErrors.requestType = 'Please select a request type';
-        }
-        break;
-      case 1: // Project Category
-        if (!formData.projectCategory) {
-          newErrors.projectCategory = 'Please select a project category';
-        }
-        break;
-      case 2: // Timeline
-        if (!formData.timeline) {
-          newErrors.timeline = 'Please select a timeline';
-        }
-        break;
-      case 3: // Budget
-        if (!formData.budget) {
-          newErrors.budget = 'Please select a budget range';
-        }
-        break;
-      case 4: // Project Details
-        if (!formData.fullName.trim()) {
-          newErrors.fullName = 'Full name is required';
-        }
-        if (!formData.email.trim()) {
-          newErrors.email = 'Email is required';
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-          newErrors.email = 'Please enter a valid email';
-        }
-        if (!formData.projectTitle.trim()) {
-          newErrors.projectTitle = 'Project title is required';
-        }
-        if (!formData.projectDescription.trim()) {
-          newErrors.projectDescription = 'Project description is required';
-        } else if (formData.projectDescription.trim().length < 20) {
-          newErrors.projectDescription =
-            'Description must be at least 20 characters';
-        }
-        break;
-      case 5: // Attachments (optional, no validation)
-        break;
+  const validateStep = useCallback(
+    (step) => {
+      const errs = {};
+      switch (step) {
+        case 0:
+          if (!formData.requestType) errs.requestType = 'Select a project type';
+          if (!formData.projectCategory) errs.projectCategory = 'Select a category';
+          break;
+        case 1:
+          if (!formData.timeline) errs.timeline = 'Select a timeline';
+          if (!formData.budget) errs.budget = 'Select a budget range';
+          break;
+        case 2:
+          if (!formData.fullName.trim()) errs.fullName = 'Full name is required';
+          if (!formData.email.trim()) errs.email = 'Email is required';
+          else if (!/\S+@\S+\.\S+/.test(formData.email)) errs.email = 'Enter a valid email';
+          if (!formData.projectTitle.trim()) errs.projectTitle = 'Project title is required';
+          if (!formData.projectDescription.trim()) errs.projectDescription = 'Description is required';
+          else if (formData.projectDescription.trim().length < 20) errs.projectDescription = 'At least 20 characters';
+          break;
+        case 3:
+          break;
+        default:
+          break;
+      }
+      setErrors(errs);
+      return Object.keys(errs).length === 0;
+    },
+    [formData]
+  );
+
+  const isStepValid = useMemo(() => {
+    switch (activeStep) {
+      case 0:
+        return !!(formData.requestType && formData.projectCategory);
+      case 1:
+        return !!(formData.timeline && formData.budget);
+      case 2:
+        return !!(
+          formData.fullName.trim() &&
+          formData.email.trim() &&
+          /\S+@\S+\.\S+/.test(formData.email) &&
+          formData.projectTitle.trim() &&
+          formData.projectDescription.trim().length >= 20
+        );
+      case 3:
+        return true;
       default:
-        break;
+        return false;
     }
+  }, [activeStep, formData]);
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Navigate to next step
   const handleNext = () => {
-    if (validateStep(activeStep)) {
-      setActiveStep((prevStep) => prevStep + 1);
-      window.scrollTo({ top: 200, behavior: 'smooth' });
-    }
+    if (validateStep(activeStep)) setActiveStep((s) => s + 1);
   };
 
-  // Navigate to previous step
-  const handleBack = () => {
-    setActiveStep((prevStep) => prevStep - 1);
-    window.scrollTo({ top: 200, behavior: 'smooth' });
-  };
+  const handleBack = () => setActiveStep((s) => s - 1);
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     let storageId = null;
-
-    // if user attached file
     if (formData.uploadedFiles?.[0]) {
       const file = formData.uploadedFiles[0];
-
-      // 1. get upload url
       const uploadUrl = await generateUploadUrl();
-
-      // 2. upload file
       const result = await fetch(uploadUrl, {
         method: 'POST',
         headers: { 'Content-Type': file.type },
         body: file,
       });
-
       const json = await result.json();
       storageId = json.storageId;
     }
-
-    // Validate all steps before submission
-    let allValid = true;
-    for (let i = 0; i < steps.length - 1; i++) {
+    for (let i = 0; i < STEPS.length - 1; i++) {
       if (!validateStep(i)) {
-        allValid = false;
         setActiveStep(i);
-        break;
+        return;
       }
     }
-
-    if (!allValid) return;
     setIsSubmitting(true);
-
     try {
       await createContact({
         attachments:
           formData.uploadedFiles?.length > 0
-            ? [
-                {
-                  file_name: formData.uploadedFiles[0].name,
-                  file_type: formData.uploadedFiles[0].type,
-                  file_url: storageId,
-                },
-              ]
+            ? [{ file_name: formData.uploadedFiles[0].name, file_type: formData.uploadedFiles[0].type, file_url: storageId }]
             : [],
-
         budget: formData.budget,
-
         client_info: {
           email: formData.email,
           fullname: formData.fullName,
           prj_description: formData.projectDescription,
           prj_title: formData.projectTitle,
         },
-
         prj_category: formData.projectCategory,
         prj_type: formData.requestType,
         status: 'new',
         timeline: formData.timeline,
       });
       setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
-      setErrMessage({
-        type: 'error',
-        data: error.message || 'Something went wrong',
-      });
+      setErrMessage({ type: 'error', data: error.message || 'Something went wrong' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Reset form
   const handleReset = () => {
     setFormData({
       requestType: '',
@@ -361,690 +343,271 @@ const SmartContact = () => {
     setErrors({});
   };
 
-  // Render different step content
-  const renderStepContent = (step) => {
-    switch (step) {
-      case 0: // Request Type
-        return (
-          <Box className="step-content">
-            <Typography
-              variant="h6"
-              sx={{
-                color: styles?.mainTheme?.color,
-                marginBottom: '24px',
-                fontSize: '20px',
-              }}
-            >
-              What type of request do you have?
-            </Typography>
-            <FormControl
-              component="fieldset"
-              fullWidth
-              error={!!errors.requestType}
-            >
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-                  gap: '16px',
-                }}
-              >
-                {requestTypes.map((option) => (
-                  <Paper
-                    className="paper-container"
-                    key={option.value}
-                    onClick={() => {
-                      setFormData({ ...formData, requestType: option.value });
-                      setErrors({ ...errors, requestType: '' });
-                    }}
-                    sx={{
-                      background: '#2d2d2dc8',
-                      borderRadius: '10px',
-                      padding: '20px',
-                      cursor: 'pointer',
-                      border:
-                        formData.requestType === option.value
-                          ? `2px solid ${styles?.mainTheme?.highlightedColor}`
-                          : `1px solid ${styles?.mainTheme?.textFieldBorderColor}`,
-                      backgroundColor:
-                        formData.requestType === option.value
-                          ? 'rgba(173, 255, 47, 0.05)'
-                          : styles?.mainTheme?.profileCardBackground,
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                        transform: 'translateY(-2px)',
-                      },
-                    }}
-                  >
-                    <Typography
-                      className="sm-icons"
-                      sx={{ fontSize: '32px', marginBottom: '8px' }}
-                    >
-                      {option.icon}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: styles?.mainTheme?.color,
-                        fontWeight: 500,
-                        fontSize: '16px',
-                      }}
-                    >
-                      {option.label}
-                    </Typography>
-                  </Paper>
-                ))}
-              </Box>
-              {errors.requestType && (
-                <Alert severity="error" sx={{ marginTop: '16px' }}>
-                  {errors.requestType}
-                </Alert>
-              )}
-            </FormControl>
-          </Box>
-        );
+  /* ──────────────── STEP CONTENT ──────────────── */
 
-      case 1: // Project Category
+  const renderStep = () => {
+    switch (activeStep) {
+      /* ── Step 0: Service ── */
+      case 0:
         return (
-          <Box className="step-content">
-            <Typography
-              variant="h6"
-              sx={{
-                color: styles?.mainTheme?.color,
-                marginBottom: '24px',
-                fontSize: '20px',
-              }}
-            >
-              Which category best describes your project?
+          <>
+            <Typography className="sc-step-title" sx={{ color: styles?.mainTheme?.color }}>
+              What kind of work are you looking for?
             </Typography>
-            <FormControl
-              component="fieldset"
-              fullWidth
-              error={!!errors.projectCategory}
-            >
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: {
-                    xs: '1fr',
-                    sm: '1fr 1fr',
-                    md: '1fr 1fr 1fr',
-                  },
-                  gap: '16px',
-                }}
-              >
-                {projectCategories.map((option) => (
-                  <Paper
-                    className="paper-container"
-                    key={option.value}
-                    onClick={() => {
-                      setFormData({
-                        ...formData,
-                        projectCategory: option.value,
-                      });
-                      setErrors({ ...errors, projectCategory: '' });
-                    }}
-                    sx={{
-                      background: 'rgba(0, 0, 0, 0.87)',
-                      borderRadius: '10px',
-                      padding: '20px',
-                      cursor: 'pointer',
-                      border:
-                        formData.projectCategory === option.value
-                          ? `2px solid ${styles?.mainTheme?.highlightedColor}`
-                          : `1px solid ${styles?.mainTheme?.textFieldBorderColor}`,
-                      backgroundColor:
-                        formData.projectCategory === option.value
-                          ? 'rgba(173, 255, 47, 0.05)'
-                          : styles?.mainTheme?.profileCardBackground,
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                        transform: 'translateY(-2px)',
-                      },
-                    }}
-                  >
-                    <Typography
-                      className="sm-icons"
-                      sx={{ fontSize: '32px', marginBottom: '8px' }}
-                    >
-                      {option.icon}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: styles?.mainTheme?.color,
-                        fontWeight: 500,
-                        fontSize: '14px',
-                      }}
-                    >
-                      {option.label}
-                    </Typography>
-                  </Paper>
-                ))}
-              </Box>
-              {errors.projectCategory && (
-                <Alert severity="error" sx={{ marginTop: '16px' }}>
-                  {errors.projectCategory}
-                </Alert>
-              )}
-            </FormControl>
-          </Box>
-        );
 
-      case 2: // Timeline
-        return (
-          <Box className="step-content">
-            <Typography
-              variant="h6"
-              sx={{
-                color: styles?.mainTheme?.color,
-                marginBottom: '24px',
-                fontSize: '20px',
-              }}
-            >
-              What's your preferred timeline?
-            </Typography>
-            <FormControl
-              component="fieldset"
-              fullWidth
-              error={!!errors.timeline}
-            >
-              <RadioGroup
-                value={formData.timeline}
-                onChange={handleChange('timeline')}
-              >
-                <Box
-                  sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
+            <Box className="sc-fields-grid">
+              {/* Project Type */}
+              <FormControl fullWidth error={!!errors.requestType}>
+                <InputLabel sx={{ color: styles?.mainTheme?.textFieldBorderColor, '&.Mui-focused': { color: styles?.mainTheme?.highlightedColor } }}>
+                  Project Type
+                </InputLabel>
+                <Select
+                  value={formData.requestType}
+                  label="Project Type"
+                  onChange={handleChange('requestType')}
+                  sx={selectSx(styles)}
+                  MenuProps={selectMenuProps(styles?.mainTheme?.profileCardBackground)}
                 >
-                  {timelines.map((option) => (
-                    <Paper
-                      key={option.value}
-                      sx={{
-                        background: '#2d2d2dc8',
-                        borderRadius: '10px',
-                        padding: '16px 20px',
-                        cursor: 'pointer',
-                        border:
-                          formData.timeline === option.value
-                            ? `2px solid ${styles?.mainTheme?.highlightedColor}`
-                            : `1px solid ${styles?.mainTheme?.textFieldBorderColor}`,
-                        backgroundColor:
-                          formData.timeline === option.value
-                            ? 'rgba(173, 255, 47, 0.05)'
-                            : styles?.mainTheme?.profileCardBackground,
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          borderColor: styles?.mainTheme?.highlightedColor,
-                        },
-                      }}
-                      onClick={() => {
-                        setFormData({ ...formData, timeline: option.value });
-                        setErrors({ ...errors, timeline: '' });
-                      }}
-                    >
-                      <FormControlLabel
-                        value={option.value}
-                        control={
-                          <Radio
-                            sx={{
-                              color: styles?.mainTheme?.textFieldBorderColor,
-                              '&.Mui-checked': {
-                                color: styles?.mainTheme?.highlightedColor,
-                              },
-                            }}
-                          />
-                        }
-                        label={
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px',
-                            }}
-                          >
-                            <span style={{ fontSize: '20px' }}>
-                              {option.icon}
-                            </span>
-                            <Typography
-                              sx={{ color: styles?.mainTheme?.color }}
-                            >
-                              {option.label}
-                            </Typography>
-                          </Box>
-                        }
-                        sx={{ margin: 0, width: '100%' }}
-                      />
-                    </Paper>
+                  {REQUEST_TYPES.map((opt) => (
+                    <MenuItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </MenuItem>
                   ))}
-                </Box>
-              </RadioGroup>
-              {errors.timeline && (
-                <Alert severity="error" sx={{ marginTop: '16px' }}>
-                  {errors.timeline}
-                </Alert>
-              )}
-            </FormControl>
-          </Box>
-        );
+                </Select>
+                {errors.requestType && (
+                  <Typography sx={{ color: '#f44336', fontSize: '12px', mt: '6px', ml: '14px' }}>{errors.requestType}</Typography>
+                )}
+              </FormControl>
 
-      case 3: // Budget
-        return (
-          <Box className="step-content">
-            <Typography
-              variant="h6"
-              sx={{
-                color: styles?.mainTheme?.color,
-                marginBottom: '24px',
-                fontSize: '20px',
-              }}
-            >
-              What's your budget range?
-            </Typography>
-            <FormControl component="fieldset" fullWidth error={!!errors.budget}>
-              <RadioGroup
-                value={formData.budget}
-                onChange={handleChange('budget')}
-              >
-                <Box
-                  sx={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
+              {/* Category */}
+              <FormControl fullWidth error={!!errors.projectCategory}>
+                <InputLabel sx={{ color: styles?.mainTheme?.textFieldBorderColor, '&.Mui-focused': { color: styles?.mainTheme?.highlightedColor } }}>
+                  Service Category
+                </InputLabel>
+                <Select
+                  value={formData.projectCategory}
+                  label="Service Category"
+                  onChange={handleChange('projectCategory')}
+                  sx={selectSx(styles)}
+                  MenuProps={selectMenuProps(styles?.mainTheme?.profileCardBackground)}
                 >
-                  {budgetRanges.map((option) => (
-                    <Paper
-                      key={option.value}
-                      sx={{
-                        background: '#2d2d2dc8',
-                        borderRadius: '10px',
-                        padding: '16px 20px',
-                        cursor: 'pointer',
-                        border:
-                          formData.budget === option.value
-                            ? `2px solid ${styles?.mainTheme?.highlightedColor}`
-                            : `1px solid ${styles?.mainTheme?.textFieldBorderColor}`,
-                        backgroundColor:
-                          formData.budget === option.value
-                            ? 'rgba(173, 255, 47, 0.05)'
-                            : styles?.mainTheme?.profileCardBackground,
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          borderColor: styles?.mainTheme?.highlightedColor,
-                        },
-                      }}
-                      onClick={() => {
-                        setFormData({ ...formData, budget: option.value });
-                        setErrors({ ...errors, budget: '' });
-                      }}
-                    >
-                      <FormControlLabel
-                        value={option.value}
-                        control={
-                          <Radio
-                            sx={{
-                              color: styles?.mainTheme?.textFieldBorderColor,
-                              '&.Mui-checked': {
-                                color: styles?.mainTheme?.highlightedColor,
-                              },
-                            }}
-                          />
-                        }
-                        label={
-                          <Box
-                            sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '8px',
-                            }}
-                          >
-                            <span style={{ fontSize: '20px' }}>
-                              {option.icon}
-                            </span>
-                            <Typography
-                              sx={{ color: styles?.mainTheme?.color }}
-                            >
-                              {option.label}
-                            </Typography>
-                          </Box>
-                        }
-                        sx={{ margin: 0, width: '100%' }}
-                      />
-                    </Paper>
+                  {PROJECT_CATEGORIES.map((opt) => (
+                    <MenuItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </MenuItem>
                   ))}
-                </Box>
-              </RadioGroup>
-              {errors.budget && (
-                <Alert severity="error" sx={{ marginTop: '16px' }}>
-                  {errors.budget}
-                </Alert>
-              )}
-            </FormControl>
-          </Box>
+                </Select>
+                {errors.projectCategory && (
+                  <Typography sx={{ color: '#f44336', fontSize: '12px', mt: '6px', ml: '14px' }}>{errors.projectCategory}</Typography>
+                )}
+              </FormControl>
+            </Box>
+          </>
         );
 
-      case 4: // Project Details
+      /* ── Step 1: Schedule ── */
+      case 1:
         return (
-          <Box className="step-content">
-            <Typography
-              variant="h6"
-              sx={{
-                color: styles?.mainTheme?.color,
-                marginBottom: '24px',
-                fontSize: '20px',
-              }}
-            >
-              Tell me about your project
+          <>
+            <Typography className="sc-step-title" sx={{ color: styles?.mainTheme?.color }}>
+              Timeline & Budget
             </Typography>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              {/* Full Name */}
-              <Box>
-                <Typography
-                  sx={{
-                    color: styles?.mainTheme?.color,
-                    marginBottom: '8px',
-                    fontSize: '14px',
-                  }}
+            <Box className="sc-fields-grid">
+              <FormControl fullWidth error={!!errors.timeline}>
+                <InputLabel sx={{ color: styles?.mainTheme?.textFieldBorderColor, '&.Mui-focused': { color: styles?.mainTheme?.highlightedColor } }}>
+                  Preferred Timeline
+                </InputLabel>
+                <Select
+                  value={formData.timeline}
+                  label="Preferred Timeline"
+                  onChange={handleChange('timeline')}
+                  sx={selectSx(styles)}
+                  MenuProps={selectMenuProps(styles?.mainTheme?.profileCardBackground)}
                 >
-                  Full Name *
-                </Typography>
-                <TextField
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange('fullName')}
-                  fullWidth
-                  placeholder="John Doe"
-                  variant="outlined"
-                  error={!!errors.fullName}
-                  helperText={errors.fullName}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: styles?.mainTheme?.textFieldBorderColor,
-                      },
-                      '&:hover fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '& input': {
-                        color: styles?.mainTheme?.color,
-                      },
-                    },
-                    '& .MuiFormHelperText-root': {
-                      color: '#f44336',
-                    },
-                  }}
-                />
-              </Box>
+                  {TIMELINES.map((opt) => (
+                    <MenuItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+                {errors.timeline && (
+                  <Typography sx={{ color: '#f44336', fontSize: '12px', mt: '6px', ml: '14px' }}>{errors.timeline}</Typography>
+                )}
+              </FormControl>
 
-              {/* Email */}
-              <Box>
-                <Typography
-                  sx={{
-                    color: styles?.mainTheme?.color,
-                    marginBottom: '8px',
-                    fontSize: '14px',
-                  }}
+              <FormControl fullWidth error={!!errors.budget}>
+                <InputLabel sx={{ color: styles?.mainTheme?.textFieldBorderColor, '&.Mui-focused': { color: styles?.mainTheme?.highlightedColor } }}>
+                  Budget Range
+                </InputLabel>
+                <Select
+                  value={formData.budget}
+                  label="Budget Range"
+                  onChange={handleChange('budget')}
+                  sx={selectSx(styles)}
+                  MenuProps={selectMenuProps(styles?.mainTheme?.profileCardBackground)}
                 >
-                  Email *
-                </Typography>
-                <TextField
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange('email')}
-                  fullWidth
-                  placeholder="john@example.com"
-                  variant="outlined"
-                  error={!!errors.email}
-                  helperText={errors.email}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: styles?.mainTheme?.textFieldBorderColor,
-                      },
-                      '&:hover fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '& input': {
-                        color: styles?.mainTheme?.color,
-                      },
-                    },
-                    '& .MuiFormHelperText-root': {
-                      color: '#f44336',
-                    },
-                  }}
-                />
-              </Box>
+                  {BUDGET_RANGES.map((opt) => (
+                    <MenuItem key={opt.value} value={opt.value}>
+                      {opt.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+                {errors.budget && (
+                  <Typography sx={{ color: '#f44336', fontSize: '12px', mt: '6px', ml: '14px' }}>{errors.budget}</Typography>
+                )}
+              </FormControl>
+            </Box>
+          </>
+        );
 
-              {/* Project Title */}
-              <Box>
-                <Typography
-                  sx={{
-                    color: styles?.mainTheme?.color,
-                    marginBottom: '8px',
-                    fontSize: '14px',
-                  }}
-                >
-                  Project Title *
-                </Typography>
+      /* ── Step 2: Details ── */
+      case 2:
+        return (
+          <>
+            <Typography className="sc-step-title" sx={{ color: styles?.mainTheme?.color }}>
+              Tell us about yourself & your project
+            </Typography>
+
+            <Box className="sc-fields-grid">
+              <TextField
+                label="Full Name"
+                placeholder="John Doe"
+                value={formData.fullName}
+                onChange={handleChange('fullName')}
+                fullWidth
+                required
+                error={!!errors.fullName}
+                helperText={errors.fullName}
+                sx={textFieldSx(styles)}
+                InputProps={{
+                  startAdornment: (
+                    <LuUser style={{ marginRight: 10, opacity: 0.5, flexShrink: 0 }} color={styles?.mainTheme?.color} size={16} />
+                  ),
+                }}
+              />
+
+              <TextField
+                label="Email"
+                placeholder="john@example.com"
+                type="email"
+                value={formData.email}
+                onChange={handleChange('email')}
+                fullWidth
+                required
+                error={!!errors.email}
+                helperText={errors.email}
+                sx={textFieldSx(styles)}
+                InputProps={{
+                  startAdornment: (
+                    <LuMail style={{ marginRight: 10, opacity: 0.5, flexShrink: 0 }} color={styles?.mainTheme?.color} size={16} />
+                  ),
+                }}
+              />
+
+              <Box className="sc-field-full">
                 <TextField
-                  name="projectTitle"
+                  label="Project Title"
+                  placeholder="E-commerce Platform Redesign"
                   value={formData.projectTitle}
                   onChange={handleChange('projectTitle')}
                   fullWidth
-                  placeholder="E-commerce Platform Redesign"
-                  variant="outlined"
+                  required
                   error={!!errors.projectTitle}
                   helperText={errors.projectTitle}
-                  sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: styles?.mainTheme?.textFieldBorderColor,
-                      },
-                      '&:hover fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '& input': {
-                        color: styles?.mainTheme?.color,
-                      },
-                    },
-                    '& .MuiFormHelperText-root': {
-                      color: '#f44336',
-                    },
+                  sx={textFieldSx(styles)}
+                  InputProps={{
+                    startAdornment: (
+                      <LuPenLine style={{ marginRight: 10, opacity: 0.5, flexShrink: 0 }} color={styles?.mainTheme?.color} size={16} />
+                    ),
                   }}
                 />
               </Box>
 
-              {/* Project Description */}
-              <Box>
-                <Typography
-                  sx={{
-                    color: styles?.mainTheme?.color,
-                    marginBottom: '8px',
-                    fontSize: '14px',
-                  }}
-                >
-                  Project Description * (minimum 20 characters)
-                </Typography>
+              <Box className="sc-field-full">
                 <TextField
-                  name="projectDescription"
+                  label="Project Description"
+                  placeholder="Min 20 characters. Describe requirements, goals, features …"
                   value={formData.projectDescription}
                   onChange={handleChange('projectDescription')}
                   fullWidth
+                  required
                   multiline
-                  rows={6}
-                  placeholder="Describe your project requirements, goals, and any specific features you need..."
-                  variant="outlined"
+                  rows={4}
                   error={!!errors.projectDescription}
                   helperText={
-                    errors.projectDescription ||
-                    `${formData.projectDescription.length}/20 characters`
+                    errors.projectDescription || `${formData.projectDescription.length} / 20 characters min`
                   }
                   sx={{
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: styles?.mainTheme?.textFieldBorderColor,
-                      },
-                      '&:hover fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: styles?.mainTheme?.highlightedColor,
-                      },
-                      '& textarea': {
-                        color: styles?.mainTheme?.color,
-                        padding: '14px',
-                      },
-                    },
+                    ...textFieldSx(styles),
                     '& .MuiFormHelperText-root': {
-                      color: errors.projectDescription
-                        ? '#f44336'
-                        : styles?.mainTheme?.color,
+                      color: errors.projectDescription ? '#f44336' : 'rgba(255,255,255,0.35)',
                     },
                   }}
                 />
               </Box>
             </Box>
-          </Box>
+          </>
         );
 
-      case 5: // File Upload
+      /* ── Step 3: Attachments ── */
+      case 3:
         return (
-          <Box className="step-content">
-            <Typography
-              variant="h6"
-              sx={{
-                color: styles?.mainTheme?.color,
-                marginBottom: '24px',
-                fontSize: '20px',
-              }}
-            >
-              Upload any relevant files (Optional)
+          <>
+            <Typography className="sc-step-title" sx={{ color: styles?.mainTheme?.color }}>
+              Upload relevant files&nbsp;
+              <Typography component="span" sx={{ opacity: 0.45, fontSize: '13px' }}>
+                (optional)
+              </Typography>
             </Typography>
 
-            {/* File upload area */}
-            <Paper
-              sx={{
-                background: '#2d2d2dc8',
-                borderRadius: '10px',
-                padding: '40px',
-                border: `2px dashed ${styles?.mainTheme?.textFieldBorderColor}`,
-                backgroundColor: styles?.mainTheme?.profileCardBackground,
-                textAlign: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  borderColor: styles?.mainTheme?.highlightedColor,
-                  backgroundColor: 'rgba(173, 255, 47, 0.02)',
-                },
-              }}
-              onClick={() => document.getElementById('file-upload').click()}
+            <Box
+              className="sc-upload-zone"
+              sx={{ bgcolor: styles?.mainTheme?.profileCardBackground }}
+              onClick={() => document.getElementById('sc-file-input').click()}
             >
               <input
-                id="file-upload"
+                id="sc-file-input"
                 type="file"
                 onChange={handleFileUpload}
                 style={{ display: 'none' }}
                 accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg"
               />
-              <Box
-                sx={{
-                  width: '100%',
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
-                <FaCloudUploadAlt
-                  size={48}
-                  color={styles?.mainTheme?.highlightedColor}
-                  style={{ marginBottom: '16px' }}
-                />
-              </Box>
-              <Typography
-                sx={{ color: styles?.mainTheme?.color, marginBottom: '8px' }}
-              >
-                Click to upload or drag and drop
+              <LuCloudUpload size={36} color={styles?.mainTheme?.highlightedColor} />
+              <Typography sx={{ color: styles?.mainTheme?.color, fontSize: '14px', fontWeight: 500 }}>
+                Click to upload
               </Typography>
-              <Typography
-                sx={{
-                  color: styles?.mainTheme?.textFieldBorderColor,
-                  fontSize: '14px',
-                }}
-              >
-                PDF, DOC, DOCX, TXT, PNG, JPG (Max 10MB)
+              <Typography sx={{ color: styles?.mainTheme?.textFieldBorderColor, fontSize: '12px' }}>
+                PDF, DOC, TXT, PNG, JPG — max 10 MB
               </Typography>
-            </Paper>
+            </Box>
 
-            {/* Uploaded files list */}
-            {formData.uploadedFiles.length > 0 && (
-              <Box sx={{ marginTop: '24px' }}>
-                <Typography
-                  sx={{
-                    color: styles?.mainTheme?.color,
-                    marginBottom: '12px',
-                    fontSize: '16px',
-                    fontWeight: 500,
-                  }}
-                >
-                  Uploaded Files ({formData.uploadedFiles.length})
-                </Typography>
-                <Box
-                  sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}
-                >
-                  {formData.uploadedFiles.map((file, index) => (
-                    <Paper
-                      key={index}
-                      sx={{
-                        padding: '12px 16px',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        backgroundColor:
-                          styles?.mainTheme?.fileUploadCardBackground,
-                        border: `1px solid ${styles?.mainTheme?.color}`,
-                        borderRadius: '15px',
-                        boxShadow: 'none',
-                      }}
-                    >
-                      <Box>
-                        <Typography
-                          sx={{
-                            color: styles?.mainTheme?.color,
-                            fontSize: '14px',
-                          }}
-                        >
-                          {file.name.length > 25
-                            ? file.name.slice(0, 25) + '...'
-                            : file.name}
-                        </Typography>
-                        <Typography
-                          sx={{
-                            color: styles?.mainTheme?.textFieldBorderColor,
-                            fontSize: '12px',
-                          }}
-                        >
-                          {file.size}
-                        </Typography>
-                      </Box>
-                      <IconButton
-                        size="small"
-                        onClick={() => removeFile(index)}
-                        sx={{ color: '#f44336' }}
-                      >
-                        <FaTimesCircle />
-                      </IconButton>
-                    </Paper>
-                  ))}
+            {formData.uploadedFiles.map((file, idx) => (
+              <Paper
+                key={idx}
+                className="sc-file-chip"
+                sx={{
+                  bgcolor: styles?.mainTheme?.profileCardBackground,
+                  border: `1px solid ${styles?.mainTheme?.textFieldBorderColor}`,
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden' }}>
+                  <LuFileText size={18} color={styles?.mainTheme?.highlightedColor} />
+                  <Box>
+                    <Typography sx={{ color: styles?.mainTheme?.color, fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: '240px' }}>
+                      {file.name}
+                    </Typography>
+                    <Typography sx={{ color: styles?.mainTheme?.textFieldBorderColor, fontSize: '11px' }}>
+                      {file.size}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            )}
-          </Box>
+                <IconButton size="small" onClick={() => removeFile(idx)} sx={{ color: '#f44336' }}>
+                  <LuX size={16} />
+                </IconButton>
+              </Paper>
+            ))}
+          </>
         );
 
       default:
@@ -1052,450 +615,273 @@ const SmartContact = () => {
     }
   };
 
-  // Success screen after submission
+  /* ──────────────── SUCCESS SCREEN ──────────────── */
+
   if (isSubmitted) {
     return (
-      <Box
-        className="contact-section"
-        sx={{
-          backgroundColor: styles?.mainTheme?.backgroundColor,
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <Box
-          sx={{
-            textAlign: 'center',
-            maxWidth: '600px',
-            padding: '40px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column',
-          }}
+      <Box className="sc-root" sx={{ background: styles?.mainTheme?.backgroundColor }}>
+        <Paper
+          className="sc-panel"
+          elevation={0}
+          sx={{ background: styles?.mainTheme?.backgroundColor, justifyContent: 'center' }}
         >
-          <FaCheckCircle
-            size={80}
-            color={styles?.mainTheme?.highlightedColor}
-            style={{ marginBottom: '24px' }}
-          />
-          <Typography
-            variant="h3"
-            sx={{
-              color: styles?.mainTheme?.color,
-              marginBottom: '16px',
-              fontSize: { xs: '32px', sm: '48px' },
-              fontWeight: 600,
-            }}
-          >
-            Thank You!
-          </Typography>
-          <Typography
-            sx={{
-              color: styles?.mainTheme?.textFieldBorderColor,
-              marginBottom: '32px',
-              fontSize: '16px',
-              lineHeight: 1.6,
-            }}
-          >
-            Your project inquiry has been successfully submitted. I'll review
-            your request and get back to you within 24-48 hours.
-          </Typography>
-
-          {/* Summary of submission */}
-          <Paper
-            sx={{
-              display: 'none',
-              background: '#2d2d2dc8',
-              borderRadius: '10px',
-              padding: '24px',
-              backgroundColor: styles?.mainTheme?.profileCardBackground,
-              border: `1px solid ${styles?.mainTheme?.textFieldBorderColor}`,
-              marginBottom: '24px',
-              textAlign: 'left',
-            }}
-          >
-            <Typography
-              sx={{
-                color: styles?.mainTheme?.color,
-                fontWeight: 600,
-                marginBottom: '14px',
-                textAlign: 'center',
-              }}
-            >
-              Submission Summary
+          <Box className="sc-success">
+            <LuCircleCheckBig className="sc-success-icon" size={64} color={styles?.mainTheme?.highlightedColor} />
+            <Typography sx={{ color: styles?.mainTheme?.color, fontSize: '28px', fontWeight: 700 }}>
+              Thank You!
             </Typography>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <Typography
-                sx={{
-                  color: styles?.mainTheme?.textFieldBorderColor,
-                  textAlign: 'center',
-                }}
-              >
-                <strong>Request Type:</strong>{' '}
-                {
-                  requestTypes.find((r) => r.value === formData.requestType)
-                    ?.label
-                }
-              </Typography>
-              <Typography
-                sx={{
-                  color: styles?.mainTheme?.textFieldBorderColor,
-                  textAlign: 'center',
-                }}
-              >
-                <strong>Category:</strong>{' '}
-                {
-                  projectCategories.find(
-                    (c) => c.value === formData.projectCategory
-                  )?.label
-                }
-              </Typography>
-              <Typography
-                sx={{
-                  color: styles?.mainTheme?.textFieldBorderColor,
-                  textAlign: 'center',
-                }}
-              >
-                <strong>Timeline:</strong>{' '}
-                {timelines.find((t) => t.value === formData.timeline)?.label}
-              </Typography>
-              <Typography
-                sx={{
-                  color: styles?.mainTheme?.textFieldBorderColor,
-                  textAlign: 'center',
-                }}
-              >
-                <strong>Budget:</strong>{' '}
-                {budgetRanges.find((b) => b.value === formData.budget)?.label}
-              </Typography>
+            <Typography sx={{ color: styles?.mainTheme?.textFieldBorderColor, fontSize: '15px', lineHeight: 1.7, maxWidth: 420 }}>
+              Your inquiry has been submitted. I'll review your request and get back to you within 24-48 hours.
+            </Typography>
+            <Box sx={{ mt: 2 }}>
+              <AnimatedButton
+                color={styles?.mainTheme?.color}
+                label="Explore Projects"
+                hoverLabel="Explore Projects"
+                hyperLink="/project"
+                btnWidth="fit-content"
+              />
             </Box>
-          </Paper>
-
-          <AnimatedButton
-            color={styles?.mainTheme?.color}
-            label="Explore Projects"
-            hoverLabel="Explore Projects"
-            hyperLink={'/project'}
-            btnWidth="fit-content"
-          />
-        </Box>
+          </Box>
+        </Paper>
       </Box>
     );
   }
 
-  const socialLinks = [
-    {
-      icon: <FaLinkedinIn />,
-      url: 'https://www.linkedin.com/in/harshuserethe',
-      label: 'LinkedIn',
-    },
-    {
-      icon: <FaGithub />,
-      url: 'https://github.com/HarshUserethe',
-      label: 'GitHub',
-    },
-    {
-      icon: <FaInstagram />,
-      url: 'https://instagram.com/harshuserethe',
-      label: 'Instagram',
-    },
-    {
-      icon: <FaEnvelope />,
-      url: 'mailto:useretheharsh@gmail.com',
-      label: 'Email',
-    },
-    {
-      icon: <FaXTwitter />,
-      url: 'https://x.com/HarshUserethe04',
-      label: 'Twitter',
-    },
-  ];
+  /* ──────────────── MAIN RENDER ──────────────── */
 
   return (
-    <Box
-      className="contact-section"
-      sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
-    >
-      {/* Header Section */}
-      <Box className="contact-first">
-        <Box
-          sx={{
-            display: 'flex',
-            gap: '10px',
-            alignItems: 'center',
-            marginBottom: '20px',
-          }}
-        >
-          <LuSparkle color={styles?.mainTheme?.highlightedColor} size={20} />
-          <Typography
-            sx={{
-              color: 'greenyellow',
-              fontSize: '16px',
-              textTransform: 'uppercase',
-              fontWeight: 500,
-              letterSpacing: '1px',
-            }}
-          >
-            <ShinyText
-              text="CONNECT WITH ME"
-              disabled={false}
-              speed={1.2}
-              className="shinny-txt"
-              highlightedColor={styles?.mainTheme?.highlightedColor}
-            />
-          </Typography>
-        </Box>
-
-        <Typography
-          className="headline"
-          variant="h1"
-          sx={{
-            fontSize: { xs: '40px', sm: '56px', md: '72px' },
-            fontWeight: '500',
-            color: styles?.mainTheme?.color,
-            width: { xs: '95%', sm: '85%', md: '70%' },
-            lineHeight: { xs: '48px', sm: '64px', md: '72px' },
-            marginTop: '2%',
-            marginBottom: '4%',
-            textAlign: 'center',
-          }}
-        >
-          <SplitText
-            text="Let's start the project together"
-            delay={30}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-          />
-        </Typography>
-      </Box>
-
-      {/* Main Form Section */}
-      <Box className="contact-bottom-wrapper">
-        {/* Multi-step Form */}
-        <Box className="form-wrapper" sx={{ flex: 1 }}>
-          {/* Stepper */}
-          <Box sx={{ marginBottom: '40px' }}>
-            <Stepper
-              activeStep={activeStep}
-              alternativeLabel
-              sx={{
-                '& .MuiStepLabel-root .Mui-completed': {
-                  color: styles?.mainTheme?.highlightedColor,
-                },
-                '& .MuiStepLabel-root .Mui-active': {
-                  color: styles?.mainTheme?.highlightedColor,
-                },
-                '& .MuiStepLabel-label': {
-                  color: styles?.mainTheme?.textFieldBorderColor,
-                  fontSize: { xs: '12px', sm: '14px' },
-                },
-                '& .MuiStepLabel-label.Mui-active': {
-                  color: styles?.mainTheme?.color,
-                  fontWeight: 600,
-                },
-                '& .MuiStepLabel-label.Mui-completed': {
-                  color: styles?.mainTheme?.color,
-                },
-              }}
-            >
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-
-            {/* Progress bar */}
-            <LinearProgress
-              variant="determinate"
-              value={(activeStep / (steps.length - 1)) * 100}
-              sx={{
-                marginTop: '20px',
-                height: '6px',
-                borderRadius: '3px',
-                backgroundColor: styles?.mainTheme?.textFieldBorderColor,
-                '& .MuiLinearProgress-bar': {
-                  backgroundColor: styles?.mainTheme?.highlightedColor,
-                },
-              }}
-            />
+    <Box className="sc-root" sx={{ background: styles?.mainTheme?.backgroundColor }}>
+      <Paper
+        className="sc-panel"
+        elevation={0}
+        sx={{ background: styles?.mainTheme?.backgroundColor }}
+      >
+        {/* ─── Header ─── */}
+        <Box className="sc-header">
+          <Box className="sc-title-row">
+            <LuSparkle color={styles?.mainTheme?.highlightedColor} size={16} />
+            <Typography className="sc-subtitle" sx={{ color: styles?.mainTheme?.highlightedColor }}>
+              <ShinyText
+                text="START A PROJECT"
+                disabled={false}
+                speed={1.2}
+                className="shinny-txt"
+                highlightedColor={styles?.mainTheme?.highlightedColor}
+              />
+            </Typography>
           </Box>
 
-          {/* Step Content */}
-          <form onSubmit={handleSubmit}>
-            <Box sx={{ minHeight: '200px', marginBottom: '40px' }}>
-              {renderStepContent(activeStep)}
-            </Box>
-            {errMessage && (
-              <Warning
-                message={{
-                  data: errMessage,
-                  type: 'error',
-                }}
-              />
-            )}
-            {/* Navigation Buttons */}
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                gap: '16px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{
-                  fontSize: '14px',
-                  borderRadius: '500px',
-                  color: styles?.mainTheme?.color,
-                  borderColor: styles?.mainTheme?.textFieldBorderColor,
-                  padding: '12px 28px',
-                  '&:hover': {
-                    borderColor: styles?.mainTheme?.highlightedColor,
-                    backgroundColor: 'rgba(173, 255, 47, 0.05)',
-                  },
-                  '&.Mui-disabled': {
-                    color: styles?.mainTheme?.textFieldBorderColor,
-                    borderColor: styles?.mainTheme?.textFieldBorderColor,
-                    opacity: 0.3,
-                  },
-                }}
-                variant="outlined"
-              >
-                Back
-              </Button>
+          <Typography className="sc-heading" sx={{ color: styles?.mainTheme?.color }}>
+            Let's build something great together
+          </Typography>
 
-              {activeStep === steps.length - 1 ? (
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  {isSubmitting ? (
-                    <>
-                      <Typography
-                        sx={{
-                          color: styles?.mainTheme?.color,
-                          fontSize: '14px',
-                          padding: '10px',
-                        }}
-                      >
-                        Please wait
-                      </Typography>
-                      <CircularProgress
-                        size={20}
-                        sx={{
-                          color: styles?.mainTheme?.highlightedColor,
-                          marginLeft: '12px',
-                        }}
-                      />
-                    </>
-                  ) : (
-                    <AnimatedButton
-                      type="submit"
-                      color={styles?.mainTheme?.color}
-                      label={'Submit Inquiry'}
-                      hoverLabel={'Submit Inquiry'}
-                      btnWidth="fit-content"
-                      disabled={isSubmitting}
-                    />
-                  )}
-                </Box>
-              ) : (
-                <Button
-                  onClick={handleNext}
-                  sx={{
-                    fontSize: '14px',
-                    borderRadius: '500px',
-                    backgroundColor: styles?.mainTheme?.highlightedColor,
-                    color: '#000',
-                    padding: '10px 30px',
-                    fontWeight: 500,
-                    '&:hover': {
-                      backgroundColor: styles?.mainTheme?.highlightedColor,
-                      opacity: 0.9,
-                    },
-                  }}
-                >
-                  Next
-                </Button>
-              )}
-            </Box>
-          </form>
+          {/* Stepper */}
+          <Stepper
+            activeStep={activeStep}
+            alternativeLabel
+            sx={{
+              mb: '4px',
+              '& .MuiStepLabel-root .Mui-completed': { color: styles?.mainTheme?.highlightedColor },
+              '& .MuiStepLabel-root .Mui-active': { color: styles?.mainTheme?.highlightedColor },
+              '& .MuiStepLabel-label': { color: styles?.mainTheme?.textFieldBorderColor, fontSize: '12px' },
+              '& .MuiStepLabel-label.Mui-active': { color: styles?.mainTheme?.color, fontWeight: 600 },
+              '& .MuiStepLabel-label.Mui-completed': { color: styles?.mainTheme?.color },
+              '& .MuiStepConnector-line': { borderColor: styles?.mainTheme?.textFieldBorderColor },
+            }}
+          >
+            {STEPS.map((label) => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+
+          {/* Progress bar */}
+          <LinearProgress
+            variant="determinate"
+            value={(activeStep / (STEPS.length - 1)) * 100}
+            sx={{
+              mt: '12px',
+              height: '4px',
+              borderRadius: '2px',
+              bgcolor: 'rgba(255,255,255,0.06)',
+              '& .MuiLinearProgress-bar': { bgcolor: styles?.mainTheme?.highlightedColor },
+            }}
+          />
         </Box>
 
-        {/* Profile Card - Right Side */}
-        <Box className="profiler">
-          <Box
-            className="profile-card"
-            sx={{ backgroundColor: styles?.mainTheme?.profileCardBackground }}
+        {/* ─── Scrollable Body ─── */}
+        <Box className="sc-body" component="form" onSubmit={handleSubmit}>
+          {renderStep()}
+        </Box>
+
+        {/* ─── Error banner ─── */}
+        {errMessage && (
+          <Box sx={{ px: '32px' }}>
+            <Warning message={{ data: errMessage, type: 'error' }} />
+          </Box>
+        )}
+
+        {/* ─── Fixed Footer ─── */}
+        <Box className="sc-footer">
+          <Button
+            startIcon={<LuArrowLeft size={16} />}
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            sx={{
+              textTransform: 'none',
+              fontSize: '13px',
+              borderRadius: '10px',
+              color: styles?.mainTheme?.color,
+              borderColor: styles?.mainTheme?.textFieldBorderColor,
+              px: '20px',
+              '&:hover': {
+                borderColor: styles?.mainTheme?.highlightedColor,
+                bgcolor: 'rgba(173,255,47,0.05)',
+              },
+              '&.Mui-disabled': {
+                color: styles?.mainTheme?.textFieldBorderColor,
+                borderColor: styles?.mainTheme?.textFieldBorderColor,
+                opacity: 0.3,
+              },
+            }}
+            variant="outlined"
           >
-            <Box className="availability-badge">
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  padding: '8px 16px',
-                  borderRadius: '20px',
-                  marginBottom: '32px',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid #6e6e6eff',
+            Back
+          </Button>
+
+          <Typography className="sc-footer-info" sx={{ color: styles?.mainTheme?.textFieldBorderColor }}>
+            Step {activeStep + 1} of {STEPS.length}
+          </Typography>
+
+          {activeStep === STEPS.length - 1 ? (
+            isSubmitting ? (
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Typography sx={{ color: styles?.mainTheme?.color, fontSize: '13px' }}>Submitting</Typography>
+                <CircularProgress size={18} sx={{ color: styles?.mainTheme?.highlightedColor }} />
+              </Box>
+            ) : (
+              <Button
+                type="submit"
+                onClick={handleSubmit}
+                endIcon={<LuSend size={14} />}
+                sx={{
+                  textTransform: 'none',
+                  fontSize: '13px',
+                  borderRadius: '10px',
+                  bgcolor: styles?.mainTheme?.highlightedColor,
+                  color: '#000',
+                  fontWeight: 600,
+                  px: '22px',
+                  '&:hover': { bgcolor: styles?.mainTheme?.highlightedColor, opacity: 0.9 },
                 }}
               >
-                <div
-                  style={{
-                    width: '8px',
-                    height: '8px',
-                    backgroundColor: '#4ade80',
-                    borderRadius: '50%',
-                    boxShadow: '0 0 8px #4ade80',
-                  }}
-                ></div>
-                <span
-                  style={{
-                    fontSize: '14px',
-                    color: styles?.mainTheme?.color,
-                  }}
-                >
-                  Available for work
-                </span>
-              </div>
-            </Box>
+                Submit
+              </Button>
+            )
+          ) : (
+            <Button
+              endIcon={<LuArrowRight size={16} />}
+              disabled={!isStepValid}
+              onClick={handleNext}
+              sx={{
+                textTransform: 'none',
+                fontSize: '13px',
+                borderRadius: '10px',
+                bgcolor: styles?.mainTheme?.highlightedColor,
+                color: styles?.mainTheme?.color,
+                px: '22px',
+                '&:hover': { bgcolor: styles?.mainTheme?.highlightedColor, opacity: 0.9 },
+                '&.Mui-disabled': { bgcolor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.25)' },
+              }}
+            >
+              Next
+            </Button>
+          )}
+        </Box>
+      </Paper>
+      {/* Right Side - Profile Card */}
+      <Box className="profiler">
+        <Box
+          className="profile-card"
+          sx={{ backgroundColor: styles?.mainTheme?.profileCardBackground }}
+        >
+          <Box className="availability-badge">
+            {/* Available Badge */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                padding: '8px 16px',
+                borderRadius: '20px',
+                marginBottom: '32px',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid #6e6e6eff',
+              }}
+            >
+              <div
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: '#4ade80',
+                  borderRadius: '50%',
+                  boxShadow: '0 0 8px #4ade80',
+                }}
+              ></div>
+              <span
+                style={{
+                  fontSize: '14px',
+                  color: styles?.mainTheme?.color,
+                }}
+              >
+                Available for work
+              </span>
+            </div>
+          </Box>
 
-            <Avatar
-              src={HarshUseretheImage}
-              alt="Profile"
-              className="profile-avatar"
-            />
+          <Avatar
+            src={HarshUseretheImage}
+            alt="Profile"
+            className="profile-avatar"
+          />
 
-            <Typography className="profile-description">
-              My inbox is always open. Whether you have a project or just want
-              to say Hi. I would love to hear from you. Feel free to fill out
-              the form and I'll get back to you within 24-48 hours.
-            </Typography>
+          <Typography className="profile-description">
+            My inbox is always open. Whether you have a project or just want
+            to say Hi. I would love to hear from you. Feel free to contact me
+            and I'll get back to you.
+          </Typography>
 
-            <Box className="social-links">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label={social.label}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </Box>
+          {/* Let's Discuss Your Project */}
+          <Box
+            onClick={() => {
+              document
+                .querySelector('.contact-section')
+                ?.scrollIntoView({ behavior: 'smooth' });
+              handleDiscussProjectButton();
+            }}
+            className="cta-button-glow"
+          >
+            <span>Let's Discuss Your Project</span>
+            {/* <LuArrowRight className="arrow-icon" /> */}
+            <div className="shimmer-effect" />
+          </Box>
+
+          <Box className="social-links">
+            {socialLinks.map((social, index) => (
+              <a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                aria-label={social.label}
+              >
+                {social.icon}
+              </a>
+            ))}
           </Box>
         </Box>
       </Box>

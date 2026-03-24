@@ -1,0 +1,473 @@
+/* ===== MessageDetail.css ===== */
+
+/* ── Full-screen wrapper (replaces the list view) ── */
+.msgd-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ── Topbar (same height/style as Messages topbar) ── */
+.msgd-topbar {
+  height: var(--header-height);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.msgd-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Breadcrumb: "MESSAGES / DETAILS" */
+.msgd-breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-family: var(--font);
+}
+
+.msgd-breadcrumb-link {
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition);
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: var(--font);
+}
+
+.msgd-breadcrumb-link:hover {
+  color: var(--accent);
+}
+
+.msgd-breadcrumb-sep {
+  color: var(--border);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.msgd-breadcrumb-current {
+  color: var(--text-secondary);
+}
+
+/* Topbar right actions */
+.msgd-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.msgd-topbar-icon-btn {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  color: var(--text-secondary) !important;
+  transition: background var(--transition) !important;
+}
+
+.msgd-topbar-icon-btn:hover {
+  background: var(--bg) !important;
+}
+
+.msgd-topbar-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: var(--font);
+  user-select: none;
+}
+
+/* ── Page Body ── */
+.msgd-body {
+  flex: 1;
+  padding: 28px;
+  max-width: 860px;
+}
+
+/* ── Action bar (back + delete, just below topbar) ── */
+.msgd-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.msgd-back-btn {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: unset !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+  background: var(--surface) !important;
+  padding: 0 !important;
+  transition: all var(--transition) !important;
+}
+
+.msgd-back-btn:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  background: var(--accent-bg) !important;
+}
+
+.msgd-delete-btn {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: unset !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+  background: var(--surface) !important;
+  padding: 0 !important;
+  transition: all var(--transition) !important;
+}
+
+.msgd-delete-btn:hover {
+  border-color: #fecdd3 !important;
+  color: #e11d48 !important;
+  background: #fff1f2 !important;
+}
+
+/* ── Subject + badge row ── */
+.msgd-subject-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.msgd-subject {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  font-family: var(--font) !important;
+}
+
+.msgd-type-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font);
+  flex-shrink: 0;
+}
+
+.msgd-type-badge.direct {
+  background: rgba(99, 102, 241, 0.1);
+  color: #4f46e5;
+}
+
+.msgd-type-badge.project {
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+
+/* ── Sender meta row ── */
+.msgd-sender-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.msgd-sender-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.msgd-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  font-family: var(--font);
+}
+
+.msgd-sender-name {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font) !important;
+  line-height: 1.2 !important;
+}
+
+.msgd-sender-email {
+  font-size: 12px !important;
+  color: var(--text-secondary) !important;
+  font-family: var(--font) !important;
+  margin-top: 1px !important;
+}
+
+.msgd-sender-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.msgd-timestamp {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  font-family: var(--font) !important;
+  white-space: nowrap;
+}
+
+.msgd-action-icon-btn {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 6px !important;
+  color: var(--text-secondary) !important;
+  padding: 0 !important;
+  transition: background var(--transition) !important;
+}
+
+.msgd-action-icon-btn:hover {
+  background: var(--bg) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── Divider ── */
+.msgd-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 0 0 20px;
+}
+
+/* ── Message body (direct) ── */
+.msgd-message-text {
+  font-size: 14px !important;
+  color: var(--text-primary) !important;
+  line-height: 1.75 !important;
+  font-family: var(--font) !important;
+  white-space: pre-wrap;
+  margin-bottom: 16px !important;
+}
+
+/* ── Section label ── */
+.msgd-section-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-family: var(--font);
+}
+
+.msgd-section-gap {
+  margin-top: 24px;
+}
+
+/* ── Project Details Card ── */
+.msgd-details-card {
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.msgd-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.msgd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.msgd-field-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font);
+}
+
+.msgd-field-value {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font) !important;
+}
+
+.msgd-field-value.accent {
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+}
+
+.msgd-field-value.danger {
+  color: #e11d48 !important;
+  font-weight: 600 !important;
+}
+
+/* ── Status select ── */
+.msgd-status-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.msgd-status-select {
+  appearance: none;
+  padding: 4px 26px 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.msgd-status-select:focus {
+  border-color: var(--accent);
+}
+
+.msgd-status-chevron {
+  position: absolute;
+  right: 7px;
+  pointer-events: none;
+  color: var(--text-secondary);
+  transform: rotate(-90deg);
+}
+
+/* ── Description block ── */
+.msgd-description {
+  font-size: 13.5px;
+  color: var(--text-primary);
+  line-height: 1.7;
+  background: var(--bg);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-family: var(--font);
+  white-space: pre-wrap;
+}
+
+/* ── Attachments ── */
+.msgd-attachments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.msgd-attachment-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  text-decoration: none;
+  transition: background var(--transition), border-color var(--transition);
+  max-width: 280px;
+}
+
+.msgd-attachment-item:hover {
+  background: var(--accent-bg);
+  border-color: var(--accent);
+}
+
+.msgd-attachment-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.msgd-attachment-name {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font) !important;
+  line-height: 1.2 !important;
+}
+
+.msgd-attachment-size {
+  font-size: 11px !important;
+  color: var(--text-muted) !important;
+  font-family: var(--font) !important;
+  margin-top: 1px !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .msgd-body {
+    padding: 16px;
+  }
+
+  .msgd-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .msgd-subject {
+    font-size: 18px !important;
+  }
+
+  .msgd-sender-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

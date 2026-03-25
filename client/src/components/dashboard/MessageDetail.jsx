@@ -15,6 +15,7 @@ import {
   LuCalendar,
   LuMessageSquare,
   LuMonitor,
+  LuPenTool,
 } from 'react-icons/lu';
 import '../../assets/styles/dashboard-styles/MessageDetail.css';
 
@@ -31,7 +32,7 @@ const STATUS_OPTIONS = ['new', 'priority', 'in progress', 'done', 'ignored'];
  */
 const MessageDetail = ({ message, onBack, onDelete, onUpdateStatus }) => {
   if (!message) return null;
-
+   console.log(message)
   /* ── Helpers ── */
   const formatFull = (ts) => {
     if (!ts) return '';
@@ -116,7 +117,7 @@ const MessageDetail = ({ message, onBack, onDelete, onUpdateStatus }) => {
         <Box className="msgd-subject-row">
           <Typography className="msgd-subject">{subject}</Typography>
           <span className={`msgd-type-badge ${message.type}`}>
-            {message.type === 'direct' ? 'Inbox' : 'Project'}
+            {message.type === 'direct' ? 'Contact' : 'Project'}
           </span>
         </Box>
 
@@ -168,6 +169,10 @@ const MessageDetail = ({ message, onBack, onDelete, onUpdateStatus }) => {
         {message.type === 'project' && (
           <>
             {/* Description (shown first like an email body) */}
+             <Box className="msgd-section-label">
+              <LuPenTool size={13} />
+              <span>Project Description</span>
+            </Box>
             <Typography className="msgd-message-text">
               {message.raw.client_info?.prj_description || 'No description provided.'}
             </Typography>
@@ -175,7 +180,7 @@ const MessageDetail = ({ message, onBack, onDelete, onUpdateStatus }) => {
             {/* Project Discussion Details card */}
             <Box className="msgd-section-label">
               <LuBriefcase size={13} />
-              <span>Project Discussion Details</span>
+              <span>Project Details</span>
             </Box>
             <Box className="msgd-details-card">
               <Box className="msgd-details-grid">
@@ -192,27 +197,16 @@ const MessageDetail = ({ message, onBack, onDelete, onUpdateStatus }) => {
                   </Typography>
                 </Box>
                 <Box className="msgd-field">
+                  <span className="msgd-field-label">Service Type</span>
+                  <Typography className="msgd-field-value">
+                    {message.raw.prj_category || '—'}
+                  </Typography>
+                </Box>
+                <Box className="msgd-field">
                   <span className="msgd-field-label">Timeline</span>
                   <Typography className="msgd-field-value">
                     {message.raw.timeline || '—'}
                   </Typography>
-                </Box>
-                <Box className="msgd-field">
-                  <span className="msgd-field-label">Priority</span>
-                  <Box className="msgd-status-wrap">
-                    <select
-                      className="msgd-status-select"
-                      value={message.raw.status || 'new'}
-                      onChange={handleStatusChange}
-                    >
-                      {STATUS_OPTIONS.map(s => (
-                        <option key={s} value={s}>
-                          {s.charAt(0).toUpperCase() + s.slice(1)}
-                        </option>
-                      ))}
-                    </select>
-                    <LuChevronLeft size={11} className="msgd-status-chevron" />
-                  </Box>
                 </Box>
               </Box>
             </Box>

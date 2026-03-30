@@ -225,7 +225,7 @@ const ProjectPage = () => {
         </Box>
       </Box>
 
-      <Footer />
+      <Footer projectCategory={activeFilter} />
     </>
   );
 };

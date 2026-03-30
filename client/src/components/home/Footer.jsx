@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import AnimatedButton from '../shared/AnimatedButton';
 
-const Footer = () => {
+const Footer = ({ projectCategory }) => {
   const styles = useSelector((state) => state.theme.styles);
 
   const handleContactClick = () => {
@@ -31,6 +31,20 @@ const Footer = () => {
   const onLeave = () => {
     gsap.to(btnRef.current.querySelector('.bubble'), {});
   };
+
+  const handleProjectCategory = () => {
+    switch (projectCategory) {
+      case 'development':
+        return 20;
+      case 'design':
+        return 10;
+      case 'all':
+        return 40;
+      default:
+        return '';
+    }
+  }
+  
 
   return (
     <footer
@@ -108,7 +122,7 @@ const Footer = () => {
               duration={0.6}
               ease="power3.out"
               splitType="chars"
-              from={{ opacity: 0, y: 40 }}
+              from={{ opacity: 0, y: handleProjectCategory() }}
               to={{ opacity: 1, y: 0 }}
               threshold={0.1}
               rootMargin="-100px"
@@ -123,7 +137,7 @@ const Footer = () => {
               duration={0.6}
               ease="power3.out"
               splitType="chars"
-              from={{ opacity: 0, y: 40 }}
+              from={{ opacity: 0, y: handleProjectCategory() }}
               to={{ opacity: 1, y: 0 }}
               threshold={0.1}
               rootMargin="-50px"

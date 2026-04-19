@@ -20,135 +20,11 @@ import Footer from '../components/home/Footer';
 import SplitText from '../components/shared/SplitText';
 import Overlay from '../components/shared/Overlay';
 import AnimatedButton from '../components/shared/AnimatedButton';
+import { homeData } from '../config';
 
 const Home = () => {
   const styles = useSelector((state) => state.theme.styles); // Get styles from Redux
   const themeValues = useSelector((state) => state.theme);
-
-  const techLogos = [
-    { node: <SiReact />, title: 'React', href: 'https://react.dev' },
-    { node: <SiNextdotjs />, title: 'Next.js', href: 'https://nextjs.org' },
-    {
-      node: <SiTypescript />,
-      title: 'TypeScript',
-      href: 'https://www.typescriptlang.org',
-    },
-    {
-      node: <SiTailwindcss />,
-      title: 'Tailwind CSS',
-      href: 'https://tailwindcss.com',
-    },
-  ];
-
-  // Alternative with image sources
-  const imageLogos = [
-    {
-      text: 'Designing',
-      src: '',
-      alt: 'Designing',
-      href: 'https://company1.com',
-    },
-    { text: 'Graphics', src: '', alt: 'UI/UX', href: 'https://company2.com' },
-    { text: 'Backend', src: '', alt: 'System', href: 'https://company3.com' },
-  ];
-
-  const chipLogos = [
-    {
-      id: 1,
-      label: 'React',
-      image: '/images/chipsImages/React.js.svg',
-    },
-    {
-      id: 2,
-      label: 'Next.js',
-      image: '/images/chipsImages/Next.js.svg',
-    },
-    {
-      id: 3,
-      label: 'Redux',
-      image: '/images/chipsImages/Redux.svg',
-    },
-    {
-      id: 4,
-      label: 'Node.js',
-      image: '/images/chipsImages/Node.js.svg',
-    },
-    {
-      id: 5,
-      label: 'Express.js',
-      image: '/images/chipsImages/Express.js.svg',
-    },
-    {
-      id: 6,
-      label: 'MySQL',
-      image: '/images/chipsImages/MySQL.svg',
-    },
-    {
-      id: 7,
-      label: 'MongoDB',
-      image: '/images/chipsImages/MongoDB.svg',
-    },
-    {
-      id: 8,
-      label: 'PostgreSQL',
-      image: '/images/chipsImages/PostgreSQL.svg',
-    },
-    {
-      id: 9,
-      label: 'Docker',
-      image: '/images/chipsImages/Docker.svg',
-    },
-    {
-      id: 10,
-      label: 'Firebase',
-      image: '/images/chipsImages/Firebase.svg',
-    },
-    {
-      id: 11,
-      label: 'AWS',
-      image: '/images/chipsImages/AWS.svg',
-    },
-    {
-      id: 12,
-      label: 'GSAP',
-      image: '/images/chipsImages/GSAP.svg',
-    },
-    {
-      id: 13,
-      label: 'Framer Motion',
-      image: '/images/chipsImages/FramerMotion.svg',
-    },
-    {
-      id: 14,
-      label: 'Tailwind CSS',
-      image: '/images/chipsImages/TailwindCSS.svg',
-    },
-    {
-      id: 15,
-      label: 'GIT',
-      image: '/images/chipsImages/GIT.svg',
-    },
-    {
-      id: 16,
-      label: 'HTML',
-      image: '/images/chipsImages/HTML.svg',
-    },
-    {
-      id: 17,
-      label: 'CSS',
-      image: '/images/chipsImages/CSS.svg',
-    },
-    {
-      id: 18,
-      label: 'JavaScript',
-      image: '/images/chipsImages/JavaScript.svg',
-    },
-    {
-      id: 19,
-      label: 'TypeScript',
-      image: '/images/chipsImages/TypeScript.svg',
-    },
-  ];
 
   const buttonClass =
     'knowme-button' +
@@ -340,7 +216,7 @@ const Home = () => {
         ></Box>
       </Box>
       <LogoLoop
-        logos={imageLogos}
+        logos={homeData.imageLogos}
         speed={100}
         direction="left"
         logoHeight={100}
@@ -355,7 +231,7 @@ const Home = () => {
       <MyProjects />
       <AreaOfExpertise />
       <ChipsLoop
-        logos={chipLogos}
+        logos={homeData.chipLogos}
         speed={100}
         direction="left"
         logoHeight={100}

@@ -122,7 +122,7 @@ const homeData = {
       year: '2025',
       link: 'https://github.com/HarshUserethe/FIDS--Flight-Information-Display-System',
       bg: 'rgba(254 243 199)',
-      img: 'https://plus.unsplash.com/premium_photo-1661293879952-c5c093282801?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776885029/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png',
       margin: '0%',
     },
     {
@@ -228,7 +228,7 @@ const projectsData = [
     date: '2025',
     link: 'https://github.com/HarshUserethe/FIDS--Flight-Information-Display-System',
     image:
-      'https://images.unsplash.com/photo-1632494425431-e8b9bc198390?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776885029/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png', // Replace with your actual image path
   },
 
   {
@@ -238,19 +238,10 @@ const projectsData = [
     date: '2024',
     link: 'https://github.com/HarshUserethe/LocalHire-Jobs-Portal',
     image:
-      'https://plus.unsplash.com/premium_photo-1726797724889-54d3a3649aec?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_xk1733xk1733xk17_utili8.png', // Replace with your actual image path
   },
   {
     id: 3,
-    title: 'Ward Management',
-    category: 'development',
-    date: '2024',
-    link: 'https://github.com/HarshUserethe/Ward-WorkStation',
-    image:
-      'https://images.unsplash.com/photo-1612416364638-753a3834455c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
-  },
-  {
-    id: 4,
     title: 'Amazon Clone',
     category: 'development',
     date: '2022',
@@ -259,13 +250,22 @@ const projectsData = [
       'https://plus.unsplash.com/premium_photo-1691585773465-32085c743608?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
   },
   {
-    id: 5,
+    id: 4,
     title: 'CricWWW',
     category: 'development',
     date: '2023',
     link: 'https://github.com/HarshUserethe/Cricwww',
     image:
-      'https://plus.unsplash.com/premium_photo-1679690884144-1f43b8f3bf41?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_xrgbumxrgbumxrgb_waitfp.png', // Replace with your actual image path
+  },
+  {
+    id: 5,
+    title: 'Ward Management',
+    category: 'development',
+    date: '2024',
+    link: 'https://github.com/HarshUserethe/Ward-WorkStation',
+    image:
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_gwghfsgwghfsgwgh_ettvwv.png', // Replace with your actual image path
   },
   {
     id: 6,
@@ -283,7 +283,7 @@ const projectsData = [
     date: '2023',
     link: 'https://github.com/HarshUserethe/SpotifyClone-NodeJS',
     image:
-      'https://plus.unsplash.com/premium_photo-1682125853703-896a05629709?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_gwlkr6gwlkr6gwlk_wc7yxc.png', // Replace with your actual image path
   },
   {
     id: 8,

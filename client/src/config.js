@@ -122,7 +122,7 @@ const homeData = {
       year: '2025',
       link: 'https://github.com/HarshUserethe/FIDS--Flight-Information-Display-System',
       bg: 'rgba(254 243 199)',
-      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png',
+      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776885029/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png',
       margin: '0%',
     },
     {
@@ -228,7 +228,7 @@ const projectsData = [
     date: '2025',
     link: 'https://github.com/HarshUserethe/FIDS--Flight-Information-Display-System',
     image:
-      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776885029/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png', // Replace with your actual image path
   },
 
   {

@@ -67,8 +67,8 @@ const MyProjects = () => {
           }}
         >
           <SplitText
-            key="selected-projects"
-            text="Selected Projects"
+            key="featured-projects"
+            text="Featured Projects"
             delay={30}
             duration={0.6}
             ease="power3.out"

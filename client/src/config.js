@@ -122,7 +122,7 @@ const homeData = {
       year: '2025',
       link: 'https://github.com/HarshUserethe/FIDS--Flight-Information-Display-System',
       bg: 'rgba(254 243 199)',
-      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776885029/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png',
+      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777048153/PRJ006_fewjvm.png',
       margin: '0%',
     },
     {
@@ -131,7 +131,7 @@ const homeData = {
       year: '2024',
       link: 'https://github.com/HarshUserethe/LocalHire-Jobs-Portal',
       bg: 'rgba(251 207 232)',
-      img: 'https://plus.unsplash.com/premium_photo-1678565869434-c81195861939?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ002_npfasx.png',
       margin: '10%',
     },
     {
@@ -140,7 +140,7 @@ const homeData = {
       year: '2024',
       link: 'https://github.com/HarshUserethe/Ward-WorkStation',
       bg: 'rgba(231 229 228)',
-      img: 'https://images.unsplash.com/photo-1521939094609-93aba1af40d7?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ004_l3jvty.png',
       margin: '0%',
     },
     {
@@ -149,7 +149,7 @@ const homeData = {
       year: '2022',
       link: 'https://github.com/HarshUserethe/AmazonClone-WebApp',
       bg: 'rgba(187 247 208)',
-      img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1026&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      img: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ003_ajqwrh.png',
       margin: '10%',
     },
   ],
@@ -228,7 +228,7 @@ const projectsData = [
     date: '2025',
     link: 'https://github.com/HarshUserethe/FIDS--Flight-Information-Display-System',
     image:
-      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776885029/Gemini_Generated_Image_2ghfbg2ghfbg2ghf_wjpagr.png', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777048153/PRJ006_fewjvm.png', // Replace with your actual image path
   },
 
   {
@@ -238,7 +238,7 @@ const projectsData = [
     date: '2024',
     link: 'https://github.com/HarshUserethe/LocalHire-Jobs-Portal',
     image:
-      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_xk1733xk1733xk17_utili8.png', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ002_npfasx.png', // Replace with your actual image path
   },
   {
     id: 3,
@@ -247,16 +247,16 @@ const projectsData = [
     date: '2022',
     link: 'https://github.com/HarshUserethe/AmazonClone-WebApp',
     image:
-      'https://plus.unsplash.com/premium_photo-1691585773465-32085c743608?q=80&w=1147&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ003_ajqwrh.png', // Replace with your actual image path
   },
   {
     id: 4,
-    title: 'CricWWW',
+    title: 'CricJadoo',
     category: 'development',
     date: '2023',
     link: 'https://github.com/HarshUserethe/Cricwww',
     image:
-      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_xrgbumxrgbumxrgb_waitfp.png', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777056864/PRJ008_ofkrv2.png', // Replace with your actual image path
   },
   {
     id: 5,
@@ -265,52 +265,25 @@ const projectsData = [
     date: '2024',
     link: 'https://github.com/HarshUserethe/Ward-WorkStation',
     image:
-      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_gwghfsgwghfsgwgh_ettvwv.png', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ004_l3jvty.png', // Replace with your actual image path
   },
   {
     id: 6,
-    title: 'Farm Rental',
-    category: 'design',
-    date: '2023',
-    link: 'https://github.com/HarshUserethe/Farm-Rental-Website',
-    image:
-      'https://images.unsplash.com/photo-1706862609885-7771b001daa2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Replace with your actual image path
-  },
-  {
-    id: 7,
     title: 'Spotify Clone',
     category: 'development',
     date: '2023',
     link: 'https://github.com/HarshUserethe/SpotifyClone-NodeJS',
     image:
-      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1776794694/Gemini_Generated_Image_gwlkr6gwlkr6gwlk_wc7yxc.png', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047889/PRJ005_sznpjn.png', // Replace with your actual image path
   },
   {
-    id: 8,
-    title: 'Weather Forecast',
-    category: 'development',
-    date: '2023',
-    link: 'https://github.com/HarshUserethe/Weather-Forecast-WebApp',
-    image:
-      'https://as1.ftcdn.net/jpg/13/63/91/54/1000_F_1363915499_egqqAg3CpqsWdmeYIj1KC0QphZfLs2eu.webp', // Replace with your actual image path
-  },
-  {
-    id: 9,
-    title: 'Barrel Fashion',
-    category: 'design',
-    date: '2022',
-    link: 'https://github.com/HarshUserethe/BARREL-MensFashion',
-    image:
-      'https://www.thewall360.com/uploadImages/ExtImages/images1/def-638240706028967470.jpg', // Replace with your actual image path
-  },
-  {
-    id: 10,
+    id: 7,
     title: 'Awwwards Inspiration',
     category: 'design',
     date: '2022',
     link: 'https://github.com/HarshUserethe/RocketAir-Clone',
     image:
-      'https://www.thewall360.com/uploadImages/ExtImages/images1/def-638240706028967470.jpg', // Replace with your actual image path
+      'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777054472/PRJ007_u5ltju.png', // Replace with your actual image path
   },
 ];
 

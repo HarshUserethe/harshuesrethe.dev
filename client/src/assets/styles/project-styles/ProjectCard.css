@@ -38,15 +38,19 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .project-card {
-    min-height: 350px;
+    max-height: 250px;
   }
-  .project-card {
-    height: 300px;
-  }
+  .prj-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
 }
 
 @media (max-width: 480px) {
   .project-card {
-    min-height: 280px;
+    max-height: 280px;
   }
 }

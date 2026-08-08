@@ -378,12 +378,15 @@ function Lightbox({ src, alt, onClose }) {
 // ─────────────────────────────────────────────────────────────
 //  Screenshot layouts
 // ─────────────────────────────────────────────────────────────
-function LayoutHero({ screenshots, onOpen }) {
+function LayoutHero({ screenshots, onOpen, mobile }) {
   const [hov, setHov] = useState(false);
   const s = screenshots[0];
   return (
     <div
-      style={S.heroShot}
+      style={{
+        ...S.heroShot,
+        height: mobile ? 400 : 600,
+      }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       onClick={() => onOpen(s.src, s.alt)}
@@ -393,6 +396,9 @@ function LayoutHero({ screenshots, onOpen }) {
         alt={s.alt}
         style={{
           ...S.shotImg,
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'top',
           transform: hov ? 'scale(1.015)' : 'scale(1)',
           transition: 'transform .6s ease',
         }}
@@ -401,11 +407,14 @@ function LayoutHero({ screenshots, onOpen }) {
   );
 }
 
-function ThumbShot({ shot, onOpen }) {
+function ThumbShot({ shot, onOpen, mobile }) {
   const [hov, setHov] = useState(false);
   return (
     <div
-      style={S.thumbShot}
+      style={{
+        ...S.thumbShot,
+        height: mobile ? 240 : 400,
+      }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       onClick={() => onOpen(shot.src, shot.alt)}
@@ -415,6 +424,9 @@ function ThumbShot({ shot, onOpen }) {
         alt={shot.alt}
         style={{
           ...S.shotImg,
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'top',
           transform: hov ? 'scale(1.04)' : 'scale(1)',
           transition: 'transform .4s ease',
         }}
@@ -428,13 +440,24 @@ function LayoutSplit({ screenshots, onOpen, mobile }) {
   return (
     <div style={S.splitGrid(mobile)}>
       <div
-        style={S.featuredShot}
+        style={{
+          ...S.featuredShot,
+          height: 'auto',
+        }}
         onClick={() => onOpen(featured.src, featured.alt)}
       >
-        <img src={featured.src} alt={featured.alt} style={S.shotImg} />
+        <img
+          src={featured.src}
+          alt={featured.alt}
+          style={{
+            ...S.shotImg,
+            height: 'auto',
+            objectFit: 'cover',
+          }}
+        />
       </div>
       {rest.map((s, i) => (
-        <ThumbShot key={i} shot={s} onOpen={onOpen} />
+        <ThumbShot key={i} shot={s} onOpen={onOpen} mobile={mobile} />
       ))}
     </div>
   );
@@ -456,12 +479,20 @@ function LayoutGallery({ screenshots, onOpen, mobile }) {
 
   return (
     <div>
-      <div style={S.heroShot} onClick={() => onOpen(active.src, active.alt)}>
+      <div
+        style={{
+          ...S.heroShot,
+          height: 'auto',
+        }}
+        onClick={() => onOpen(active.src, active.alt)}
+      >
         <img
           src={active.src}
           alt={active.alt}
           style={{
             ...S.shotImg,
+            height: 'auto',
+            objectFit: 'cover',
             opacity: fading ? 0 : 1,
             transform: fading ? 'scale(.98)' : 'scale(1)',
             transition: 'opacity .16s ease, transform .16s ease',
@@ -563,7 +594,11 @@ const ProjectDetail = () => {
   let ScreenshotBlock = null;
   if (n === 1)
     ScreenshotBlock = (
-      <LayoutHero screenshots={screenshots} onOpen={openLightbox} />
+      <LayoutHero
+        screenshots={screenshots}
+        onOpen={openLightbox}
+        mobile={mobile}
+      />
     );
   else if (n <= 3)
     ScreenshotBlock = (

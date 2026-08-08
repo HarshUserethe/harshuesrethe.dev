@@ -66,27 +66,10 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-height: 400px;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out;
 }
 
 .experience-list.expanded {
-  max-height: 600px;
-  overflow-y: auto;
-  overflow-x: hidden;
   padding-right: 8px;
-}
-
-/* Hide scrollbar but keep functionality */
-.experience-list.expanded::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-}
-
-.experience-list.expanded {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 .experience-item {

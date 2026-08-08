@@ -13,12 +13,37 @@ import ShinyText from '../shared/ShinyText';
 import { LuSparkle } from 'react-icons/lu';
 import { useSelector } from 'react-redux';
 import MobileCarousel from './MobileCarousel';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const MyProcess = ({ autoScrollInterval = 8000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const scrollContainerRef = useRef(null);
+  const sectionRef = useRef(null);
   const styles = useSelector((state) => state.theme.styles);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header elements animation
+      gsap.from('.process-header > *', {
+        scrollTrigger: {
+          trigger: '.process-header',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const steps = [
     {
@@ -95,6 +120,7 @@ const MyProcess = ({ autoScrollInterval = 8000 }) => {
 
   return (
     <Box
+      ref={sectionRef}
       className="my-process-section"
       sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
     >

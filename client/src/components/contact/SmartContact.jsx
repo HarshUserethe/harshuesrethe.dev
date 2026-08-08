@@ -44,7 +44,7 @@ import AnimatedButton from '../shared/AnimatedButton';
 import Warning from '../shared/Warning';
 import { useMutation } from 'convex/react';
 import { api } from '../../../convex/_generated/api';
-import HarshUseretheImage from '../../assets/images/picofmine.webp';
+import { aboutData } from '../../config';
 
 /* ──────────────── OPTION DATA ──────────────── */
 
@@ -164,6 +164,8 @@ const selectSx = (styles) => ({
 /* ──────────────── COMPONENT ──────────────── */
 
 const SmartContact = () => {
+  const HarshUseretheImage = aboutData[0].profile_circle;
+
   const createContact = useMutation(
     api.apis.post.insertSmartContact.createSmartContact
   );

@@ -1,16 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography, Avatar, Button, Collapse, Link } from '@mui/material';
 import { LuSparkle } from 'react-icons/lu';
 import ShinyText from '../shared/ShinyText';
 import { useSelector } from 'react-redux';
 import '../../assets/styles/about-styles/Expeience.css';
 import { experienceData } from '../../config';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
   const [showMore, setShowMore] = useState(false);
   const [expandedId, setExpandedId] = useState(null);
   const styles = useSelector((state) => state.theme.styles);
   const initialDisplayCount = 4;
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Left side animations
+      gsap.from('.experience-left > *', {
+        scrollTrigger: {
+          trigger: '.experience-left',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+      });
+
+      // Right side experience items animation
+      gsap.from('.experience-item-wrapper', {
+        scrollTrigger: {
+          trigger: '.experience-right',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const displayedExperiences = showMore
     ? experienceData
@@ -26,6 +65,7 @@ const Experience = () => {
 
   return (
     <Box
+      ref={containerRef}
       className="experience-container"
       sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
     >

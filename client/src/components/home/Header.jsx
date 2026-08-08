@@ -33,17 +33,14 @@ const Header = () => {
     const ctx = gsap.context(() => {
       gsap.to(headerRef.current, {
         width: '50%',
-        backgroundColor: styles?.mainTheme?.backgroundColor,
-        boxShadow: `1px 2px 8px ${styles?.mainTheme?.headerShadowColor}`,
         opacity: '90%',
-        borderRadius: '500px',
 
         ease: 'none',
         scrollTrigger: {
           trigger: document.body,
           start: 'top top',
           end: '+=200', // scroll distance
-          scrub: true,
+          scrub: 1, // Smoothly animate/catch up with scroll
         },
       });
     });
@@ -59,25 +56,7 @@ const Header = () => {
   ];
 
   const handleThemeToggle = () => {
-    window.location.reload(); // auto reoload
     dispatch(toggleTheme());
-
-    // Optionally update styles if the logic is in Redux
-    dispatch(
-      setStyles({
-        mainTheme: {
-          backgroundColor: themeValues.mode === 'dark' ? '#f6f9fb' : '#0a0b0c', // swapped for post-toggle
-          color: themeValues.mode === 'dark' ? '#000' : '#fff',
-        },
-        activeClass: {
-          activeColor: themeValues.mode === 'dark' ? '#000' : '#fff',
-          nonActiveColor: themeValues.mode === 'dark' ? 'gray' : '#5d5d68',
-        },
-        icon: {
-          color: themeValues.mode === 'dark' ? '#000' : '#fff',
-        },
-      })
-    );
   };
 
   return (
@@ -114,7 +93,11 @@ const Header = () => {
         />
         <Box
           className="nav-inner-container"
-          sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
+          sx={{
+            backgroundColor: styles?.mainTheme?.backgroundColor,
+            borderRadius: '500px',
+            boxShadow: `1px 2px 8px ${styles?.mainTheme?.headerShadowColor}`,
+          }}
           ref={headerRef}
         >
           <Box

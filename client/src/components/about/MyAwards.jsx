@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { LuSparkle } from 'react-icons/lu';
 import ShinyText from '../shared/ShinyText';
 import '../../assets/styles/about-styles/MyAwards.css';
 import { useSelector } from 'react-redux';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 const MyAwards = () => {
   const styles = useSelector((state) => state.theme.styles);
+  const awardsRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Header animation
+      gsap.from('.awards-header > *', {
+        scrollTrigger: {
+          trigger: '.awards-header',
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power3.out',
+      });
+    }, awardsRef);
+
+    return () => ctx.revert();
+  }, []);
   const awards = [
     {
       id: 1,
@@ -31,6 +57,7 @@ const MyAwards = () => {
 
   return (
     <Box
+      ref={awardsRef}
       className="my-awards-section"
       sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
     >

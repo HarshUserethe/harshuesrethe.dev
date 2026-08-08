@@ -161,6 +161,7 @@ const SplitText = ({
         rootMargin,
         fontsLoaded,
         onLetterAnimationComplete,
+        highlightedColor,
       ],
       scope: ref,
     }

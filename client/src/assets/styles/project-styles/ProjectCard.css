@@ -38,8 +38,10 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .project-card {
-    max-height: 250px;
+    height: 250px;
+    /* Fixed height so all cards are uniform */
   }
+
   .prj-wrapper {
     display: flex;
     flex-direction: column;
@@ -51,6 +53,7 @@
 
 @media (max-width: 480px) {
   .project-card {
-    max-height: 280px;
+    height: 220px;
+    /* Fixed height on small mobile */
   }
 }

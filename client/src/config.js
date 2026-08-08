@@ -332,6 +332,7 @@ export const projectsData = [
         src: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777048153/PRJ006_fewjvm.png',
         alt: 'FIDS board main view',
       },
+
     ],
   },
 
@@ -491,14 +492,6 @@ export const projectsData = [
     liveLink: '/not-live',
     coffeeLink: 'https://buymeacoffee.com/you',
     screenshots: [
-      {
-        src: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ002_npfasx.png',
-        alt: 'Local Hire home',
-      },
-      {
-        src: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ002_npfasx.png',
-        alt: 'Local Hire home',
-      },
       {
         src: 'https://res.cloudinary.com/da6pzcqcw/image/upload/v1777047888/PRJ002_npfasx.png',
         alt: 'Local Hire home',

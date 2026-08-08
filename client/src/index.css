@@ -48,3 +48,34 @@ body {
 .poppins-font-type {
   font-family: 'Poppins', sans-serif;
 }
+
+/* Global Theme Toggle Transitions */
+body,
+.main,
+.main-about,
+.experience-container,
+.my-process-section,
+.my-awards-section,
+.nav-inner-container,
+.nav-container,
+.process-card,
+.award-item,
+.experience-item,
+.about-hero,
+.inner-wrapper,
+.logo-loop,
+.chips-loop,
+li, a, button {
+  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Exclude GSAP animated words and characters from transitions to avoid scroll jitter */
+.word,
+.split-word,
+.split-char,
+.split-line {
+  transition: none !important;
+}

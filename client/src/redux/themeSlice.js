@@ -62,6 +62,7 @@ const themeSlice = createSlice({
     toggleTheme: (state) => {
       state.mode = state.mode === 'dark' ? 'light' : 'dark';
       localStorage.setItem('theme', state.mode);
+      state.styles = getStyles(state.mode);
     },
     setStyles: (state, action) => {
       state.styles = action.payload;

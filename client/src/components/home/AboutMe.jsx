@@ -24,7 +24,7 @@ const AboutMe = ({ styles }) => {
             trigger: textRef.current,
             start: 'top 80%',
             end: 'bottom 40%',
-            scrub: true,
+            scrub: 1,
           },
         })
         .to(words, {

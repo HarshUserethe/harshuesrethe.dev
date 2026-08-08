@@ -36,7 +36,9 @@ const AboutHero = ({
       <Box className="hero-grid">
         {/* LEFT IMAGE */}
         <Box className="hero-image-wrapper">
-          <img src={imageUrl} alt="Profile" className="hero-image" />
+          <Box className="hero-image-frame">
+            <img src={imageUrl} alt="Profile" className="hero-image" />
+          </Box>
 
           {/* Circular Tag */}
 

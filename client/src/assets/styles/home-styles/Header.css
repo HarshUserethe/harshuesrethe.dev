@@ -15,6 +15,7 @@
   align-items: center;
   padding: 25px;
   opacity: 100% !important;
+  border-radius: 500px;
 }
 
 .navigation-container {

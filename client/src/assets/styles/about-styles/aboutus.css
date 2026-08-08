@@ -2,6 +2,7 @@
 .main-about {
   min-height: 100vh !important;
 }
+
 .about-hero {
   min-height: 90dvh;
   display: flex;
@@ -29,13 +30,25 @@
   display: flex;
   height: 88%;
   margin-top: 5%;
+  width: 90%;
+}
+
+.hero-image-frame {
+  width: 90%;
+  /* Decreased width of the container (was 92%) */
+  height: 90%;
+  overflow: hidden;
+  border-radius: 0px 0px 220px 220px;
 }
 
 .hero-image {
-  width: 92%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 0px 0px 220px 220px;
+  /* Adjust scale to zoom in/out (1.0 = no zoom, 1.15 = 15% zoom, etc.) */
+  transform: scale(1.15);
+  /* Adjust origin to shift the focus (e.g. 'center top' or '50% 30%') */
+  transform-origin: center center;
 }
 
 /* CIRCULAR TAG */
@@ -47,15 +60,18 @@
 .button-wrapper {
   margin-top: 30px;
 }
+
 .chip-logo-wrapper {
   width: 100%;
   height: 14dvh;
 }
+
 /* ROTATION */
 @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -115,10 +131,19 @@
     margin-bottom: 3rem;
     height: 55dvh;
   }
-  .hero-image {
+
+  .hero-image-frame {
     width: 100%;
     height: 110%;
     margin-top: -10%;
+    overflow: hidden;
+    border-radius: 0px 0px 220px 220px;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .circular-text {
@@ -131,6 +156,7 @@
     margin-right: auto;
     text-align: left;
   }
+
   .chip-logo-wrapper {
     margin-top: 10%;
     height: 14dvh;

@@ -56,11 +56,11 @@ const AboutHero = ({
             component="h1"
             className="hero-title"
             sx={{
-              fontSize: '72px',
-              fontWeight: '500',
+              fontSize: 'var(--font-size-display)',
+              fontWeight: 'var(--font-weight-medium)',
               color: styles?.mainTheme?.color,
               width: '100%',
-              lineHeight: '72px',
+              lineHeight: 'var(--line-height-display)',
               marginTop: '2%',
               marginBottom: '4%',
               textAlign: 'center',

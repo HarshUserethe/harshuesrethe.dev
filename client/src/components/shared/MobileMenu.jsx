@@ -59,7 +59,7 @@ const MobileMenu = () => {
               color: styles?.mainTheme?.mobileMenuLableNonActive,
               '& .MuiBottomNavigationAction-label': {
                 color: styles?.mainTheme?.mobileMenuLableNonActive,
-                fontSize: '0.75rem',
+                fontSize: 'var(--font-size-caption)',
               },
               '& .MuiSvgIcon-root, & svg': {
                 // Targets MUI icons AND raw SVGs

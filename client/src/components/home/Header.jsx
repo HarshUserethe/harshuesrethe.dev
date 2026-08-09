@@ -102,9 +102,9 @@ const Header = () => {
         >
           <Box
             sx={{
-              fontSize: '18px',
+              fontSize: 'var(--font-size-large)',
               cursor: 'pointer',
-              fontWeight: '500',
+              fontWeight: 'var(--font-weight-medium)',
               color: styles?.mainTheme?.color,
             }}
           >

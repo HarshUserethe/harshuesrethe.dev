@@ -16,6 +16,9 @@
 }
 .headline {
   font-family: 'clash_display' !important;
+  font-size: var(--font-size-display) !important;
+  line-height: var(--line-height-display) !important;
+  letter-spacing: var(--letter-spacing-tight) !important;
 }
 
 .light-mode {
@@ -27,8 +30,8 @@
   left: 0% !important;
   width: fit-content !important;
   padding: 12px 42px !important;
-  font-size: 14px !important;
-  line-height: 1.25rem !important;
+  font-size: var(--font-size-button) !important;
+  line-height: var(--line-height-heading) !important;
   overflow: hidden;
   cursor: pointer;
 }
@@ -41,8 +44,8 @@
   left: 0% !important;
   width: fit-content !important;
   padding: 12px 42px !important;
-  font-size: 14px !important;
-  line-height: 1.25rem !important;
+  font-size: var(--font-size-button) !important;
+  line-height: var(--line-height-heading) !important;
   overflow: hidden;
   cursor: pointer;
 }
@@ -115,8 +118,8 @@
     width: 60% !important;
   }
   .split-parent {
-    font-size: 3rem !important;
-    line-height: 1;
+    font-size: var(--font-size-h2) !important;
+    line-height: var(--line-height-display);
   }
 }
 
@@ -132,8 +135,8 @@
     width: 80% !important;
   }
   .headline {
-    font-size: 65px !important;
-    line-height: 85% !important;
+    font-size: var(--font-size-h1) !important;
+    line-height: var(--line-height-display) !important;
     margin-top: 8% !important;
     width: 100% !important;
   }
@@ -145,7 +148,7 @@
     padding: 0 !important;
   }
   .css-u64c8x-MuiButtonBase-root-MuiButton-root {
-    font-size: 14px !important;
+    font-size: var(--font-size-button) !important;
     width: 100% !important;
     padding: 10px 2px !important;
   }
@@ -156,8 +159,8 @@
     margin-top: 8vw;
   }
   .split-parent {
-    font-size: 3rem !important;
-    line-height: 1;
+    font-size: var(--font-size-h2) !important;
+    line-height: var(--line-height-display);
   }
 }
 
@@ -169,13 +172,13 @@
 
 @media (max-width: 768px) and (min-width: 599px) {
   .split-parent {
-    font-size: 60px !important;
+    font-size: var(--font-size-h1) !important;
   }
   .inner-wrapper {
     margin-top: 25%;
   }
   .inner-wrapper > h1 {
-    font-size: 22px;
+    font-size: var(--font-size-large);
   }
   .css-1d0sf12 {
     gap: 48px;
@@ -184,6 +187,6 @@
     padding: 18px 0px !important;
   }
   .css-1av2jjk-MuiTypography-root {
-    font-size: 24px !important;
+    font-size: var(--font-size-h4) !important;
   }
 }

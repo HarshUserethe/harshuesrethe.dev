@@ -20,7 +20,7 @@
 
 .navigation-container {
   display: flex;
-  font-size: 0.9rem;
+  font-size: var(--font-size-nav);
   gap: 10px;
 }
 .nav-list {
@@ -35,7 +35,7 @@
     transition: cubic-bezier(0.19, 1, 0.22, 1) .8s;
 } */
 .icons {
-  font-size: 18px;
+  font-size: var(--font-size-large);
   cursor: pointer;
 }
 .active {

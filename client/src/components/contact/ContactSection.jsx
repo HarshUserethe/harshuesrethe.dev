@@ -126,9 +126,9 @@ const ContactSection = ({ handleDiscussProjectButton }) => {
           <Typography
             sx={{
               color: 'greenyellow',
-              fontSize: '16px',
+              fontSize: 'var(--font-size-body)',
               textTransform: 'uppercase',
-              fontWeight: 500,
+              fontWeight: 'var(--font-weight-medium)',
               letterSpacing: '1px',
             }}
           >
@@ -146,11 +146,11 @@ const ContactSection = ({ handleDiscussProjectButton }) => {
           className="headline"
           variant="h1"
           sx={{
-            fontSize: '72px',
-            fontWeight: '500',
+            fontSize: 'var(--font-size-display)',
+            fontWeight: 'var(--font-weight-medium)',
             color: styles?.mainTheme?.color,
             width: '70%',
-            lineHeight: '72px',
+            lineHeight: 'var(--line-height-display)',
             marginTop: '2%',
             marginBottom: '4%',
             textAlign: 'center',
@@ -276,7 +276,7 @@ const ContactSection = ({ handleDiscussProjectButton }) => {
                 <Typography
                   sx={{
                     color: styles?.mainTheme?.color,
-                    fontSize: '14px',
+                    fontSize: 'var(--font-size-small)',
                     padding: '10px',
                   }}
                 >
@@ -329,7 +329,7 @@ const ContactSection = ({ handleDiscussProjectButton }) => {
                 ></div>
                 <span
                   style={{
-                    fontSize: '14px',
+                    fontSize: 'var(--font-size-small)',
                     color: styles?.mainTheme?.color,
                   }}
                 >

@@ -54,7 +54,7 @@ const Home = () => {
           <Typography
             variant="h1"
             sx={{
-              fontSize: '16px',
+              fontSize: 'var(--font-size-body)',
               color: styles?.mainTheme?.color,
               display: 'flex',
               justifyContent: 'start',
@@ -74,11 +74,11 @@ const Home = () => {
             className="headline"
             variant="h1"
             sx={{
-              fontSize: '72px',
-              fontWeight: '500',
+              fontSize: 'var(--font-size-display)',
+              fontWeight: 'var(--font-weight-medium)',
               color: styles?.mainTheme?.color,
               width: '80%',
-              lineHeight: '72px',
+              lineHeight: 'var(--line-height-display)',
               marginTop: '2%',
               marginBottom: '4%',
               textAlign: 'center',
@@ -125,7 +125,7 @@ const Home = () => {
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -137,7 +137,7 @@ const Home = () => {
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -149,7 +149,7 @@ const Home = () => {
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -161,7 +161,7 @@ const Home = () => {
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -184,7 +184,7 @@ const Home = () => {
             >
               <Typography
                 variant="h1"
-                sx={{ fontSize: '16px', color: '#8c8c9d' }}
+                sx={{ fontSize: 'var(--font-size-large)', color: '#8c8c9d' }}
               >
                 I collaborate with clients and teams to design and build clean,
                 accessible digital experiences that solve real problems and

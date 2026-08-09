@@ -52,10 +52,10 @@
     gap: 5px !important;
   }
   .css-1av2jjk-MuiTypography-root {
-    font-size: 18px !important;
+    font-size: var(--font-size-large) !important;
   }
   .css-qcucd9-MuiTypography-root {
-    font-size: 18px !important;
+    font-size: var(--font-size-large) !important;
   }
   .css-1f52zvs {
     padding: 16px;

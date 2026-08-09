@@ -41,9 +41,9 @@ const ProjectPage = () => {
             <Typography
               sx={{
                 color: 'greenyellow',
-                fontSize: '16px',
+                fontSize: 'var(--font-size-body)',
                 textTransform: 'uppercase',
-                fontWeight: 500,
+                fontWeight: 'var(--font-weight-medium)',
                 letterSpacing: '1px',
               }}
             >
@@ -61,11 +61,11 @@ const ProjectPage = () => {
             className="headline"
             variant="h1"
             sx={{
-              fontSize: '72px',
-              fontWeight: '500',
+              fontSize: 'var(--font-size-display)',
+              fontWeight: 'var(--font-weight-medium)',
               color: styles?.mainTheme?.color,
               width: '70%',
-              lineHeight: '72px',
+              lineHeight: 'var(--line-height-display)',
               marginTop: '2%',
               marginBottom: '4%',
               textAlign: 'center',

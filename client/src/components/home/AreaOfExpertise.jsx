@@ -74,7 +74,7 @@ const AreaOfExpertise = () => {
           <Typography
             sx={{
               color: 'greenyellow',
-              fontSize: '16px',
+              fontSize: 'var(--font-size-body)',
               textTransform: 'uppercase',
             }}
             variant="h3"
@@ -94,7 +94,7 @@ const AreaOfExpertise = () => {
           variant="h3"
           sx={{
             color: styles?.mainTheme?.color,
-            fontSize: '48px',
+            fontSize: 'var(--font-size-h1)',
             marginTop: '10px',
             fontFamily: 'clash_display',
           }}

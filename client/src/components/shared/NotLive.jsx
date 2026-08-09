@@ -77,9 +77,9 @@ const NotLive = () => {
             fontWeight={800}
             gutterBottom
             sx={{
-              fontSize: { xs: '2rem', sm: '2.5rem' },
+              fontSize: { xs: 'var(--font-size-h2)', sm: 'var(--font-size-h1)' },
               fontFamily: "'Poppins', sans-serif",
-              letterSpacing: '-0.02em',
+              letterSpacing: 'var(--letter-spacing-tight)',
             }}
           >
             Project Not Live
@@ -91,7 +91,7 @@ const NotLive = () => {
               maxWidth: 620,
               mx: 'auto',
               mb: 4,
-              lineHeight: 1.85,
+              lineHeight: 'var(--line-height-relaxed)',
               color: isDark ? 'rgba(255,255,255,0.72)' : 'rgba(0,0,0,0.65)',
               fontFamily: "'Poppins', sans-serif",
             }}

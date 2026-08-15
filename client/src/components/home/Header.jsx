@@ -30,11 +30,12 @@ const Header = () => {
   }, [pathname]);
 
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 600px)', () => {
       gsap.to(headerRef.current, {
         width: '50%',
         opacity: '90%',
-
         ease: 'none',
         scrollTrigger: {
           trigger: document.body,
@@ -45,7 +46,7 @@ const Header = () => {
       });
     });
 
-    return () => ctx.revert(); // cleanup
+    return () => mm.revert(); // cleanup matchMedia
   }, [styles]);
 
   const navItems = [
@@ -58,6 +59,21 @@ const Header = () => {
   const handleThemeToggle = () => {
     dispatch(toggleTheme());
   };
+
+  const mode = themeValues.mode || 'dark';
+
+  // Glassmorphism background color based on theme mode
+  const glassBg = mode === 'light' 
+    ? 'rgba(247, 249, 250, 0.8)' 
+    : 'rgba(11, 11, 15, 0.75)';
+  
+  const glassBorder = mode === 'light'
+    ? '1px solid rgba(0, 0, 0, 0.06)'
+    : '1px solid rgba(255, 255, 255, 0.08)';
+
+  const glassShadow = mode === 'light'
+    ? '0 10px 30px rgba(0, 0, 0, 0.08)'
+    : '0 12px 40px rgba(0, 0, 0, 0.4)';
 
   return (
     <Box
@@ -72,10 +88,18 @@ const Header = () => {
       <Box
         className="nav-container"
         sx={{
-          // backgroundColor: styles.mainTheme.backgroundColor,
           backgroundColor: 'transparent',
           color: styles?.mainTheme?.color,
           zIndex: '99',
+          position: 'fixed',
+          top: { xs: '20px', sm: '0px' },
+          left: 0,
+          right: 0,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: { xs: 'auto', sm: '10dvh' },
+          padding: { xs: '0px', sm: '15px' },
         }}
       >
         <ToastContainer
@@ -94,9 +118,16 @@ const Header = () => {
         <Box
           className="nav-inner-container"
           sx={{
-            backgroundColor: styles?.mainTheme?.backgroundColor,
+            width: { xs: '90%', sm: '85%' },
+            maxWidth: { xs: '380px', sm: 'none' },
+            height: { xs: '55px', sm: '100%' },
+            padding: { xs: '0 24px', sm: '25px' },
+            backgroundColor: { xs: glassBg, sm: styles?.mainTheme?.backgroundColor },
+            backdropFilter: { xs: 'blur(16px)', sm: 'none' },
+            WebkitBackdropFilter: { xs: 'blur(16px)', sm: 'none' },
+            border: { xs: glassBorder, sm: 'none' },
             borderRadius: '500px',
-            boxShadow: `1px 2px 8px ${styles?.mainTheme?.headerShadowColor}`,
+            boxShadow: { xs: glassShadow, sm: `1px 2px 8px ${styles?.mainTheme?.headerShadowColor}` },
           }}
           ref={headerRef}
         >
@@ -110,7 +141,12 @@ const Header = () => {
           >
             HU
           </Box>
-          <Box className="navigation-container">
+          <Box
+            className="navigation-container"
+            sx={{
+              display: { xs: 'none', sm: 'flex' },
+            }}
+          >
             {navItems.map((nav) => (
               <ListItem
                 key={nav.name}

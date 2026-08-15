@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../assets/styles/home-styles/Testimonal.css';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const testimonials = [
   {
@@ -32,6 +33,9 @@ const testimonials = [
 ];
 
 const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const intervalRef = useRef(null);
@@ -118,7 +122,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
           <div
             style={{
               position: 'relative',
-              width: '85px',
+              width: isMobile ? '80px' : '85px',
               aspectRatio: '1 / 1', // keeps it responsive
             }}
           >
@@ -167,7 +171,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
             <h2
               style={{
                 fontWeight: 600,
-                fontSize: '20px',
+                fontSize: isMobile ? '18px' : '20px',
                 margin: '0 0 8px 0',
               }}
             >
@@ -176,7 +180,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
             <p
               style={{
                 color: '#999',
-                fontSize: '14px',
+                fontSize: isMobile ? '12px' : '14px',
                 margin: 0,
               }}
             >
@@ -189,7 +193,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
         <div style={{ marginBottom: '32px' }}>
           <p
             style={{
-              fontSize: '16px',
+              fontSize: isMobile ? '14px' : '16px',
               lineHeight: 1.7,
               color: '#A9A9BD',
               margin: 0,
@@ -249,7 +253,7 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
               gap: '8px',
               color: styles?.mainTheme?.color,
               textDecoration: 'none',
-              fontSize: '14px',
+              fontSize: isMobile ? '12px' : '14px',
               transition: 'opacity 0.2s',
             }}
             className="testimonial-button"
@@ -354,27 +358,6 @@ const TestimonialSlider = ({ slideInterval = 18000, styles }) => {
         </div>
       </div>
 
-      {/* Responsive Styles */}
-      <style>{`
-        @media (max-width: 768px) {
-          div[style*="padding: 80px 60px"] {
-            padding: 40px 20px !important;
-          }
-          div[style*="width: 100px"] {
-            width: 80px !important;
-            height: 80px !important;
-          }
-          h2 {
-            font-size: 1.25rem !important;
-          }
-          p {
-            font-size: 0.875rem !important;
-          }
-          div[style*="fontSize: 1.125rem"] p {
-            font-size: 14rem !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };

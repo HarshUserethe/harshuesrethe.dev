@@ -1,17 +1,3 @@
-.css-h5h7wl {
-  width: 70% !important;
-  padding: 15px;
-  border-radius: 15px;
-  border-left: 1px solid #191920;
-  border-right: 1px solid #191920;
-}
-
-.css-124zb1q {
-  border-radius: 15px;
-
-  border-right: 1px solid #191920;
-}
-
 .testimonial-button {
   position: relative;
   display: inline-block;
@@ -33,40 +19,4 @@
 /* Hover animation */
 .testimonial-button:hover::after {
   width: 100%;
-}
-
-@media (max-width: 499px) and (min-width: 300px) {
-  /* .css-45qwhz {
-    padding: 0 !important;
-    padding-top: 150px !important;
-  } */
-
-  .css-45qwhz {
-    flex-direction: column !important;
-    gap: 100px !important;
-    padding: 0 !important;
-    padding-top: 150px !important;
-  }
-  .css-1y2p1ck {
-    flex-direction: column !important;
-    gap: 100px !important;
-    padding: 0 !important;
-    padding-top: 150px !important;
-  }
-
-  .css-124zb1q {
-    width: 95% !important;
-    padding: 16px !important;
-    padding-right: 100px !important;
-    border-radius: 15px;
-    border-left: 0px solid #191920;
-    border-right: 1px solid #191920;
-  }
-  .css-h5h7wl {
-    width: 100% !important;
-    padding: 16px !important;
-    border-radius: 15px;
-    border-left: 0px solid #191920;
-    border-right: 0px solid #191920;
-  }
 }

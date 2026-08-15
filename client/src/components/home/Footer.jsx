@@ -327,7 +327,7 @@ const Footer = ({ projectCategory }) => {
           }
           
           footer h2 {
-            font-size: var(--font-size-h2) !important;
+            font-size: var(--font-size-h1) !important;
           }
           
           footer > div > div:first-child {
@@ -350,7 +350,7 @@ const Footer = ({ projectCategory }) => {
         
         @media (max-width: 480px) {
           footer h2 {
-            font-size: var(--font-size-h3) !important;
+            font-size: var(--font-size-h1) !important;
           }
           
           footer button {

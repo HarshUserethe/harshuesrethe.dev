@@ -8,7 +8,6 @@ import {
   LuPencilRuler,
 } from 'react-icons/lu';
 import React, { useState } from 'react';
-import '../../assets/styles/home-styles/AreaOfExpertise.css';
 import { useSelector } from 'react-redux';
 import ServiceCard from './ServiceCard';
 import ShinyText from '../shared/ShinyText';
@@ -65,8 +64,8 @@ const AreaOfExpertise = () => {
       <Box
         sx={{
           backgroundColor: styles?.mainTheme?.backgroundColor,
-          padding: '90px',
-          paddingTop: '150px',
+          padding: { xs: '40px 20px', md: '90px' },
+          paddingTop: { xs: '100px', md: '150px' },
         }}
       >
         <Box sx={{ display: 'flex', gap: '10px' }}>
@@ -124,28 +123,31 @@ const AreaOfExpertise = () => {
         className="areaOfExpContentWrapper"
         sx={{
           display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
           width: '100%',
           backgroundColor: styles?.mainTheme?.backgroundColor,
           justifyContent: 'center',
           alignItems: 'center',
-          gap: 8,
+          gap: { xs: 4, md: 8 },
+          px: { xs: 2, md: 0 },
           paddingBottom: '100px',
         }}
       >
         <Box
           sx={{
-            width: '625px',
-            height: '355px',
+            width: { xs: '100%', md: '625px' },
+            height: { xs: 'auto', md: '355px' },
             backgroundColor: styles?.mainTheme?.backgroundColor,
             display: 'flex',
             justifyContent: 'space-evenly',
             alignItems: 'center',
             flexDirection: 'column',
+            gap: { xs: 2, md: 0 },
           }}
         >
           {services.map((item, index) => (
             <Box
-              sx={{ backgroundColor: styles?.mainTheme?.backgroundColor }}
+              sx={{ backgroundColor: styles?.mainTheme?.backgroundColor, width: '100%' }}
               key={index}
               onClick={() => handleServiceCard(item)}
             >
@@ -165,8 +167,11 @@ const AreaOfExpertise = () => {
           src={dynamicImage}
           alt="Area of Expertise"
           sx={{
-            width: '625px',
-            height: '355px',
+            width: { xs: '100%', md: '625px' },
+            height: { xs: 'auto', md: '355px' },
+            aspectRatio: { xs: '16/9', md: 'auto' },
+            maxHeight: '355px',
+            objectFit: 'cover',
             backgroundColor: '#0000',
             borderRadius: '25px',
           }}

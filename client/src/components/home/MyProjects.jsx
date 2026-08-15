@@ -1,7 +1,6 @@
 import { Typography, Box, Button } from '@mui/material';
 import { LuSparkle } from 'react-icons/lu';
 import React, { useState } from 'react';
-import '../../assets/styles/home-styles/MyProjects.css';
 import { useSelector } from 'react-redux';
 import ShinyText from '../shared/ShinyText';
 import SplitText from '../shared/SplitText';
@@ -33,8 +32,8 @@ const MyProjects = () => {
       <Box
         sx={{
           backgroundColor: styles?.mainTheme?.backgroundColor,
-          padding: '90px',
-          paddingTop: '150px',
+          padding: { xs: '40px 20px', md: '90px' },
+          paddingTop: { xs: '100px', md: '150px' },
         }}
       >
         <Box sx={{ display: 'flex', gap: '10px' }}>
@@ -90,12 +89,12 @@ const MyProjects = () => {
       {/* PROJECT GRID */}
       <Box
         sx={{
-          pl: 8,
-          pr: 8,
-          pb: 8,
+          pl: { xs: 2, sm: 8 },
+          pr: { xs: 2, sm: 8 },
+          pb: { xs: 4, sm: 8 },
           backgroundColor: styles?.mainTheme?.backgroundColor,
         }}
-        className="projects-wrapper py-md grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0 px-10"
+        className="projects-wrapper py-md grid grid-cols-1 grid-rows-[masonry] gap-y-10 sm:grid-cols-2 sm:gap-x-16 sm:gap-y-0 px-4 sm:px-10"
       >
         {homeData?.projects?.map((p, index) => (
           <div
@@ -125,10 +124,10 @@ const MyProjects = () => {
             />
             {/* <a href={p.link} className="h-fit w-full"> */}
             <Link to={p.link} className="h-fit w-full">
-              <div
-                style={{
+              <Box
+                sx={{
                   backgroundColor: styles?.mainTheme?.backgroundColor,
-                  padding: '25px',
+                  padding: { xs: '14px', sm: '25px' },
                   marginTop: p.margin,
                 }}
                 className="aspect-3/2 w-full overflow-hidden rounded-3xl prj-cards"
@@ -159,10 +158,15 @@ const MyProjects = () => {
                     }}
                   />
                 </div>
-              </div>
+              </Box>
 
               {/* TEXT SECTION */}
-              <div className="mt-4 space-y-2 inner-card-lable">
+              <Box
+                sx={{
+                  px: { xs: '30px', sm: 0 },
+                }}
+                className="mt-4 space-y-2 inner-card-lable"
+              >
                 <h5
                   className="text-white text-xl"
                   style={{ color: styles?.mainTheme?.color }}
@@ -181,7 +185,7 @@ const MyProjects = () => {
                     {p.year}
                   </p>
                 </div>
-              </div>
+              </Box>
             </Link>
           </div>
         ))}

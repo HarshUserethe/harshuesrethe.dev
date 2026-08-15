@@ -145,18 +145,21 @@ const S = {
   // ── Buttons — compact & professional ─────────
   actions: (mobile) => ({
     display: 'flex',
-    flexWrap: 'wrap',
-    gap: 8,
+    flexDirection: 'row',
+    flexWrap: mobile ? 'nowrap' : 'wrap',
+    gap: mobile ? 6 : 8,
     marginBottom: mobile ? 36 : 48,
+    width: '100%',
   }),
 
-  btnPrimary: {
+  btnPrimary: (mobile) => ({
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 6,
-    padding: '8px 16px',
+    justifyContent: 'center',
+    gap: mobile ? 4 : 6,
+    padding: mobile ? '8px 10px' : '8px 16px',
     borderRadius: 8,
-    fontSize: 'var(--font-size-caption)',
+    fontSize: mobile ? '11px' : 'var(--font-size-caption)',
     fontWeight: 'var(--font-weight-semibold)',
     letterSpacing: '.03em',
     textDecoration: 'none',
@@ -165,14 +168,17 @@ const S = {
     border: '1px solid #7c6ef7',
     cursor: 'pointer',
     boxShadow: '0 2px 10px rgba(124,110,247,.3)',
-  },
-  btnGhost: (mode) => ({
+    flex: mobile ? 1 : 'initial',
+    whiteSpace: 'nowrap',
+  }),
+  btnGhost: (mobile, mode) => ({
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 6,
-    padding: '8px 16px',
+    justifyContent: 'center',
+    gap: mobile ? 4 : 6,
+    padding: mobile ? '8px 10px' : '8px 16px',
     borderRadius: 8,
-    fontSize: 'var(--font-size-caption)',
+    fontSize: mobile ? '11px' : 'var(--font-size-caption)',
     fontWeight: 'var(--font-weight-semibold)',
     letterSpacing: '.03em',
     textDecoration: 'none',
@@ -184,14 +190,17 @@ const S = {
         : '1px solid rgba(255,255,255,.14)',
     cursor: 'pointer',
     backgroundColor: mode === 'light' ? '#0b0b0f' : 'transparent',
+    flex: mobile ? 1 : 'initial',
+    whiteSpace: 'nowrap',
   }),
-  btnCoffee: (mode) => ({
+  btnCoffee: (mobile, mode) => ({
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 6,
-    padding: '8px 16px',
+    justifyContent: 'center',
+    gap: mobile ? 4 : 6,
+    padding: mobile ? '8px 10px' : '8px 16px',
     borderRadius: 8,
-    fontSize: 'var(--font-size-caption)',
+    fontSize: mobile ? '11px' : 'var(--font-size-caption)',
     fontWeight: 'var(--font-weight-semibold)',
     letterSpacing: '.03em',
     textDecoration: 'none',
@@ -202,6 +211,8 @@ const S = {
         ? '1px solid rgba(255,209,102,.55)'
         : '1px solid rgba(255,209,102,.2)',
     cursor: 'pointer',
+    flex: mobile ? 1 : 'initial',
+    whiteSpace: 'nowrap',
   }),
 
   divider: (mode) => ({
@@ -336,11 +347,13 @@ const S = {
     textAlign: 'center',
   },
   notFoundH2: { fontSize: 'var(--font-size-h3)', fontWeight: 'var(--font-weight-semibold)', margin: 0 },
-  paragraphStyle: (mode) => ({
+  paragraphStyle: (mobile, mode) => ({
     marginBottom: 14,
     marginTop: 14,
     color: mode === 'light' ? '#525252' : '#A0A0A0',
     fontWeight: 'var(--font-weight-regular)',
+    fontSize: mobile ? '14px' : 'var(--font-size-body)',
+    lineHeight: 'var(--line-height-relaxed)',
   }),
 };
 
@@ -385,7 +398,7 @@ function LayoutHero({ screenshots, onOpen, mobile }) {
     <div
       style={{
         ...S.heroShot,
-        height: mobile ? 400 : 600,
+        height: mobile ? 'auto' : 600,
       }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
@@ -396,8 +409,8 @@ function LayoutHero({ screenshots, onOpen, mobile }) {
         alt={s.alt}
         style={{
           ...S.shotImg,
-          height: '100%',
-          objectFit: 'cover',
+          height: mobile ? 'auto' : '100%',
+          objectFit: mobile ? 'contain' : 'cover',
           objectPosition: 'top',
           transform: hov ? 'scale(1.015)' : 'scale(1)',
           transition: 'transform .6s ease',
@@ -567,7 +580,7 @@ const ProjectDetail = () => {
           </p>
           <button
             onClick={() => navigate(-1)}
-            style={{ ...S.btnPrimary, marginTop: 8 }}
+            style={{ ...S.btnPrimary(mobile), marginTop: 8 }}
           >
             ← Go back
           </button>
@@ -684,7 +697,7 @@ const ProjectDetail = () => {
                 <a
                   href={liveLink}
                   rel="noopener noreferrer"
-                  style={S.btnPrimary}
+                  style={S.btnPrimary(mobile)}
                 >
                   <svg
                     width="11"
@@ -708,7 +721,7 @@ const ProjectDetail = () => {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={S.btnGhost(mode)}
+                  style={S.btnGhost(mobile, mode)}
                 >
                   <svg
                     width="11"
@@ -726,7 +739,7 @@ const ProjectDetail = () => {
                   href={coffeeLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={S.btnCoffee(mode)}
+                  style={S.btnCoffee(mobile, mode)}
                 >
                   <span style={{ fontSize: 11 }}>☕</span>
                   Buy me a coffee
@@ -764,7 +777,7 @@ const ProjectDetail = () => {
 
             if (block.type === 'paragraph') {
               return (
-                <p key={i} style={S.paragraphStyle(mode)}>
+                <p key={i} style={S.paragraphStyle(mobile, mode)}>
                   {block.content}
                 </p>
               );
@@ -779,10 +792,13 @@ const ProjectDetail = () => {
                     listStyle: 'inside',
                     marginTop: '15px',
                     marginBottom: '15px',
+                    fontSize: mobile ? '14px' : 'var(--font-size-body)',
+                    color: mode === 'light' ? '#525252' : '#A0A0A0',
+                    lineHeight: 'var(--line-height-relaxed)',
                   }}
                 >
                   {block.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <li key={idx} style={{ marginBottom: 6 }}>{item}</li>
                   ))}
                 </ul>
               );

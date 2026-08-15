@@ -18,21 +18,22 @@ const Testimonal = () => {
       <Box
         sx={{
           backgroundColor: styles?.mainTheme?.backgroundColor,
-          padding: '90px',
-          paddingTop: '200px',
+          padding: { xs: '40px 20px', md: '90px' },
+          paddingTop: { xs: '100px', md: '200px' },
           display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'start',
-          gap: 20,
+          gap: { xs: 4, md: 20 },
         }}
       >
         {/* first box */}
-        <Box sx={{ width: '25%' }}>
+        <Box sx={{ width: { xs: '100%', md: '25%' } }}>
           <Box sx={{ display: 'flex', gap: '10px' }}>
             <LuSparkle color={styles?.mainTheme?.highlightedColor} />
             <Typography
               sx={{
                 color: 'greenyellow',
-                fontSize: '16px',
+                fontSize: 'var(--font-size-body)',
                 textTransform: 'uppercase',
               }}
               variant="h3"
@@ -52,7 +53,7 @@ const Testimonal = () => {
             variant="h3"
             sx={{
               color: styles?.mainTheme?.color,
-              fontSize: '48px',
+              fontSize: { xs: 'var(--font-size-h2)', md: 'var(--font-size-h1)' },
               marginTop: '10px',
               fontFamily: 'clash_display',
             }}
@@ -78,7 +79,7 @@ const Testimonal = () => {
         </Box>
 
         {/* second box */}
-        <Box sx={{ width: '55%' }}>
+        <Box sx={{ width: { xs: '100%', md: '55%' } }}>
           <TestimonialSlider styles={styles} />
         </Box>
       </Box>

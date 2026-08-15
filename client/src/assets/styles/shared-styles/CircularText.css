@@ -43,9 +43,9 @@
 
 @media (max-width: 900px) {
   .circular-text {
-    bottom: 8px;
-    right: 15px;
-    width: 150px;
-    height: 150px;
+    bottom: -15px;
+    right: -15px;
+    width: 130px;
+    height: 130px;
   }
 }

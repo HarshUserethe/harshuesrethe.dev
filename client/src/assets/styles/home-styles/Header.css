@@ -20,7 +20,7 @@
 
 .navigation-container {
   display: flex;
-  font-size: 0.9rem;
+  font-size: var(--font-size-nav);
   gap: 10px;
 }
 .nav-list {
@@ -35,7 +35,7 @@
     transition: cubic-bezier(0.19, 1, 0.22, 1) .8s;
 } */
 .icons {
-  font-size: 18px;
+  font-size: var(--font-size-large);
   cursor: pointer;
 }
 .active {
@@ -50,31 +50,4 @@
   background: #b5fe6c !important;
 }
 
-/*Inside 600px - 500px*/
-@media (max-width: 600px) and (min-width: 500px) {
-  .nav-inner-container {
-    width: 100%;
-  }
-  .css-1hsu12n {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-}
 
-/*Inside 600px - 500px*/
-@media (max-width: 499px) and (min-width: 300px) {
-  .nav-inner-container {
-    width: 100%;
-  }
-  .nav-list {
-    display: none !important;
-  }
-  .css-1hsu12n {
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-  }
-  /* Area of Expertise Property */
-  /* .css-hvvpv0 {
-    padding: 90px !important;
-  } */
-}

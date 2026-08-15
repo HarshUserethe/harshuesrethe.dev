@@ -54,7 +54,7 @@ const AboutMe = ({ styles }) => {
         <Typography
           sx={{
             color: 'greenyellow',
-            fontSize: '16px',
+            fontSize: 'var(--font-size-body)',
             textTransform: 'uppercase',
           }}
           variant="h3"

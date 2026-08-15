@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, memo } from 'react';
 import { LuSparkle } from 'react-icons/lu';
 import { useSelector } from 'react-redux';
-import '../../assets/styles/home-styles/ChipsLoop.css';
 import { Chip, Avatar } from '@mui/material';
 
 const ANIMATION_CONFIG = {
@@ -325,6 +324,11 @@ export const ChipsLoop = memo(
             border: styles?.mainTheme?.chipBorder,
             pl: 1,
             pr: 1,
+            padding: { xs: '20px 10px !important', sm: 'inherit' },
+            '& .MuiChip-label': {
+              fontSize: { xs: '16px !important', sm: 'inherit' },
+            },
+            margin: { xs: '10px', sm: 'inherit' },
           }}
         />
       </li>

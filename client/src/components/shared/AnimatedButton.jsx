@@ -92,11 +92,11 @@ const AnimatedButton = ({
           color: color,
           border: '1px solid #6e6e6eff',
           padding: '12px 32px',
-          fontSize: '14px',
+          fontSize: 'var(--font-size-button)',
           borderRadius: '30px',
           cursor: 'pointer',
           transition: 'all 0.3s ease',
-          fontWeight: '600',
+          fontWeight: 'var(--font-weight-semibold)',
           width: btnWidth,
           fontFamily: "'Poppins', sans-serif",
         }}

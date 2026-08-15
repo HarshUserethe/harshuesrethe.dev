@@ -35,9 +35,9 @@
 
 .label-text {
   color: greenyellow;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
 }
 
@@ -46,13 +46,13 @@
 }
 
 .awards-title {
-  font-size: 48px !important;
-  font-weight: 400 !important;
-  line-height: 1.1 !important;
+  font-size: var(--font-size-h1) !important;
+  font-weight: var(--font-weight-regular) !important;
+  line-height: var(--line-height-tight) !important;
   margin-bottom: 20px !important;
   margin-top: 20px !important;
   font-family: 'clash_display' !important;
-  letter-spacing: -2px;
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 /* Right Side - Awards List */
@@ -85,19 +85,19 @@
 }
 
 .award-title {
-  font-size: 16px !important;
-  font-weight: 400;
+  font-size: var(--font-size-body) !important;
+  font-weight: var(--font-weight-regular);
   color: #ffffff;
   margin: 0;
   transition: color 0.3s ease;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 .award-date {
-  font-size: 14px;
+  font-size: var(--font-size-small);
   color: rgba(255, 255, 255, 0.5);
-  font-weight: 400;
-  letter-spacing: 0.5px;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-normal);
   white-space: nowrap;
 }
 
@@ -108,7 +108,7 @@
   }
 
   .awards-title {
-    font-size: 42px;
+    font-size: var(--font-size-h1);
   }
 }
 
@@ -127,7 +127,7 @@
   }
 
   .awards-title {
-    font-size: 38px;
+    font-size: var(--font-size-h2);
   }
 
   .award-item {
@@ -141,7 +141,7 @@
   }
 
   .awards-title {
-    font-size: 32px;
+    font-size: var(--font-size-h2);
   }
 
   .awards-label {
@@ -164,17 +164,17 @@
   }
 
   .award-title {
-    font-size: 16px !important;
+    font-size: var(--font-size-body) !important;
   }
 
   .award-date {
-    font-size: 13px;
+    font-size: var(--font-size-small);
   }
 }
 
 @media (max-width: 400px) {
   .awards-title {
-    font-size: 28px;
+    font-size: var(--font-size-h3);
   }
 
   .award-item {

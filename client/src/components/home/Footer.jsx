@@ -86,7 +86,7 @@ const Footer = ({ projectCategory }) => {
             ></div>
             <span
               style={{
-                fontSize: '14px',
+                fontSize: 'var(--font-size-small)',
                 color: styles?.mainTheme?.color,
               }}
             >
@@ -97,11 +97,11 @@ const Footer = ({ projectCategory }) => {
           {/* Heading */}
           <h2
             style={{
-              fontSize: '72px',
-              fontWeight: '500',
-              lineHeight: '1.2',
+              fontSize: 'var(--font-size-display)',
+              fontWeight: 'var(--font-weight-medium)',
+              lineHeight: 'var(--line-height-display)',
               margin: '0 0 40px 0',
-              letterSpacing: '-1px',
+              letterSpacing: 'var(--letter-spacing-tight)',
               fontFamily: 'clash_display',
             }}
           >
@@ -159,7 +159,7 @@ const Footer = ({ projectCategory }) => {
           {/* Copyright */}
           <p
             style={{
-              fontSize: '14px',
+              fontSize: 'var(--font-size-small)',
               color: '#888',
               margin: 0,
             }}
@@ -327,7 +327,7 @@ const Footer = ({ projectCategory }) => {
           }
           
           footer h2 {
-            font-size: 40px !important;
+            font-size: var(--font-size-h1) !important;
           }
           
           footer > div > div:first-child {
@@ -350,12 +350,12 @@ const Footer = ({ projectCategory }) => {
         
         @media (max-width: 480px) {
           footer h2 {
-            font-size: 32px !important;
+            font-size: var(--font-size-h1) !important;
           }
           
           footer button {
             padding: 12px 32px !important;
-            font-size: 14px !important;
+            font-size: var(--font-size-button) !important;
           }
         }
       `}</style>

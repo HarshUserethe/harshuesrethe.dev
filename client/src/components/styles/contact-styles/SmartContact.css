@@ -42,17 +42,17 @@
 }
 
 .sc-subtitle {
-  font-size: 13px;
+  font-size: var(--font-size-small);
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   opacity: 0.85;
 }
 
 .sc-heading {
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading);
   margin-bottom: 24px !important;
 }
 
@@ -80,8 +80,8 @@
 
 /* ---------- Step content ---------- */
 .sc-step-title {
-  font-size: 17px;
-  font-weight: 600;
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 20px !important;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .sc-footer-info {
-  font-size: 13px;
+  font-size: var(--font-size-small);
   opacity: 0.5;
   white-space: nowrap;
 }
@@ -196,7 +196,7 @@
   }
 
   .sc-heading {
-    font-size: 22px;
+    font-size: var(--font-size-h4);
   }
 }
 
@@ -224,12 +224,12 @@
   }
 
   .sc-heading {
-    font-size: 20px;
+    font-size: var(--font-size-h4);
     margin-bottom: 18px;
   }
 
   .sc-step-title {
-    font-size: 15px;
+    font-size: var(--font-size-large);
   }
 
   .sc-upload-zone {

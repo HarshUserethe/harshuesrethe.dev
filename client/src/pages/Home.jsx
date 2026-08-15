@@ -50,11 +50,17 @@ const Home = () => {
           flexDirection: 'column',
         }}
       >
-        <Box className="inner-wrapper">
+        <Box
+          className="inner-wrapper"
+          sx={{
+            width: { xs: '100%', md: '85%' },
+            marginTop: { xs: '24%', sm: '18%', md: '15%', lg: '8%' },
+          }}
+        >
           <Typography
             variant="h1"
             sx={{
-              fontSize: '16px',
+              fontSize: 'var(--font-size-body)',
               color: styles?.mainTheme?.color,
               display: 'flex',
               justifyContent: 'start',
@@ -74,12 +80,12 @@ const Home = () => {
             className="headline"
             variant="h1"
             sx={{
-              fontSize: '72px',
-              fontWeight: '500',
+              fontSize: { xs: 'var(--font-size-h1)', sm: 'var(--font-size-display)' },
+              fontWeight: 'var(--font-weight-medium)',
               color: styles?.mainTheme?.color,
-              width: '80%',
-              lineHeight: '72px',
-              marginTop: '2%',
+              width: { xs: '100%', sm: '80%' },
+              lineHeight: 'var(--line-height-display)',
+              marginTop: { xs: '8%', sm: '2%' },
               marginBottom: '4%',
               textAlign: 'center',
             }}
@@ -104,28 +110,30 @@ const Home = () => {
           sx={{
             width: '100%',
             display: 'flex',
-            justifyContent: 'center',
+            justifyContent: { xs: 'start', sm: 'center' },
             alignItems: 'center',
+            marginTop: { xs: '5%', sm: '0%' },
           }}
         >
           <Box
             className="mobile-bottom-inner"
             sx={{
-              width: '90%',
+              width: { xs: '100%', sm: '90%' },
               display: 'flex',
+              flexDirection: { xs: 'column', lg: 'row' },
               justifyContent: 'space-between',
-              padding: '15px',
+              padding: { xs: '0px', sm: '15px' },
             }}
           >
             {/* LINK PAGE */}
             <Box
-              sx={{ color: '#8c8c9d', display: 'flex' }}
+              sx={{ color: '#8c8c9d', display: { xs: 'none', lg: 'flex' } }}
               className="all-links"
             >
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -137,7 +145,7 @@ const Home = () => {
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -149,7 +157,7 @@ const Home = () => {
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -161,7 +169,7 @@ const Home = () => {
               <ListItem
                 sx={{
                   textTransform: 'uppercase',
-                  fontSize: '14px',
+                  fontSize: 'var(--font-size-nav)',
                   cursor: 'pointer',
                 }}
                 onClick={() =>
@@ -176,7 +184,7 @@ const Home = () => {
             <Box
               className="short-slogan-box"
               sx={{
-                width: '45%',
+                width: { xs: '100%', sm: '80%', md: '60%', lg: '45%' },
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 3,
@@ -184,7 +192,7 @@ const Home = () => {
             >
               <Typography
                 variant="h1"
-                sx={{ fontSize: '16px', color: '#8c8c9d' }}
+                sx={{ fontSize: 'var(--font-size-large)', color: '#8c8c9d' }}
               >
                 I collaborate with clients and teams to design and build clean,
                 accessible digital experiences that solve real problems and
@@ -213,11 +221,15 @@ const Home = () => {
         {/* Logos Animation Container */}
         <Box
           className="emp-space-divider"
-          style={{
+          sx={{
+            width: '100%',
+            height: { xs: '12vh', md: '18vh' },
             backgroundColor: styles?.mainTheme?.backgroundColor,
+            borderTop: '1px solid',
             borderColor: themeValues.mode === 'light' ? '#dfdfdf' : '#262626',
+            marginTop: { xs: '8vw', sm: '5%' },
           }}
-        ></Box>
+        />
       </Box>
       <LogoLoop
         logos={homeData.imageLogos}

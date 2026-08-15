@@ -51,8 +51,8 @@ const ProjectCard = ({ id, project, isHovered, onHover, onLeave, styles }) => {
           <Typography
             sx={{
               color: styles?.mainTheme?.color,
-              fontSize: '20px',
-              fontWeight: '400',
+              fontSize: 'var(--font-size-large)',
+              fontWeight: 'var(--font-weight-regular)',
               textTransform: 'capitalize',
             }}
             variant="h5"
@@ -62,7 +62,7 @@ const ProjectCard = ({ id, project, isHovered, onHover, onLeave, styles }) => {
           <Typography
             sx={{
               color: '#a9a9bd',
-              fontSize: '14px',
+              fontSize: 'var(--font-size-small)',
               textTransform: 'capitalize',
             }}
             variant="body1"
@@ -72,7 +72,7 @@ const ProjectCard = ({ id, project, isHovered, onHover, onLeave, styles }) => {
         </Box>
         <Box>
           <Typography
-            sx={{ color: '#a9a9bd', fontSize: '14px' }}
+            sx={{ color: '#a9a9bd', fontSize: 'var(--font-size-small)' }}
             variant="body1"
           >
             {project.date}

@@ -62,8 +62,8 @@ const ServiceCard = ({ icon: Icon, title, description, id, themeColor }) => {
             variant="h6"
             sx={{
               color: themeColor?.color,
-              fontSize: '16px',
-              fontWeight: 400,
+              fontSize: 'var(--font-size-body)',
+              fontWeight: 'var(--font-weight-regular)',
             }}
           >
             {title}
@@ -84,9 +84,9 @@ const ServiceCard = ({ icon: Icon, title, description, id, themeColor }) => {
         <Typography
           sx={{
             color: '#999',
-            fontSize: '14px',
+            fontSize: 'var(--font-size-small)',
             marginTop: '16px',
-            lineHeight: 1.6,
+            lineHeight: 'var(--line-height-normal)',
           }}
         >
           {description}

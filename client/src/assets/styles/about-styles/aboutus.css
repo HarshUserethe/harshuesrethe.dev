@@ -93,7 +93,7 @@
 
 /* DESCRIPTION */
 .hero-description {
-  font-size: 16px !important;
+  font-size: var(--font-size-body) !important;
   color: #bcbcbc;
   max-width: 550px;
   margin-top: -2% !important;
@@ -107,7 +107,7 @@
   border-radius: 50px;
   padding: 10px 26px;
   text-transform: none;
-  font-size: 1rem;
+  font-size: var(--font-size-small);
 }
 
 .hero-button:hover {
@@ -128,7 +128,9 @@
   }
 
   .hero-image-wrapper {
-    margin-bottom: 3rem;
+    width: 85%;
+    max-width: 320px;
+    margin: 0 auto 3rem auto;
     height: 55dvh;
   }
 
@@ -144,11 +146,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .circular-text {
-    right: 50%;
-    transform: translateX(50%);
   }
 
   .hero-description {

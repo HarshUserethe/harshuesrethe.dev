@@ -55,8 +55,8 @@ const S = {
     border: 'none',
     padding: 0,
     color: '#7a7a90',
-    fontSize: 12,
-    fontWeight: 600,
+    fontSize: 'var(--font-size-caption)',
+    fontWeight: 'var(--font-weight-semibold)',
     letterSpacing: '.06em',
     textTransform: 'uppercase',
     cursor: 'pointer',
@@ -97,16 +97,16 @@ const S = {
   },
 
   yearLabel: (mode) => ({
-    fontSize: 12,
+    fontSize: 'var(--font-size-caption)',
     color: mode === 'light' ? '#6b6b7b' : '#7a7a90',
-    fontWeight: 500,
+    fontWeight: 'var(--font-weight-medium)',
   }),
 
   h1: (mobile, mode) => ({
-    fontSize: mobile ? 'clamp(28px, 8vw, 40px)' : 'clamp(34px, 5vw, 58px)',
-    fontWeight: 600,
-    lineHeight: 1.5,
-    letterSpacing: '-.025em',
+    fontSize: mobile ? 'var(--font-size-h2)' : 'var(--font-size-h1)',
+    fontWeight: 'var(--font-weight-semibold)',
+    lineHeight: 'var(--line-height-heading)',
+    letterSpacing: 'var(--letter-spacing-tight)',
     background:
       mode === 'light'
         ? 'linear-gradient(130deg, #0b0b0f 20%, #7c6ef7 100%)'
@@ -118,21 +118,21 @@ const S = {
   }),
 
   tagline: (mobile, mode) => ({
-    fontSize: mobile ? 14 : 16,
+    fontSize: mobile ? 'var(--font-size-small)' : 'var(--font-size-body)',
     color: mode === 'light' ? '#6b6b7b' : '#7a7a90',
-    fontWeight: 300,
+    fontWeight: 'var(--font-weight-regular)',
     maxWidth: '100%',
     margin: '0 0 22px',
-    lineHeight: 1.6,
+    lineHeight: 'var(--line-height-normal)',
   }),
 
   tagRow: { display: 'flex', flexWrap: 'wrap', gap: 7, marginBottom: 26 },
   tag: (mode) => ({
     padding: '4px 11px',
     borderRadius: 5,
-    fontSize: 11,
-    fontWeight: 600,
-    letterSpacing: '.05em',
+    fontSize: 'var(--font-size-caption)',
+    fontWeight: 'var(--font-weight-semibold)',
+    letterSpacing: 'var(--letter-spacing-wide)',
     background:
       mode === 'light' ? 'rgba(124,110,247,.08)' : 'rgba(124,110,247,.1)',
     border:
@@ -145,19 +145,22 @@ const S = {
   // ── Buttons — compact & professional ─────────
   actions: (mobile) => ({
     display: 'flex',
-    flexWrap: 'wrap',
-    gap: 8,
+    flexDirection: 'row',
+    flexWrap: mobile ? 'nowrap' : 'wrap',
+    gap: mobile ? 6 : 8,
     marginBottom: mobile ? 36 : 48,
+    width: '100%',
   }),
 
-  btnPrimary: {
+  btnPrimary: (mobile) => ({
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 6,
-    padding: '8px 16px',
+    justifyContent: 'center',
+    gap: mobile ? 4 : 6,
+    padding: mobile ? '8px 10px' : '8px 16px',
     borderRadius: 8,
-    fontSize: 12,
-    fontWeight: 600,
+    fontSize: mobile ? '11px' : 'var(--font-size-caption)',
+    fontWeight: 'var(--font-weight-semibold)',
     letterSpacing: '.03em',
     textDecoration: 'none',
     background: '#7c6ef7',
@@ -165,15 +168,18 @@ const S = {
     border: '1px solid #7c6ef7',
     cursor: 'pointer',
     boxShadow: '0 2px 10px rgba(124,110,247,.3)',
-  },
-  btnGhost: (mode) => ({
+    flex: mobile ? 1 : 'initial',
+    whiteSpace: 'nowrap',
+  }),
+  btnGhost: (mobile, mode) => ({
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 6,
-    padding: '8px 16px',
+    justifyContent: 'center',
+    gap: mobile ? 4 : 6,
+    padding: mobile ? '8px 10px' : '8px 16px',
     borderRadius: 8,
-    fontSize: 12,
-    fontWeight: 600,
+    fontSize: mobile ? '11px' : 'var(--font-size-caption)',
+    fontWeight: 'var(--font-weight-semibold)',
     letterSpacing: '.03em',
     textDecoration: 'none',
     background: 'transparent',
@@ -184,15 +190,18 @@ const S = {
         : '1px solid rgba(255,255,255,.14)',
     cursor: 'pointer',
     backgroundColor: mode === 'light' ? '#0b0b0f' : 'transparent',
+    flex: mobile ? 1 : 'initial',
+    whiteSpace: 'nowrap',
   }),
-  btnCoffee: (mode) => ({
+  btnCoffee: (mobile, mode) => ({
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 6,
-    padding: '8px 16px',
+    justifyContent: 'center',
+    gap: mobile ? 4 : 6,
+    padding: mobile ? '8px 10px' : '8px 16px',
     borderRadius: 8,
-    fontSize: 12,
-    fontWeight: 600,
+    fontSize: mobile ? '11px' : 'var(--font-size-caption)',
+    fontWeight: 'var(--font-weight-semibold)',
     letterSpacing: '.03em',
     textDecoration: 'none',
     background: mode === 'light' ? '#ffd166' : 'rgba(255,209,102,.08)',
@@ -202,6 +211,8 @@ const S = {
         ? '1px solid rgba(255,209,102,.55)'
         : '1px solid rgba(255,209,102,.2)',
     cursor: 'pointer',
+    flex: mobile ? 1 : 'initial',
+    whiteSpace: 'nowrap',
   }),
 
   divider: (mode) => ({
@@ -249,8 +260,8 @@ const S = {
 
   section: { marginBottom: 64 },
   sectionLabel: {
-    fontSize: 10,
-    fontWeight: 700,
+    fontSize: '0.625rem',
+    fontWeight: 'var(--font-weight-bold)',
     letterSpacing: '.12em',
     textTransform: 'uppercase',
     color: '#7c6ef7',
@@ -266,10 +277,10 @@ const S = {
     maxWidth: 80,
   }),
   descPara: (mobile, mode) => ({
-    fontSize: mobile ? 14 : 16,
+    fontSize: mobile ? 'var(--font-size-small)' : 'var(--font-size-body)',
     color: mode === 'light' ? 'rgba(0,0,0,.62)' : 'rgba(232,232,240,.78)',
-    lineHeight: 1.82,
-    fontWeight: 300,
+    lineHeight: 'var(--line-height-relaxed)',
+    fontWeight: 'var(--font-weight-regular)',
     maxWidth: 720,
   }),
 
@@ -289,7 +300,7 @@ const S = {
     gap: 10,
   },
   footerText: (mode) => ({
-    fontSize: 12,
+    fontSize: 'var(--font-size-caption)',
     color: mode === 'light' ? '#6b6b7b' : '#7a7a90',
   }),
 
@@ -335,12 +346,14 @@ const S = {
     gap: 14,
     textAlign: 'center',
   },
-  notFoundH2: { fontSize: 28, fontWeight: 600, margin: 0 },
-  paragraphStyle: (mode) => ({
+  notFoundH2: { fontSize: 'var(--font-size-h3)', fontWeight: 'var(--font-weight-semibold)', margin: 0 },
+  paragraphStyle: (mobile, mode) => ({
     marginBottom: 14,
     marginTop: 14,
     color: mode === 'light' ? '#525252' : '#A0A0A0',
-    fontWeight: 300,
+    fontWeight: 'var(--font-weight-regular)',
+    fontSize: mobile ? '14px' : 'var(--font-size-body)',
+    lineHeight: 'var(--line-height-relaxed)',
   }),
 };
 
@@ -385,7 +398,7 @@ function LayoutHero({ screenshots, onOpen, mobile }) {
     <div
       style={{
         ...S.heroShot,
-        height: mobile ? 400 : 600,
+        height: mobile ? 'auto' : 600,
       }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
@@ -396,8 +409,8 @@ function LayoutHero({ screenshots, onOpen, mobile }) {
         alt={s.alt}
         style={{
           ...S.shotImg,
-          height: '100%',
-          objectFit: 'cover',
+          height: mobile ? 'auto' : '100%',
+          objectFit: mobile ? 'contain' : 'cover',
           objectPosition: 'top',
           transform: hov ? 'scale(1.015)' : 'scale(1)',
           transition: 'transform .6s ease',
@@ -567,7 +580,7 @@ const ProjectDetail = () => {
           </p>
           <button
             onClick={() => navigate(-1)}
-            style={{ ...S.btnPrimary, marginTop: 8 }}
+            style={{ ...S.btnPrimary(mobile), marginTop: 8 }}
           >
             ← Go back
           </button>
@@ -684,7 +697,7 @@ const ProjectDetail = () => {
                 <a
                   href={liveLink}
                   rel="noopener noreferrer"
-                  style={S.btnPrimary}
+                  style={S.btnPrimary(mobile)}
                 >
                   <svg
                     width="11"
@@ -708,7 +721,7 @@ const ProjectDetail = () => {
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={S.btnGhost(mode)}
+                  style={S.btnGhost(mobile, mode)}
                 >
                   <svg
                     width="11"
@@ -726,7 +739,7 @@ const ProjectDetail = () => {
                   href={coffeeLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={S.btnCoffee(mode)}
+                  style={S.btnCoffee(mobile, mode)}
                 >
                   <span style={{ fontSize: 11 }}>☕</span>
                   Buy me a coffee
@@ -740,7 +753,7 @@ const ProjectDetail = () => {
           {/* Screenshots */}
           <section style={{ marginBottom: 52 }}>{ScreenshotBlock}</section>
           {/* Project About */}
-          <h1 style={{ fontSize: 40, fontWeight: 500, marginBottom: 30 }}>
+          <h1 style={{ fontSize: 'var(--font-size-h2)', fontWeight: 'var(--font-weight-medium)', marginBottom: 30 }}>
             What It Does ?
           </h1>
 
@@ -753,8 +766,8 @@ const ProjectDetail = () => {
                   style={{
                     marginTop: '50px',
                     marginBottom: '5px',
-                    fontWeight: '600',
-                    fontSize: '22px',
+                    fontWeight: 'var(--font-weight-semibold)',
+                    fontSize: 'var(--font-size-h4)',
                   }}
                 >
                   {block.content}
@@ -764,7 +777,7 @@ const ProjectDetail = () => {
 
             if (block.type === 'paragraph') {
               return (
-                <p key={i} style={S.paragraphStyle(mode)}>
+                <p key={i} style={S.paragraphStyle(mobile, mode)}>
                   {block.content}
                 </p>
               );
@@ -779,10 +792,13 @@ const ProjectDetail = () => {
                     listStyle: 'inside',
                     marginTop: '15px',
                     marginBottom: '15px',
+                    fontSize: mobile ? '14px' : 'var(--font-size-body)',
+                    color: mode === 'light' ? '#525252' : '#A0A0A0',
+                    lineHeight: 'var(--line-height-relaxed)',
                   }}
                 >
                   {block.items.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <li key={idx} style={{ marginBottom: 6 }}>{item}</li>
                   ))}
                 </ul>
               );
